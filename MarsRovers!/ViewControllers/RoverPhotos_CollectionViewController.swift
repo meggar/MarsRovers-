@@ -12,7 +12,7 @@ private let reuseIdentifier = "RoverCollectionViewCell"
 
 
 
-class RoverPhotos_CollectionViewController: UICollectionViewController {
+class RoverPhotos_CollectionViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
 
     var photos: Photos?
     var roverType: RoverType = .curiosity
@@ -50,6 +50,24 @@ class RoverPhotos_CollectionViewController: UICollectionViewController {
     }
     
     
+    // MARK: - UICollectionViewDelegateFlowLayout
+    
+    func collectionView(_ collectionView: UICollectionView,
+                        layout collectionViewLayout: UICollectionViewLayout,
+                        sizeForItemAt indexPath: IndexPath) -> CGSize {
+        
+        guard let layout = collectionViewLayout as? UICollectionViewFlowLayout else {
+            return CGSize(width: 100, height: 100)
+        }
+        
+        let columns = 3
+        let spacing = Int(layout.minimumInteritemSpacing) * (columns - 1)
+        let side = (Int(collectionView.bounds.width)-spacing) / columns
+        
+        return CGSize(width: side, height: side)
+    }
+    
+    
     
     // MARK: UIView
     
@@ -67,6 +85,14 @@ class RoverPhotos_CollectionViewController: UICollectionViewController {
         }
         
     }
+    
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        super.viewWillTransition(to: size, with: coordinator)
+        guard let flowLayout = collectionView.collectionViewLayout as? UICollectionViewFlowLayout else {
+            return
+        }
+        flowLayout.invalidateLayout()
+    }
 
     
     // MARK: - Initializers
@@ -80,7 +106,8 @@ class RoverPhotos_CollectionViewController: UICollectionViewController {
     convenience init(withRover roverType: RoverType) {
         
         let layout = UICollectionViewFlowLayout()
-        layout.itemSize = CGSize(width: 100, height: 100)
+        layout.scrollDirection = .vertical
+        layout.minimumInteritemSpacing = 10
         
         self.init(collectionViewLayout: layout)
         

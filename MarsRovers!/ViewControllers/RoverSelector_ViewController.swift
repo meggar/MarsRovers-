@@ -21,11 +21,7 @@ class RoverSelector_ViewController: UIViewController,
         return view
     }()
     
-    let rovers = [
-                    RoverType.curiosity,
-                    RoverType.opportunity,
-                    RoverType.spirit
-                 ]
+    let rovers:[RoverType] = [.curiosity, .opportunity, .spirit]
     
     
     // MARK: - TableViewDatasource
@@ -64,7 +60,7 @@ class RoverSelector_ViewController: UIViewController,
         title = "Mars Rovers"
         tableView.delegate = self
         tableView.dataSource = self
-        tableView.frame = view.bounds
+        
         view.addSubview(tableView)
         setupConstraints()
     }
