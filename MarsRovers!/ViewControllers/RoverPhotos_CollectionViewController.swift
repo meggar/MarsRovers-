@@ -40,6 +40,12 @@ class RoverPhotos_CollectionViewController: UICollectionViewController {
             cell.setImageData(url: imageUrl)
         }
         
+        if let cameraName = photos?.photos[indexPath.row].camera.name,
+            let earthDate = photos?.photos[indexPath.row].earthDate {
+            
+            cell.photoNameLabel.text = "\(earthDate) - \(cameraName)"
+        }
+        
         return cell
     }
     
@@ -103,6 +109,9 @@ class RoverPhoto_CollectionViewCell: UICollectionViewCell {
     let photoNameLabel: UILabel = {
         let view = UILabel()
         view.translatesAutoresizingMaskIntoConstraints  = false
+        view.backgroundColor = .black
+        view.textColor = .white
+        view.adjustsFontSizeToFitWidth = true
         return view
     }()
     
