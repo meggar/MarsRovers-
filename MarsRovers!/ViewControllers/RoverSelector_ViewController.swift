@@ -14,8 +14,8 @@ class RoverSelector_ViewController: UIViewController,
                                     UITableViewDelegate,
                                     UITableViewDataSource {
     
-    let tableView: UITableView = {
-        let view = UITableView()
+    lazy var tableView: UITableView = {
+        let view = UITableView(frame: self.view.bounds, style: .grouped)
         view.translatesAutoresizingMaskIntoConstraints = false
         view.register(UITableViewCell.self, forCellReuseIdentifier: reuseIdentifier)
         return view
