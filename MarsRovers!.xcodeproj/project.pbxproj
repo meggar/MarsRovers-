@@ -20,6 +20,7 @@
 		FB6C00C121E10F240077A637 /* RoverType.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB6C00C021E10F240077A637 /* RoverType.swift */; };
 		FB6C00C321E110DA0077A637 /* FakeRoverPhotoAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB6C00C221E110DA0077A637 /* FakeRoverPhotoAPI.swift */; };
 		FB6C00C521E113BE0077A637 /* RoverSelector_ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB6C00C421E113BE0077A637 /* RoverSelector_ViewController.swift */; };
+		FB6C00C721E15C8D0077A637 /* RoverPhotoDetail_ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB6C00C621E15C8D0077A637 /* RoverPhotoDetail_ViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,6 +60,7 @@
 		FB6C00C021E10F240077A637 /* RoverType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoverType.swift; sourceTree = "<group>"; };
 		FB6C00C221E110DA0077A637 /* FakeRoverPhotoAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeRoverPhotoAPI.swift; sourceTree = "<group>"; };
 		FB6C00C421E113BE0077A637 /* RoverSelector_ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoverSelector_ViewController.swift; sourceTree = "<group>"; };
+		FB6C00C621E15C8D0077A637 /* RoverPhotoDetail_ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoverPhotoDetail_ViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -162,6 +164,7 @@
 			children = (
 				FB6C00B821E104210077A637 /* RoverPhotos_CollectionViewController.swift */,
 				FB6C00C421E113BE0077A637 /* RoverSelector_ViewController.swift */,
+				FB6C00C621E15C8D0077A637 /* RoverPhotoDetail_ViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -307,6 +310,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FB6C00B321E0F5100077A637 /* Photos.swift in Sources */,
+				FB6C00C721E15C8D0077A637 /* RoverPhotoDetail_ViewController.swift in Sources */,
 				FB6C00C121E10F240077A637 /* RoverType.swift in Sources */,
 				FB6C00B921E104210077A637 /* RoverPhotos_CollectionViewController.swift in Sources */,
 				FB6C008221E0EF140077A637 /* AppDelegate.swift in Sources */,

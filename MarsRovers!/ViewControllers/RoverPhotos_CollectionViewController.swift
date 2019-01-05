@@ -50,6 +50,18 @@ class RoverPhotos_CollectionViewController: UICollectionViewController, UICollec
     }
     
     
+    // MARK: -- UICollectionViewDelegate
+    
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+        let detailViewController = RoverPhotoDetail_ViewController()
+        detailViewController.photo = photos?.photos[indexPath.row]
+        if let cell = collectionView.cellForItem(at: indexPath) as? RoverPhoto_CollectionViewCell {
+            detailViewController.image = cell.photoView.image
+        }
+        navigationController?.pushViewController(detailViewController, animated: true)
+    }
+    
     // MARK: - UICollectionViewDelegateFlowLayout
     
     func collectionView(_ collectionView: UICollectionView,

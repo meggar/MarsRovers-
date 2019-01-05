@@ -50,6 +50,10 @@ struct Rover: Codable  & Equatable {
     let totalPhotos: Int
     let cameras: [CameraElement]
     
+    func description() -> String {
+        return "\(name) rover was launched on \(launchDate), and landed on Mars on \(landingDate). Mission Status: \(status)."
+    }
+    
     enum CodingKeys: String, CodingKey {
         case id, name
         case landingDate = "landing_date"
