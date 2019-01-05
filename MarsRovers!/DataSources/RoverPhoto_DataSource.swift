@@ -10,6 +10,6 @@ import Foundation
 
 protocol RoverPhoto_DataSource {
     
-    func getPhotosFor(rover: RoverType, on earthdate: String) -> Photos?
+    func getPhotosFor(rover: RoverType, completion: @escaping (Photos?) -> ())
     
 }

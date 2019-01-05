@@ -8,8 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		FB6C008221E0EF140077A637 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB6C008121E0EF140077A637 /* AppDelegate.swift */; };
-		FB6C008421E0EF140077A637 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB6C008321E0EF140077A637 /* ViewController.swift */; };
-		FB6C008721E0EF140077A637 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FB6C008521E0EF140077A637 /* Main.storyboard */; };
 		FB6C008921E0EF290077A637 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FB6C008821E0EF290077A637 /* Assets.xcassets */; };
 		FB6C008C21E0EF290077A637 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FB6C008A21E0EF290077A637 /* LaunchScreen.storyboard */; };
 		FB6C009721E0EF2D0077A637 /* MarsRovers_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB6C009621E0EF2D0077A637 /* MarsRovers_Tests.swift */; };
@@ -21,6 +19,7 @@
 		FB6C00BF21E10EC90077A637 /* RoverPhoto_DataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB6C00BE21E10EC90077A637 /* RoverPhoto_DataSource.swift */; };
 		FB6C00C121E10F240077A637 /* RoverType.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB6C00C021E10F240077A637 /* RoverType.swift */; };
 		FB6C00C321E110DA0077A637 /* FakeRoverPhotoAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB6C00C221E110DA0077A637 /* FakeRoverPhotoAPI.swift */; };
+		FB6C00C521E113BE0077A637 /* RoverSelector_ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB6C00C421E113BE0077A637 /* RoverSelector_ViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -43,8 +42,6 @@
 /* Begin PBXFileReference section */
 		FB6C007E21E0EF140077A637 /* MarsRovers!.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "MarsRovers!.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FB6C008121E0EF140077A637 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		FB6C008321E0EF140077A637 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		FB6C008621E0EF140077A637 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		FB6C008821E0EF290077A637 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FB6C008B21E0EF290077A637 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		FB6C008D21E0EF290077A637 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -61,6 +58,7 @@
 		FB6C00BE21E10EC90077A637 /* RoverPhoto_DataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoverPhoto_DataSource.swift; sourceTree = "<group>"; };
 		FB6C00C021E10F240077A637 /* RoverType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoverType.swift; sourceTree = "<group>"; };
 		FB6C00C221E110DA0077A637 /* FakeRoverPhotoAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeRoverPhotoAPI.swift; sourceTree = "<group>"; };
+		FB6C00C421E113BE0077A637 /* RoverSelector_ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoverSelector_ViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -115,8 +113,6 @@
 				FB6C00B721E103ED0077A637 /* ViewControllers */,
 				FB6C00B121E0F4C70077A637 /* Models */,
 				FB6C008121E0EF140077A637 /* AppDelegate.swift */,
-				FB6C008321E0EF140077A637 /* ViewController.swift */,
-				FB6C008521E0EF140077A637 /* Main.storyboard */,
 				FB6C008821E0EF290077A637 /* Assets.xcassets */,
 				FB6C008A21E0EF290077A637 /* LaunchScreen.storyboard */,
 				FB6C008D21E0EF290077A637 /* Info.plist */,
@@ -165,6 +161,7 @@
 			isa = PBXGroup;
 			children = (
 				FB6C00B821E104210077A637 /* RoverPhotos_CollectionViewController.swift */,
+				FB6C00C421E113BE0077A637 /* RoverSelector_ViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -285,7 +282,6 @@
 				FB6C008C21E0EF290077A637 /* LaunchScreen.storyboard in Resources */,
 				FB6C00B021E0F2410077A637 /* APIkeys.plist in Resources */,
 				FB6C008921E0EF290077A637 /* Assets.xcassets in Resources */,
-				FB6C008721E0EF140077A637 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -311,10 +307,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				FB6C00B321E0F5100077A637 /* Photos.swift in Sources */,
-				FB6C008421E0EF140077A637 /* ViewController.swift in Sources */,
 				FB6C00C121E10F240077A637 /* RoverType.swift in Sources */,
 				FB6C00B921E104210077A637 /* RoverPhotos_CollectionViewController.swift in Sources */,
 				FB6C008221E0EF140077A637 /* AppDelegate.swift in Sources */,
+				FB6C00C521E113BE0077A637 /* RoverSelector_ViewController.swift in Sources */,
 				FB6C00C321E110DA0077A637 /* FakeRoverPhotoAPI.swift in Sources */,
 				FB6C00BF21E10EC90077A637 /* RoverPhoto_DataSource.swift in Sources */,
 			);
@@ -353,14 +349,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		FB6C008521E0EF140077A637 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				FB6C008621E0EF140077A637 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		FB6C008A21E0EF290077A637 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
