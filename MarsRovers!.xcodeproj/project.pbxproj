@@ -18,6 +18,9 @@
 		FB6C00B321E0F5100077A637 /* Photos.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB6C00B221E0F5100077A637 /* Photos.swift */; };
 		FB6C00B621E0F5F60077A637 /* Photos_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB6C00B521E0F5F60077A637 /* Photos_Tests.swift */; };
 		FB6C00B921E104210077A637 /* RoverPhotos_CollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB6C00B821E104210077A637 /* RoverPhotos_CollectionViewController.swift */; };
+		FB6C00BF21E10EC90077A637 /* RoverPhoto_DataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB6C00BE21E10EC90077A637 /* RoverPhoto_DataSource.swift */; };
+		FB6C00C121E10F240077A637 /* RoverType.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB6C00C021E10F240077A637 /* RoverType.swift */; };
+		FB6C00C321E110DA0077A637 /* FakeRoverPhotoAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB6C00C221E110DA0077A637 /* FakeRoverPhotoAPI.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +58,9 @@
 		FB6C00B221E0F5100077A637 /* Photos.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Photos.swift; sourceTree = "<group>"; };
 		FB6C00B521E0F5F60077A637 /* Photos_Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Photos_Tests.swift; sourceTree = "<group>"; };
 		FB6C00B821E104210077A637 /* RoverPhotos_CollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoverPhotos_CollectionViewController.swift; sourceTree = "<group>"; };
+		FB6C00BE21E10EC90077A637 /* RoverPhoto_DataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoverPhoto_DataSource.swift; sourceTree = "<group>"; };
+		FB6C00C021E10F240077A637 /* RoverType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoverType.swift; sourceTree = "<group>"; };
+		FB6C00C221E110DA0077A637 /* FakeRoverPhotoAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeRoverPhotoAPI.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -105,6 +111,7 @@
 		FB6C008021E0EF140077A637 /* MarsRovers! */ = {
 			isa = PBXGroup;
 			children = (
+				FB6C00BD21E10EA40077A637 /* DataSources */,
 				FB6C00B721E103ED0077A637 /* ViewControllers */,
 				FB6C00B121E0F4C70077A637 /* Models */,
 				FB6C008121E0EF140077A637 /* AppDelegate.swift */,
@@ -141,6 +148,7 @@
 			isa = PBXGroup;
 			children = (
 				FB6C00B221E0F5100077A637 /* Photos.swift */,
+				FB6C00C021E10F240077A637 /* RoverType.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -159,6 +167,15 @@
 				FB6C00B821E104210077A637 /* RoverPhotos_CollectionViewController.swift */,
 			);
 			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		FB6C00BD21E10EA40077A637 /* DataSources */ = {
+			isa = PBXGroup;
+			children = (
+				FB6C00BE21E10EC90077A637 /* RoverPhoto_DataSource.swift */,
+				FB6C00C221E110DA0077A637 /* FakeRoverPhotoAPI.swift */,
+			);
+			path = DataSources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -295,8 +312,11 @@
 			files = (
 				FB6C00B321E0F5100077A637 /* Photos.swift in Sources */,
 				FB6C008421E0EF140077A637 /* ViewController.swift in Sources */,
+				FB6C00C121E10F240077A637 /* RoverType.swift in Sources */,
 				FB6C00B921E104210077A637 /* RoverPhotos_CollectionViewController.swift in Sources */,
 				FB6C008221E0EF140077A637 /* AppDelegate.swift in Sources */,
+				FB6C00C321E110DA0077A637 /* FakeRoverPhotoAPI.swift in Sources */,
+				FB6C00BF21E10EC90077A637 /* RoverPhoto_DataSource.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
