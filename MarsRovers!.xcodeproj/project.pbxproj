@@ -26,6 +26,7 @@
 		FB6C00CF21E185180077A637 /* FakeJson_Opportunity.json in Resources */ = {isa = PBXBuildFile; fileRef = FB6C00CE21E185180077A637 /* FakeJson_Opportunity.json */; };
 		FB6C00D421E18D9E0077A637 /* DataSourceHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB6C00D321E18D9E0077A637 /* DataSourceHelpers.swift */; };
 		FB6C00D621E18FA90077A637 /* DataSourceHelpers_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB6C00D521E18FA90077A637 /* DataSourceHelpers_Tests.swift */; };
+		FB6C00D921E19CA80077A637 /* NasaRoverPhotoAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB6C00D821E19CA80077A637 /* NasaRoverPhotoAPI.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -71,6 +72,7 @@
 		FB6C00CE21E185180077A637 /* FakeJson_Opportunity.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = FakeJson_Opportunity.json; sourceTree = "<group>"; };
 		FB6C00D321E18D9E0077A637 /* DataSourceHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataSourceHelpers.swift; sourceTree = "<group>"; };
 		FB6C00D521E18FA90077A637 /* DataSourceHelpers_Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataSourceHelpers_Tests.swift; sourceTree = "<group>"; };
+		FB6C00D821E19CA80077A637 /* NasaRoverPhotoAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NasaRoverPhotoAPI.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -187,6 +189,7 @@
 				FB6C00BE21E10EC90077A637 /* RoverPhoto_DataSource.swift */,
 				FB6C00C221E110DA0077A637 /* FakeRoverPhotoAPI.swift */,
 				FB6C00D321E18D9E0077A637 /* DataSourceHelpers.swift */,
+				FB6C00D821E19CA80077A637 /* NasaRoverPhotoAPI.swift */,
 			);
 			path = DataSources;
 			sourceTree = "<group>";
@@ -352,6 +355,7 @@
 				FB6C00C521E113BE0077A637 /* RoverSelector_ViewController.swift in Sources */,
 				FB6C00C321E110DA0077A637 /* FakeRoverPhotoAPI.swift in Sources */,
 				FB6C00BF21E10EC90077A637 /* RoverPhoto_DataSource.swift in Sources */,
+				FB6C00D921E19CA80077A637 /* NasaRoverPhotoAPI.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
