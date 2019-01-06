@@ -10,6 +10,11 @@ import Foundation
 
 class NasaRoverPhotoAPI: RoverPhoto_DataSource {
     
+    private let httpClient: HTTPClient
+    
+    init(httpClient: HTTPClient) {
+        self.httpClient = httpClient
+    }
     
     static let routes:[RoverType:String] = [
         .curiosity: "https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos",
@@ -22,23 +27,22 @@ class NasaRoverPhotoAPI: RoverPhoto_DataSource {
         if let earthDate = DataSourceHelpers.formattedDateString(daysAgo: 2000),
             let apiKey = DataSourceHelpers.apiKeyFromPlist(),
             let route = NasaRoverPhotoAPI.routes[rover],
-            let url = URL(string: route) {
+            let url = DataSourceHelpers.urlWith(endPoint: route, andParams: ["earth_date": earthDate, "api_key": apiKey]) {
         
-            var request = URLRequest(url: url)
-            request.addValue(apiKey, forHTTPHeaderField: "api_key")
-            request.addValue(earthDate, forHTTPHeaderField: "earth_date")
+            let request = URLRequest(url: url)
             
-            let task = URLSession.shared.dataTask(with: url) { data, response, error in
+            httpClient.get(request: request) { data in
                 
                 if let data = data {
                     completion(try? JSONDecoder().decode(Photos.self, from: data))
                 }
                 
             }
-            
-            task.resume()
         }
         
     }
+    
+    
+    
 
 }

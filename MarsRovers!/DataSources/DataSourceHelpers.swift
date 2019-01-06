@@ -47,4 +47,13 @@ class DataSourceHelpers {
         return nil
     }
     
+    static func urlWith(endPoint: String, andParams params: [String:String]) -> URL? {
+        
+        var components = URLComponents(string: endPoint)
+        
+        components?.queryItems = params.map{ (key, value) in URLQueryItem(name: key, value: value) }
+        
+        return components?.url
+    }
+    
 }

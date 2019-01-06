@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		FB1E469621E24FF6009315D9 /* HTTPClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB1E469521E24FF6009315D9 /* HTTPClient.swift */; };
+		FB1E469821E2514F009315D9 /* HTTPClientTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB1E469721E2514F009315D9 /* HTTPClientTests.swift */; };
+		FB1E469B21E253C5009315D9 /* URLSessionExtenstions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB1E469A21E253C5009315D9 /* URLSessionExtenstions.swift */; };
+		FB1E469F21E256F0009315D9 /* URLSessionMocks.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB1E469E21E256F0009315D9 /* URLSessionMocks.swift */; };
 		FB6C008221E0EF140077A637 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB6C008121E0EF140077A637 /* AppDelegate.swift */; };
 		FB6C008921E0EF290077A637 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FB6C008821E0EF290077A637 /* Assets.xcassets */; };
 		FB6C008C21E0EF290077A637 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FB6C008A21E0EF290077A637 /* LaunchScreen.storyboard */; };
@@ -47,6 +51,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		FB1E469521E24FF6009315D9 /* HTTPClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPClient.swift; sourceTree = "<group>"; };
+		FB1E469721E2514F009315D9 /* HTTPClientTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPClientTests.swift; sourceTree = "<group>"; };
+		FB1E469A21E253C5009315D9 /* URLSessionExtenstions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSessionExtenstions.swift; sourceTree = "<group>"; };
+		FB1E469E21E256F0009315D9 /* URLSessionMocks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSessionMocks.swift; sourceTree = "<group>"; };
 		FB6C007E21E0EF140077A637 /* MarsRovers!.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "MarsRovers!.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FB6C008121E0EF140077A637 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FB6C008821E0EF290077A637 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -100,6 +108,32 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		FB1E469921E253A8009315D9 /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				FB1E469521E24FF6009315D9 /* HTTPClient.swift */,
+				FB1E469A21E253C5009315D9 /* URLSessionExtenstions.swift */,
+			);
+			path = Networking;
+			sourceTree = "<group>";
+		};
+		FB1E469C21E25696009315D9 /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				FB1E469D21E256DB009315D9 /* Mocks */,
+				FB1E469721E2514F009315D9 /* HTTPClientTests.swift */,
+			);
+			path = Networking;
+			sourceTree = "<group>";
+		};
+		FB1E469D21E256DB009315D9 /* Mocks */ = {
+			isa = PBXGroup;
+			children = (
+				FB1E469E21E256F0009315D9 /* URLSessionMocks.swift */,
+			);
+			path = Mocks;
+			sourceTree = "<group>";
+		};
 		FB6C007521E0EF130077A637 = {
 			isa = PBXGroup;
 			children = (
@@ -123,6 +157,7 @@
 		FB6C008021E0EF140077A637 /* MarsRovers! */ = {
 			isa = PBXGroup;
 			children = (
+				FB1E469921E253A8009315D9 /* Networking */,
 				FB6C00BD21E10EA40077A637 /* DataSources */,
 				FB6C00B721E103ED0077A637 /* ViewControllers */,
 				FB6C00B121E0F4C70077A637 /* Models */,
@@ -138,7 +173,8 @@
 		FB6C009521E0EF2D0077A637 /* MarsRovers!Tests */ = {
 			isa = PBXGroup;
 			children = (
-				FB6C00D221E18D270077A637 /* Helpers */,
+				FB1E469C21E25696009315D9 /* Networking */,
+				FB6C00D221E18D270077A637 /* DataSources */,
 				FB6C00B421E0F5D80077A637 /* Models */,
 				FB6C009621E0EF2D0077A637 /* MarsRovers_Tests.swift */,
 				FB6C009821E0EF2D0077A637 /* Info.plist */,
@@ -194,12 +230,12 @@
 			path = DataSources;
 			sourceTree = "<group>";
 		};
-		FB6C00D221E18D270077A637 /* Helpers */ = {
+		FB6C00D221E18D270077A637 /* DataSources */ = {
 			isa = PBXGroup;
 			children = (
 				FB6C00D521E18FA90077A637 /* DataSourceHelpers_Tests.swift */,
 			);
-			path = Helpers;
+			path = DataSources;
 			sourceTree = "<group>";
 		};
 		FB6C00D721E198020077A637 /* FakeDataFiles */ = {
@@ -346,12 +382,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FB1E469B21E253C5009315D9 /* URLSessionExtenstions.swift in Sources */,
 				FB6C00B321E0F5100077A637 /* Photos.swift in Sources */,
 				FB6C00C721E15C8D0077A637 /* RoverPhotoDetail_ViewController.swift in Sources */,
 				FB6C00C121E10F240077A637 /* RoverType.swift in Sources */,
 				FB6C00D421E18D9E0077A637 /* DataSourceHelpers.swift in Sources */,
 				FB6C00B921E104210077A637 /* RoverPhotos_CollectionViewController.swift in Sources */,
 				FB6C008221E0EF140077A637 /* AppDelegate.swift in Sources */,
+				FB1E469621E24FF6009315D9 /* HTTPClient.swift in Sources */,
 				FB6C00C521E113BE0077A637 /* RoverSelector_ViewController.swift in Sources */,
 				FB6C00C321E110DA0077A637 /* FakeRoverPhotoAPI.swift in Sources */,
 				FB6C00BF21E10EC90077A637 /* RoverPhoto_DataSource.swift in Sources */,
@@ -365,6 +403,8 @@
 			files = (
 				FB6C00D621E18FA90077A637 /* DataSourceHelpers_Tests.swift in Sources */,
 				FB6C00B621E0F5F60077A637 /* Photos_Tests.swift in Sources */,
+				FB1E469F21E256F0009315D9 /* URLSessionMocks.swift in Sources */,
+				FB1E469821E2514F009315D9 /* HTTPClientTests.swift in Sources */,
 				FB6C009721E0EF2D0077A637 /* MarsRovers_Tests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
