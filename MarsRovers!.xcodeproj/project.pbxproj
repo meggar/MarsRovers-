@@ -14,7 +14,6 @@
 		FB6C008221E0EF140077A637 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB6C008121E0EF140077A637 /* AppDelegate.swift */; };
 		FB6C008921E0EF290077A637 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FB6C008821E0EF290077A637 /* Assets.xcassets */; };
 		FB6C008C21E0EF290077A637 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FB6C008A21E0EF290077A637 /* LaunchScreen.storyboard */; };
-		FB6C009721E0EF2D0077A637 /* MarsRovers_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB6C009621E0EF2D0077A637 /* MarsRovers_Tests.swift */; };
 		FB6C00A221E0EF2D0077A637 /* MarsRovers_UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB6C00A121E0EF2D0077A637 /* MarsRovers_UITests.swift */; };
 		FB6C00B021E0F2410077A637 /* APIkeys.plist in Resources */ = {isa = PBXBuildFile; fileRef = FB6C00AF21E0F2410077A637 /* APIkeys.plist */; };
 		FB6C00B321E0F5100077A637 /* Photos.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB6C00B221E0F5100077A637 /* Photos.swift */; };
@@ -61,7 +60,6 @@
 		FB6C008B21E0EF290077A637 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		FB6C008D21E0EF290077A637 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FB6C009221E0EF2D0077A637 /* MarsRovers!Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "MarsRovers!Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		FB6C009621E0EF2D0077A637 /* MarsRovers_Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarsRovers_Tests.swift; sourceTree = "<group>"; };
 		FB6C009821E0EF2D0077A637 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FB6C009D21E0EF2D0077A637 /* MarsRovers!UITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "MarsRovers!UITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FB6C00A121E0EF2D0077A637 /* MarsRovers_UITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarsRovers_UITests.swift; sourceTree = "<group>"; };
@@ -176,7 +174,6 @@
 				FB1E469C21E25696009315D9 /* Networking */,
 				FB6C00D221E18D270077A637 /* DataSources */,
 				FB6C00B421E0F5D80077A637 /* Models */,
-				FB6C009621E0EF2D0077A637 /* MarsRovers_Tests.swift */,
 				FB6C009821E0EF2D0077A637 /* Info.plist */,
 			);
 			path = "MarsRovers!Tests";
@@ -405,7 +402,6 @@
 				FB6C00B621E0F5F60077A637 /* Photos_Tests.swift in Sources */,
 				FB1E469F21E256F0009315D9 /* URLSessionMocks.swift in Sources */,
 				FB1E469821E2514F009315D9 /* HTTPClientTests.swift in Sources */,
-				FB6C009721E0EF2D0077A637 /* MarsRovers_Tests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
