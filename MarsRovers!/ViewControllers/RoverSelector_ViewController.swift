@@ -10,9 +10,7 @@ import UIKit
 
 private let reuseIdentifier = "RoverSelectorTableViewCell"
 
-class RoverSelector_ViewController: UIViewController,
-                                    UITableViewDelegate,
-                                    UITableViewDataSource {
+class RoverSelector_ViewController: UIViewController {
     
     lazy var tableView: UITableView = {
         let view = UITableView(frame: self.view.bounds, style: .grouped)
@@ -24,34 +22,7 @@ class RoverSelector_ViewController: UIViewController,
     let rovers:[RoverType] = [.curiosity, .opportunity, .spirit]
     
     
-    // MARK: - TableViewDatasource
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return rovers.count
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
-        let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier, for: indexPath)
-        
-        cell.textLabel?.text = rovers.map{ $0.rawValue }[indexPath.row]
-        
-        return cell
-    }
-    
-    
-    // MARK: - TableViewDelegate
-    
-    public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
-        let roverPhotos_CollectionViewController = RoverPhotos_CollectionViewController(withRover: rovers[indexPath.row])
-        
-        roverPhotos_CollectionViewController.roverPhoto_datasource = FakeRoverPhotoAPI()
-        
-        navigationController?.pushViewController(roverPhotos_CollectionViewController, animated: true)
-    }
-    
-    
+
     // MARK: - UIView
     
     override func viewDidLoad() {
@@ -73,6 +44,43 @@ class RoverSelector_ViewController: UIViewController,
             tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor)
         ])
     }
-    
 
+}
+
+
+
+// MARK: - TableViewDatasource
+
+extension RoverSelector_ViewController: UITableViewDataSource{
+    
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return rovers.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier, for: indexPath)
+        
+        cell.textLabel?.text = rovers.map{ $0.rawValue }[indexPath.row]
+        
+        return cell
+    }
+    
+}
+
+
+// MARK: - TableViewDelegate
+
+extension RoverSelector_ViewController: UITableViewDelegate {
+    
+    public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        let roverPhotos_CollectionViewController = RoverPhotos_CollectionViewController(withRover: rovers[indexPath.row])
+        
+        roverPhotos_CollectionViewController.roverPhoto_datasource = FakeRoverPhotoAPI()
+        
+        navigationController?.pushViewController(roverPhotos_CollectionViewController, animated: true)
+    }
+    
 }

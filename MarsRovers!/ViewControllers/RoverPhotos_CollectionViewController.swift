@@ -19,68 +19,6 @@ class RoverPhotos_CollectionViewController: UICollectionViewController, UICollec
     var roverPhoto_datasource: RoverPhoto_DataSource?
     
 
-    // MARK: - UICollectionViewDataSource
-    
-    override func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return 1
-    }
-    
-    
-    override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return photos?.photos.count ?? 0
-    }
-    
-    override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! RoverPhoto_CollectionViewCell
-
-        if let imgSrc = photos?.photos[indexPath.row].imgSrc,
-            let imageUrl = URL(string: imgSrc) {
-            
-            cell.setImageData(url: imageUrl)
-        }
-        
-        if let cameraName = photos?.photos[indexPath.row].camera.name,
-            let earthDate = photos?.photos[indexPath.row].earthDate {
-            
-            cell.photoNameLabel.text = "\(earthDate) - \(cameraName)"
-        }
-        
-        return cell
-    }
-    
-    
-    // MARK: -- UICollectionViewDelegate
-    
-    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        
-        let detailViewController = RoverPhotoDetail_ViewController()
-        detailViewController.photo = photos?.photos[indexPath.row]
-        if let cell = collectionView.cellForItem(at: indexPath) as? RoverPhoto_CollectionViewCell {
-            detailViewController.image = cell.photoView.image
-        }
-        navigationController?.pushViewController(detailViewController, animated: true)
-    }
-    
-    // MARK: - UICollectionViewDelegateFlowLayout
-    
-    func collectionView(_ collectionView: UICollectionView,
-                        layout collectionViewLayout: UICollectionViewLayout,
-                        sizeForItemAt indexPath: IndexPath) -> CGSize {
-        
-        guard let layout = collectionViewLayout as? UICollectionViewFlowLayout else {
-            return CGSize(width: 100, height: 100)
-        }
-        
-        let columns = 3
-        let spacing = Int(layout.minimumInteritemSpacing) * (columns - 1)
-        let side = (Int(collectionView.bounds.width)-spacing) / columns
-        
-        return CGSize(width: side, height: side)
-    }
-    
-    
-    
     // MARK: UIView
     
     override func viewDidLoad() {
@@ -131,6 +69,82 @@ class RoverPhotos_CollectionViewController: UICollectionViewController, UICollec
         fatalError("init(coder:) has not been implemented for RoverPhotos_CollectionViewController")
     }
 
+}
+
+// MARK: - UICollectionViewDataSource
+
+extension RoverPhotos_CollectionViewController {
+    
+    
+    override func numberOfSections(in collectionView: UICollectionView) -> Int {
+        return 1
+    }
+    
+    
+    override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return photos?.photos.count ?? 0
+    }
+    
+    override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! RoverPhoto_CollectionViewCell
+
+        if let imgSrc = photos?.photos[indexPath.row].imgSrc,
+            let imageUrl = URL(string: imgSrc) {
+            
+            cell.setImageData(url: imageUrl)
+        }
+        
+        if let cameraName = photos?.photos[indexPath.row].camera.name,
+            let earthDate = photos?.photos[indexPath.row].earthDate {
+            
+            cell.photoNameLabel.text = "\(earthDate) - \(cameraName)"
+        }
+        
+        return cell
+    }
+}
+
+
+
+// MARK: - UICollectionViewDelegate
+
+extension RoverPhotos_CollectionViewController {
+
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+        let detailViewController = RoverPhotoDetail_ViewController()
+        detailViewController.photo = photos?.photos[indexPath.row]
+        if let cell = collectionView.cellForItem(at: indexPath) as? RoverPhoto_CollectionViewCell {
+            detailViewController.image = cell.photoView.image
+        }
+        navigationController?.pushViewController(detailViewController, animated: true)
+    }
+
+}
+
+
+
+
+// MARK: - UICollectionViewDelegateFlowLayout
+
+extension RoverPhotos_CollectionViewController {
+    
+    func collectionView(_ collectionView: UICollectionView,
+                        layout collectionViewLayout: UICollectionViewLayout,
+                        sizeForItemAt indexPath: IndexPath) -> CGSize {
+        
+        guard let layout = collectionViewLayout as? UICollectionViewFlowLayout else {
+            return CGSize(width: 100, height: 100)
+        }
+        
+        let columns = 3
+        let spacing = Int(layout.minimumInteritemSpacing) * (columns - 1)
+        let side = (Int(collectionView.bounds.width)-spacing) / columns
+        
+        return CGSize(width: side, height: side)
+    }
+    
 }
 
 
