@@ -24,6 +24,8 @@
 		FB6C00CB21E184ED0077A637 /* FakeJson_Spirit.json in Resources */ = {isa = PBXBuildFile; fileRef = FB6C00CA21E184ED0077A637 /* FakeJson_Spirit.json */; };
 		FB6C00CD21E185080077A637 /* FakeJson_Curiosity.json in Resources */ = {isa = PBXBuildFile; fileRef = FB6C00CC21E185080077A637 /* FakeJson_Curiosity.json */; };
 		FB6C00CF21E185180077A637 /* FakeJson_Opportunity.json in Resources */ = {isa = PBXBuildFile; fileRef = FB6C00CE21E185180077A637 /* FakeJson_Opportunity.json */; };
+		FB6C00D421E18D9E0077A637 /* DataSourceHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB6C00D321E18D9E0077A637 /* DataSourceHelpers.swift */; };
+		FB6C00D621E18FA90077A637 /* DataSourceHelpers_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB6C00D521E18FA90077A637 /* DataSourceHelpers_Tests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -67,6 +69,8 @@
 		FB6C00CA21E184ED0077A637 /* FakeJson_Spirit.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = FakeJson_Spirit.json; sourceTree = "<group>"; };
 		FB6C00CC21E185080077A637 /* FakeJson_Curiosity.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = FakeJson_Curiosity.json; sourceTree = "<group>"; };
 		FB6C00CE21E185180077A637 /* FakeJson_Opportunity.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = FakeJson_Opportunity.json; sourceTree = "<group>"; };
+		FB6C00D321E18D9E0077A637 /* DataSourceHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataSourceHelpers.swift; sourceTree = "<group>"; };
+		FB6C00D521E18FA90077A637 /* DataSourceHelpers_Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataSourceHelpers_Tests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -132,6 +136,7 @@
 		FB6C009521E0EF2D0077A637 /* MarsRovers!Tests */ = {
 			isa = PBXGroup;
 			children = (
+				FB6C00D221E18D270077A637 /* Helpers */,
 				FB6C00B421E0F5D80077A637 /* Models */,
 				FB6C009621E0EF2D0077A637 /* MarsRovers_Tests.swift */,
 				FB6C009821E0EF2D0077A637 /* Info.plist */,
@@ -183,8 +188,17 @@
 				FB6C00CC21E185080077A637 /* FakeJson_Curiosity.json */,
 				FB6C00CA21E184ED0077A637 /* FakeJson_Spirit.json */,
 				FB6C00CE21E185180077A637 /* FakeJson_Opportunity.json */,
+				FB6C00D321E18D9E0077A637 /* DataSourceHelpers.swift */,
 			);
 			path = DataSources;
+			sourceTree = "<group>";
+		};
+		FB6C00D221E18D270077A637 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				FB6C00D521E18FA90077A637 /* DataSourceHelpers_Tests.swift */,
+			);
+			path = Helpers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -324,6 +338,7 @@
 				FB6C00B321E0F5100077A637 /* Photos.swift in Sources */,
 				FB6C00C721E15C8D0077A637 /* RoverPhotoDetail_ViewController.swift in Sources */,
 				FB6C00C121E10F240077A637 /* RoverType.swift in Sources */,
+				FB6C00D421E18D9E0077A637 /* DataSourceHelpers.swift in Sources */,
 				FB6C00B921E104210077A637 /* RoverPhotos_CollectionViewController.swift in Sources */,
 				FB6C008221E0EF140077A637 /* AppDelegate.swift in Sources */,
 				FB6C00C521E113BE0077A637 /* RoverSelector_ViewController.swift in Sources */,
@@ -336,6 +351,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FB6C00D621E18FA90077A637 /* DataSourceHelpers_Tests.swift in Sources */,
 				FB6C00B621E0F5F60077A637 /* Photos_Tests.swift in Sources */,
 				FB6C009721E0EF2D0077A637 /* MarsRovers_Tests.swift in Sources */,
 			);
