@@ -21,6 +21,9 @@
 		FB6C00C321E110DA0077A637 /* FakeRoverPhotoAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB6C00C221E110DA0077A637 /* FakeRoverPhotoAPI.swift */; };
 		FB6C00C521E113BE0077A637 /* RoverSelector_ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB6C00C421E113BE0077A637 /* RoverSelector_ViewController.swift */; };
 		FB6C00C721E15C8D0077A637 /* RoverPhotoDetail_ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB6C00C621E15C8D0077A637 /* RoverPhotoDetail_ViewController.swift */; };
+		FB6C00CB21E184ED0077A637 /* FakeJson_Spirit.json in Resources */ = {isa = PBXBuildFile; fileRef = FB6C00CA21E184ED0077A637 /* FakeJson_Spirit.json */; };
+		FB6C00CD21E185080077A637 /* FakeJson_Curiosity.json in Resources */ = {isa = PBXBuildFile; fileRef = FB6C00CC21E185080077A637 /* FakeJson_Curiosity.json */; };
+		FB6C00CF21E185180077A637 /* FakeJson_Opportunity.json in Resources */ = {isa = PBXBuildFile; fileRef = FB6C00CE21E185180077A637 /* FakeJson_Opportunity.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,6 +64,9 @@
 		FB6C00C221E110DA0077A637 /* FakeRoverPhotoAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeRoverPhotoAPI.swift; sourceTree = "<group>"; };
 		FB6C00C421E113BE0077A637 /* RoverSelector_ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoverSelector_ViewController.swift; sourceTree = "<group>"; };
 		FB6C00C621E15C8D0077A637 /* RoverPhotoDetail_ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoverPhotoDetail_ViewController.swift; sourceTree = "<group>"; };
+		FB6C00CA21E184ED0077A637 /* FakeJson_Spirit.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = FakeJson_Spirit.json; sourceTree = "<group>"; };
+		FB6C00CC21E185080077A637 /* FakeJson_Curiosity.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = FakeJson_Curiosity.json; sourceTree = "<group>"; };
+		FB6C00CE21E185180077A637 /* FakeJson_Opportunity.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = FakeJson_Opportunity.json; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -174,6 +180,9 @@
 			children = (
 				FB6C00BE21E10EC90077A637 /* RoverPhoto_DataSource.swift */,
 				FB6C00C221E110DA0077A637 /* FakeRoverPhotoAPI.swift */,
+				FB6C00CC21E185080077A637 /* FakeJson_Curiosity.json */,
+				FB6C00CA21E184ED0077A637 /* FakeJson_Spirit.json */,
+				FB6C00CE21E185180077A637 /* FakeJson_Opportunity.json */,
 			);
 			path = DataSources;
 			sourceTree = "<group>";
@@ -282,9 +291,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FB6C00CF21E185180077A637 /* FakeJson_Opportunity.json in Resources */,
 				FB6C008C21E0EF290077A637 /* LaunchScreen.storyboard in Resources */,
 				FB6C00B021E0F2410077A637 /* APIkeys.plist in Resources */,
 				FB6C008921E0EF290077A637 /* Assets.xcassets in Resources */,
+				FB6C00CD21E185080077A637 /* FakeJson_Curiosity.json in Resources */,
+				FB6C00CB21E184ED0077A637 /* FakeJson_Spirit.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
