@@ -29,6 +29,8 @@ class RoverSelector_ViewController: UIViewController {
         super.viewDidLoad()
         
         title = "Mars Rovers"
+        tableView.backgroundColor = #colorLiteral(red: 0.1019607857, green: 0.2784313858, blue: 0.400000006, alpha: 1)
+        
         tableView.delegate = self
         tableView.dataSource = self
         
