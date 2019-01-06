@@ -54,6 +54,7 @@
 		FB1E469721E2514F009315D9 /* HTTPClientTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPClientTests.swift; sourceTree = "<group>"; };
 		FB1E469A21E253C5009315D9 /* URLSessionExtenstions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSessionExtenstions.swift; sourceTree = "<group>"; };
 		FB1E469E21E256F0009315D9 /* URLSessionMocks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSessionMocks.swift; sourceTree = "<group>"; };
+		FB1E46A021E26E2D009315D9 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		FB6C007E21E0EF140077A637 /* MarsRovers!.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "MarsRovers!.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FB6C008121E0EF140077A637 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FB6C008821E0EF290077A637 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -135,6 +136,7 @@
 		FB6C007521E0EF130077A637 = {
 			isa = PBXGroup;
 			children = (
+				FB1E46A021E26E2D009315D9 /* README.md */,
 				FB6C008021E0EF140077A637 /* MarsRovers! */,
 				FB6C009521E0EF2D0077A637 /* MarsRovers!Tests */,
 				FB6C00A021E0EF2D0077A637 /* MarsRovers!UITests */,
