@@ -80,8 +80,8 @@ extension RoverSelector_ViewController: UITableViewDelegate {
         
         let roverPhotos_CollectionViewController = RoverPhotos_CollectionViewController(withRover: rovers[indexPath.row])
         
-        //roverPhotos_CollectionViewController.roverPhoto_datasource = FakeRoverPhotoAPI()
-        roverPhotos_CollectionViewController.roverPhoto_datasource = NasaRoverPhotoAPI(httpClient: HTTPClient())
+        roverPhotos_CollectionViewController.roverPhoto_datasource = FakeRoverPhotoAPI()
+        //roverPhotos_CollectionViewController.roverPhoto_datasource = NasaRoverPhotoAPI(httpClient: HTTPClient())
         
         navigationController?.pushViewController(roverPhotos_CollectionViewController, animated: true)
     }
