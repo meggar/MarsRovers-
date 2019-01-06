@@ -11,6 +11,8 @@
 		FB1E469821E2514F009315D9 /* HTTPClientTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB1E469721E2514F009315D9 /* HTTPClientTests.swift */; };
 		FB1E469B21E253C5009315D9 /* URLSessionExtenstions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB1E469A21E253C5009315D9 /* URLSessionExtenstions.swift */; };
 		FB1E469F21E256F0009315D9 /* URLSessionMocks.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB1E469E21E256F0009315D9 /* URLSessionMocks.swift */; };
+		FB1E46A221E299DB009315D9 /* RoverManifest.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB1E46A121E299DB009315D9 /* RoverManifest.swift */; };
+		FB1E46A421E29A6D009315D9 /* RoverManifest_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB1E46A321E29A6D009315D9 /* RoverManifest_Tests.swift */; };
 		FB6C008221E0EF140077A637 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB6C008121E0EF140077A637 /* AppDelegate.swift */; };
 		FB6C008921E0EF290077A637 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FB6C008821E0EF290077A637 /* Assets.xcassets */; };
 		FB6C008C21E0EF290077A637 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FB6C008A21E0EF290077A637 /* LaunchScreen.storyboard */; };
@@ -55,6 +57,8 @@
 		FB1E469A21E253C5009315D9 /* URLSessionExtenstions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSessionExtenstions.swift; sourceTree = "<group>"; };
 		FB1E469E21E256F0009315D9 /* URLSessionMocks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSessionMocks.swift; sourceTree = "<group>"; };
 		FB1E46A021E26E2D009315D9 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		FB1E46A121E299DB009315D9 /* RoverManifest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoverManifest.swift; sourceTree = "<group>"; };
+		FB1E46A321E29A6D009315D9 /* RoverManifest_Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoverManifest_Tests.swift; sourceTree = "<group>"; };
 		FB6C007E21E0EF140077A637 /* MarsRovers!.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "MarsRovers!.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FB6C008121E0EF140077A637 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FB6C008821E0EF290077A637 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -195,6 +199,7 @@
 			children = (
 				FB6C00B221E0F5100077A637 /* Photos.swift */,
 				FB6C00C021E10F240077A637 /* RoverType.swift */,
+				FB1E46A121E299DB009315D9 /* RoverManifest.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -203,6 +208,7 @@
 			isa = PBXGroup;
 			children = (
 				FB6C00B521E0F5F60077A637 /* Photos_Tests.swift */,
+				FB1E46A321E29A6D009315D9 /* RoverManifest_Tests.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -386,6 +392,7 @@
 				FB6C00C721E15C8D0077A637 /* RoverPhotoDetail_ViewController.swift in Sources */,
 				FB6C00C121E10F240077A637 /* RoverType.swift in Sources */,
 				FB6C00D421E18D9E0077A637 /* DataSourceHelpers.swift in Sources */,
+				FB1E46A221E299DB009315D9 /* RoverManifest.swift in Sources */,
 				FB6C00B921E104210077A637 /* RoverPhotos_CollectionViewController.swift in Sources */,
 				FB6C008221E0EF140077A637 /* AppDelegate.swift in Sources */,
 				FB1E469621E24FF6009315D9 /* HTTPClient.swift in Sources */,
@@ -400,6 +407,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FB1E46A421E29A6D009315D9 /* RoverManifest_Tests.swift in Sources */,
 				FB6C00D621E18FA90077A637 /* DataSourceHelpers_Tests.swift in Sources */,
 				FB6C00B621E0F5F60077A637 /* Photos_Tests.swift in Sources */,
 				FB1E469F21E256F0009315D9 /* URLSessionMocks.swift in Sources */,
