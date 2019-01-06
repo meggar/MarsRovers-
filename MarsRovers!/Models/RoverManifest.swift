@@ -37,10 +37,12 @@ struct PhotoManifest: Codable {
 
 struct PhotoInfo: Codable {
     let sol, totalPhotos: Int
+    let earthDate: String?
     let cameras: [Camera]
     
     enum CodingKeys: String, CodingKey {
         case sol
+        case earthDate = "earth_date"
         case totalPhotos = "total_photos"
         case cameras
     }
@@ -53,4 +55,8 @@ enum Camera: String, Codable {
     case navcam = "NAVCAM"
     case pancam = "PANCAM"
     case rhaz = "RHAZ"
+    case chemcam = "CHEMCAM"
+    case mahli = "MAHLI"
+    case mardi = "MARDI"
+    case mast = "MAST"
 }

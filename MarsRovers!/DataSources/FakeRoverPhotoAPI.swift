@@ -14,7 +14,7 @@ import Foundation
 class FakeRoverPhotoAPI: RoverPhoto_DataSource {
 
     
-    func getPhotosFor(rover: RoverType, completion: @escaping (Photos?) -> ()) {
+    func getPhotosFor(rover: RoverType, onSolDate sol: Int, completion: @escaping (Photos?) -> ()) {
 
         let photos:[RoverType:String] = [
             .curiosity: "FakeJson_CuriosityPhotos",

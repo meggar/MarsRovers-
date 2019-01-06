@@ -78,12 +78,13 @@ extension RoverSelector_ViewController: UITableViewDelegate {
     
     public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        let roverPhotos_CollectionViewController = RoverPhotos_CollectionViewController(withRover: rovers[indexPath.row])
-        
-        roverPhotos_CollectionViewController.roverPhoto_datasource = FakeRoverPhotoAPI()
-        //roverPhotos_CollectionViewController.roverPhoto_datasource = NasaRoverPhotoAPI(httpClient: HTTPClient())
-        
-        navigationController?.pushViewController(roverPhotos_CollectionViewController, animated: true)
+        let roverManifest_ViewController = RoverManifest_ViewController()
+
+        roverManifest_ViewController.roverType = rovers[indexPath.row]
+
+        roverManifest_ViewController.roverPhoto_DataSource = NasaRoverPhotoAPI(httpClient: HTTPClient())
+
+        navigationController?.pushViewController(roverManifest_ViewController, animated: true)
     }
     
 }

@@ -16,6 +16,7 @@ class RoverPhotos_CollectionViewController: UICollectionViewController, UICollec
 
     var photos: Photos?
     var roverType: RoverType = .curiosity
+    var solDate = 1
     var roverPhoto_datasource: RoverPhoto_DataSource?
     
 
@@ -26,7 +27,7 @@ class RoverPhotos_CollectionViewController: UICollectionViewController, UICollec
 
         self.collectionView!.register(RoverPhoto_CollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
         
-        roverPhoto_datasource?.getPhotosFor(rover: roverType) { photos in
+        roverPhoto_datasource?.getPhotosFor(rover: roverType, onSolDate: solDate) { photos in
             
             self.photos = photos
             DispatchQueue.main.async { [weak self] in

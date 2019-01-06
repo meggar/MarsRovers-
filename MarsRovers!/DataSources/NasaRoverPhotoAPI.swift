@@ -29,13 +29,12 @@ class NasaRoverPhotoAPI: RoverPhoto_DataSource {
     ]
     
     
-    func getPhotosFor(rover: RoverType, completion: @escaping (Photos?) -> ()) {
+    func getPhotosFor(rover: RoverType, onSolDate sol: Int, completion: @escaping (Photos?) -> ()) {
         
-        if let earthDate = DataSourceHelpers.formattedDateString(daysAgo: 2000),
-            let apiKey = DataSourceHelpers.apiKeyFromPlist(),
+        if let apiKey = DataSourceHelpers.apiKeyFromPlist(),
             let route = NasaRoverPhotoAPI.photoEndpoints[rover],
-            let url = DataSourceHelpers.urlWith(endPoint: route, andParams: ["earth_date": earthDate, "api_key": apiKey]) {
-        
+            let url = DataSourceHelpers.urlWith(endPoint: route, andParams: ["sol": "\(sol)", "api_key": apiKey]) {
+
             let request = URLRequest(url: url)
             
             httpClient.get(request: request) { data in
