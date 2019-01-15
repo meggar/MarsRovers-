@@ -113,11 +113,8 @@ class RoverPhotoDetail_ViewController: UIViewController {
             photoView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
             photoView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
             
-
             earthDateLabel.heightAnchor.constraint(equalToConstant: 40),
-
             solDateLabel.heightAnchor.constraint(equalToConstant: 40),
-
             cameraLabel.heightAnchor.constraint(equalToConstant: 40),
             
             stackView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 10),

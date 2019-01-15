@@ -19,7 +19,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         window = UIWindow(frame: UIScreen.main.bounds)
         
-        window?.rootViewController = UINavigationController(rootViewController: RoverSelector_ViewController())
+        let roverSelector_ViewController = RoverSelector_ViewController()
+        roverSelector_ViewController.roverPhoto_DataSource = NasaRoverPhotoAPI(httpClient: HTTPClient())
+        
+        window?.rootViewController = UINavigationController(rootViewController: roverSelector_ViewController)
         window?.makeKeyAndVisible()
         
         return true

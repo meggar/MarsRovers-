@@ -14,6 +14,14 @@ struct RoverManifest: Codable {
     enum CodingKeys: String, CodingKey {
         case photoManifest = "photo_manifest"
     }
+    
+    var firstSolDate: Int?  {
+        return photoManifest.photos.min(by: { $0.sol < $1.sol })?.sol
+    }
+    
+    var lastSolDate: Int? {
+        return photoManifest.photos.max(by: { $0.sol < $1.sol })?.sol
+    }
 }
 
 struct PhotoManifest: Codable {
