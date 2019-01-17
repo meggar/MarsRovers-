@@ -191,50 +191,55 @@ class RoverSelector_ViewController: UIViewController {
         
         NSLayoutConstraint.activate([
             
-            tableView.topAnchor.constraint(equalTo: view.topAnchor),
-            tableView.bottomAnchor.constraint(equalTo: view.centerYAnchor),
-            tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            // TableView
+            tableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            tableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerYAnchor),
+            tableView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
+            tableView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
             
+            // Slider
             slider.topAnchor.constraint(equalTo: tableView.bottomAnchor, constant: 40),
-            slider.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 40),
-            slider.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -40),
+            slider.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 40),
+            slider.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -40),
             
+            // Slider Labels
             sliderLabelRight.heightAnchor.constraint(equalToConstant: 30),
+            sliderLabelRight.topAnchor.constraint(equalTo: slider.topAnchor),
+            sliderLabelRight.leadingAnchor.constraint(equalTo: slider.trailingAnchor, constant: 5),
+            sliderLabelRight.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
+            
             sliderLabelLeft.heightAnchor.constraint(equalTo: sliderLabelRight.heightAnchor),
-            sliderLabelCenter.heightAnchor.constraint(equalTo: sliderLabelRight.heightAnchor),
+            sliderLabelLeft.topAnchor.constraint(equalTo: sliderLabelRight.topAnchor),
+            sliderLabelLeft.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
+            sliderLabelLeft.trailingAnchor.constraint(equalTo: slider.leadingAnchor, constant: -5),
             
             sliderLabelCenter.widthAnchor.constraint(equalTo: slider.widthAnchor, multiplier: 0.6),
-            
-            sliderLabelRight.topAnchor.constraint(equalTo: slider.topAnchor),
-            sliderLabelLeft.topAnchor.constraint(equalTo: sliderLabelRight.topAnchor),
+            sliderLabelCenter.heightAnchor.constraint(equalTo: sliderLabelRight.heightAnchor),
             sliderLabelCenter.bottomAnchor.constraint(equalTo: slider.topAnchor, constant: -10),
-            
-            sliderLabelRight.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            sliderLabelRight.leadingAnchor.constraint(equalTo: slider.trailingAnchor, constant: 5),
-            sliderLabelLeft.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            sliderLabelLeft.trailingAnchor.constraint(equalTo: slider.leadingAnchor, constant: -5),
             sliderLabelCenter.centerXAnchor.constraint(equalTo: slider.centerXAnchor),
             
+            // Slider Adjust Buttons
             sliderAdustLeft.widthAnchor.constraint(equalTo: sliderLabelLeft.widthAnchor),
-            sliderAdjustRight.widthAnchor.constraint(equalTo: sliderAdustLeft.widthAnchor),
             sliderAdustLeft.heightAnchor.constraint(equalTo: sliderLabelLeft.heightAnchor),
-            sliderAdjustRight.heightAnchor.constraint(equalTo: sliderAdustLeft.heightAnchor),
             sliderAdustLeft.topAnchor.constraint(equalTo: sliderLabelLeft.bottomAnchor),
-            sliderAdjustRight.topAnchor.constraint(equalTo: sliderAdustLeft.topAnchor),
             sliderAdustLeft.trailingAnchor.constraint(equalTo: sliderLabelLeft.trailingAnchor),
+            
+            sliderAdjustRight.widthAnchor.constraint(equalTo: sliderAdustLeft.widthAnchor),
+            sliderAdjustRight.heightAnchor.constraint(equalTo: sliderAdustLeft.heightAnchor),
+            sliderAdjustRight.topAnchor.constraint(equalTo: sliderAdustLeft.topAnchor),
             sliderAdjustRight.leadingAnchor.constraint(equalTo: sliderLabelRight.leadingAnchor),
             
+            // Show Mars Images! Button
             spacer1.topAnchor.constraint(equalTo: slider.bottomAnchor),
             spacer1.bottomAnchor.constraint(equalTo: showImagesButton.topAnchor),
             spacer2.topAnchor.constraint(equalTo: showImagesButton.bottomAnchor),
-            spacer2.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+            spacer2.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
             spacer2.heightAnchor.constraint(equalTo: spacer1.heightAnchor),
             
             showImagesButton.widthAnchor.constraint(equalTo: slider.widthAnchor, multiplier: 0.8),
+            showImagesButton.heightAnchor.constraint(equalToConstant: 100),
             showImagesButton.centerXAnchor.constraint(equalTo: slider.centerXAnchor),
-            showImagesButton.heightAnchor.constraint(equalToConstant: 100)
-            
+
         ])
     }
 
