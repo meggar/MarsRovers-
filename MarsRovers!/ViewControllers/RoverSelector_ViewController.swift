@@ -108,7 +108,13 @@ class RoverSelector_ViewController: UIViewController {
     }
     
     @objc func sliderValueChanged() {
-        sliderLabelCenter.text = "Sol Date: \(manifest?.photoManifest.photos[Int(slider.value)-1].sol ?? 1)"
+        guard let photoCount = manifest?.photoManifest.photos.count,
+            photoCount > 0,
+            (1...photoCount) ~= Int(slider.value),
+            let solDate = manifest?.photoManifest.photos[Int(slider.value)-1].sol
+         else { return }
+        
+        sliderLabelCenter.text = "Sol Date: \(solDate)"
     }
     
     // MARK: - Button actions
