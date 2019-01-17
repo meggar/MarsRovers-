@@ -63,7 +63,6 @@ class RoverSelector_ViewController: UIViewController {
     }()
     
     let sliderAdustLeft: UIButton = {
-       //⬅ ( ⮕ ➡ ) ⬆ ⬇ ⇦ ⇨
         let view = UIButton(type: .roundedRect)
         view.translatesAutoresizingMaskIntoConstraints = false
         view.backgroundColor = .clear
