@@ -62,6 +62,25 @@ class RoverSelector_ViewController: UIViewController {
         return view
     }()
     
+    let sliderAdustLeft: UIButton = {
+       //⬅ ( ⮕ ➡ ) ⬆ ⬇ ⇦ ⇨
+        let view = UIButton(type: .roundedRect)
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.backgroundColor = .clear
+        view.setTitle("⇦", for: .normal)
+        view.addTarget(self, action: #selector(decrementSliderValue), for: .touchUpInside)
+        return view
+    }()
+    
+    let sliderAdjustRight: UIButton = {
+        let view = UIButton(type: .roundedRect)
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.backgroundColor = .clear
+        view.setTitle("⇨", for: .normal)
+        view.addTarget(self, action: #selector(incrementSliderValue), for: .touchUpInside)
+        return view
+    }()
+    
     let showImagesButton: UIButton = {
         let view = UIButton(type: UIButton.ButtonType.roundedRect)
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -117,6 +136,18 @@ class RoverSelector_ViewController: UIViewController {
         sliderLabelCenter.text = "Sol Date: \(solDate)"
     }
     
+    @objc func incrementSliderValue() {
+        let newValue = min(slider.value + 1.0, slider.maximumValue)
+        slider.setValue(newValue, animated: true)
+        sliderValueChanged()
+    }
+    
+    @objc func decrementSliderValue() {
+        let newValue = max(slider.value - 1.0, slider.minimumValue)
+        slider.setValue(newValue, animated: true)
+        sliderValueChanged()
+    }
+    
     // MARK: - Button actions
     @objc func showImages() {
         
@@ -146,7 +177,9 @@ class RoverSelector_ViewController: UIViewController {
          sliderLabelRight,
          sliderLabelLeft,
          showImagesButton,
-         sliderLabelCenter].forEach{ view.addSubview($0) }
+         sliderLabelCenter,
+         sliderAdustLeft,
+         sliderAdjustRight].forEach{ view.addSubview($0) }
         
         [spacer1,
          spacer2].forEach{ view.addLayoutGuide($0) }
@@ -183,6 +216,15 @@ class RoverSelector_ViewController: UIViewController {
             sliderLabelLeft.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             sliderLabelLeft.trailingAnchor.constraint(equalTo: slider.leadingAnchor, constant: -5),
             sliderLabelCenter.centerXAnchor.constraint(equalTo: slider.centerXAnchor),
+            
+            sliderAdustLeft.widthAnchor.constraint(equalTo: sliderLabelLeft.widthAnchor),
+            sliderAdjustRight.widthAnchor.constraint(equalTo: sliderAdustLeft.widthAnchor),
+            sliderAdustLeft.heightAnchor.constraint(equalTo: sliderLabelLeft.heightAnchor),
+            sliderAdjustRight.heightAnchor.constraint(equalTo: sliderAdustLeft.heightAnchor),
+            sliderAdustLeft.topAnchor.constraint(equalTo: sliderLabelLeft.bottomAnchor),
+            sliderAdjustRight.topAnchor.constraint(equalTo: sliderAdustLeft.topAnchor),
+            sliderAdustLeft.trailingAnchor.constraint(equalTo: sliderLabelLeft.trailingAnchor),
+            sliderAdjustRight.leadingAnchor.constraint(equalTo: sliderLabelRight.leadingAnchor),
             
             spacer1.topAnchor.constraint(equalTo: slider.bottomAnchor),
             spacer1.bottomAnchor.constraint(equalTo: showImagesButton.topAnchor),
