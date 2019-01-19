@@ -138,6 +138,7 @@ class RoverPhotoDetail_ViewController: UIViewController {
         
         let zoomedVIewController = FullScreenImage_ViewController()
         zoomedVIewController.image = photoView.image
+        zoomedVIewController.modalTransitionStyle = UIModalTransitionStyle.crossDissolve
         present(zoomedVIewController, animated: true)
     }
 
