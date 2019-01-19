@@ -203,6 +203,11 @@ class RoverPhoto_CollectionViewCell: UICollectionViewCell {
         }
     }
     
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        photoView.image = nil
+    }
+    
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented for RoverPhoto_CollectionViewCell")
     }
