@@ -31,6 +31,7 @@ class RoverSelector_ViewController: UIViewController {
         let view = UISlider()
         view.translatesAutoresizingMaskIntoConstraints = false
         view.addTarget(self, action: #selector(sliderValueChanged), for: .valueChanged)
+        view.isEnabled = false
         return view
     }()
     
@@ -58,7 +59,7 @@ class RoverSelector_ViewController: UIViewController {
         view.adjustsFontSizeToFitWidth = true
         view.textColor = .white
         view.textAlignment = .center
-        view.text = "Select a Sol date."
+        view.text = ""
         return view
     }()
     
@@ -68,6 +69,7 @@ class RoverSelector_ViewController: UIViewController {
         view.backgroundColor = .clear
         view.setTitle("⇦", for: .normal)
         view.addTarget(self, action: #selector(decrementSliderValue), for: .touchUpInside)
+        view.isEnabled = false
         return view
     }()
     
@@ -77,6 +79,7 @@ class RoverSelector_ViewController: UIViewController {
         view.backgroundColor = .clear
         view.setTitle("⇨", for: .normal)
         view.addTarget(self, action: #selector(incrementSliderValue), for: .touchUpInside)
+        view.isEnabled = false
         return view
     }()
     
@@ -84,12 +87,15 @@ class RoverSelector_ViewController: UIViewController {
         let view = UIButton(type: UIButton.ButtonType.roundedRect)
         view.translatesAutoresizingMaskIntoConstraints = false
         view.setTitle("Show Mars Images!", for: .normal)
+        view.setTitleColor(.white, for: .normal)
+        view.setTitleColor(.black, for: UIControl.State.disabled)
         view.titleLabel?.adjustsFontSizeToFitWidth = true
         view.addTarget(self, action: #selector(showImages), for: .touchUpInside)
         view.backgroundColor = #colorLiteral(red: 0.1019607857, green: 0.2784313858, blue: 0.400000006, alpha: 1)
         view.tintColor = .white
         view.titleLabel?.textColor = .white
         view.layer.cornerRadius = 5.0
+        view.isEnabled = false
         return view
     }()
     
@@ -102,7 +108,11 @@ class RoverSelector_ViewController: UIViewController {
     
     // MARK: - Slider actions
     func updateSlider() {
+        
+        toggleSliderAndButton(enabled: false)
+        
         roverPhoto_DataSource?.getManifestFor(rover: roverType) { [weak self] manifest in
+            
             self?.manifest = manifest
             
             DispatchQueue.main.async {
@@ -114,14 +124,12 @@ class RoverSelector_ViewController: UIViewController {
                     
                     self?.slider.maximumValue = Float(manifest?.photoManifest.photos.count ?? 0)
                     self?.slider.minimumValue = Float(1)
+                
+                    self?.sliderValueChanged()
+                    self?.toggleSliderAndButton(enabled: true)
                     
-                }else{
-                    self?.sliderLabelLeft.text = "0"
-                    self?.sliderLabelRight.text = "0"
                 }
-                self?.sliderValueChanged()
             }
-            
         }
     }
     
@@ -133,6 +141,20 @@ class RoverSelector_ViewController: UIViewController {
          else { return }
         
         sliderLabelCenter.text = "Sol Date: \(solDate)"
+    }
+    
+    private func toggleSliderAndButton(enabled: Bool) {
+        
+        [slider,
+        showImagesButton,
+        sliderAdustLeft,
+        sliderAdjustRight].forEach{ $0.isEnabled = enabled }
+        
+        if !enabled {
+            [sliderLabelLeft,
+            sliderLabelRight,
+            sliderLabelCenter].forEach{ $0.text = "" }
+        }
     }
     
     @objc func incrementSliderValue() {
@@ -157,7 +179,7 @@ class RoverSelector_ViewController: UIViewController {
         
         navigationController?.pushViewController(roverPhotos_CollectionViewController, animated: true)
     }
-    
+
     
     
     // MARK: - UIView
@@ -242,7 +264,6 @@ class RoverSelector_ViewController: UIViewController {
 
         ])
     }
-
 }
 
 
@@ -277,7 +298,5 @@ extension RoverSelector_ViewController: UITableViewDelegate {
         roverType = rovers[indexPath.row]
         
         updateSlider()
-
     }
-    
 }
