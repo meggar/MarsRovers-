@@ -16,6 +16,9 @@
 		FB1E46A621E29F09009315D9 /* FakeJson_CuriosityManifest.json in Resources */ = {isa = PBXBuildFile; fileRef = FB1E46A521E29F09009315D9 /* FakeJson_CuriosityManifest.json */; };
 		FB1E46A821E29F1F009315D9 /* FakeJson_SpiritManifest.json in Resources */ = {isa = PBXBuildFile; fileRef = FB1E46A721E29F1F009315D9 /* FakeJson_SpiritManifest.json */; };
 		FB1E46AA21E29F3B009315D9 /* FakeJson_OpportunityManifest.json in Resources */ = {isa = PBXBuildFile; fileRef = FB1E46A921E29F3B009315D9 /* FakeJson_OpportunityManifest.json */; };
+		FB64EFD821F37461009C0EEF /* NasaRoverPhotoAPI_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB64EFD721F37461009C0EEF /* NasaRoverPhotoAPI_Tests.swift */; };
+		FB64EFDA21F37919009C0EEF /* FakeRoverPhotoAPI_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB64EFD921F37919009C0EEF /* FakeRoverPhotoAPI_Tests.swift */; };
+		FB64EFDE21F37DF9009C0EEF /* ModelMocks.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB64EFDD21F37DF9009C0EEF /* ModelMocks.swift */; };
 		FB6C008221E0EF140077A637 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB6C008121E0EF140077A637 /* AppDelegate.swift */; };
 		FB6C008921E0EF290077A637 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FB6C008821E0EF290077A637 /* Assets.xcassets */; };
 		FB6C008C21E0EF290077A637 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FB6C008A21E0EF290077A637 /* LaunchScreen.storyboard */; };
@@ -65,6 +68,9 @@
 		FB1E46A521E29F09009315D9 /* FakeJson_CuriosityManifest.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = FakeJson_CuriosityManifest.json; sourceTree = "<group>"; };
 		FB1E46A721E29F1F009315D9 /* FakeJson_SpiritManifest.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = FakeJson_SpiritManifest.json; sourceTree = "<group>"; };
 		FB1E46A921E29F3B009315D9 /* FakeJson_OpportunityManifest.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = FakeJson_OpportunityManifest.json; sourceTree = "<group>"; };
+		FB64EFD721F37461009C0EEF /* NasaRoverPhotoAPI_Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NasaRoverPhotoAPI_Tests.swift; sourceTree = "<group>"; };
+		FB64EFD921F37919009C0EEF /* FakeRoverPhotoAPI_Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeRoverPhotoAPI_Tests.swift; sourceTree = "<group>"; };
+		FB64EFDD21F37DF9009C0EEF /* ModelMocks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelMocks.swift; sourceTree = "<group>"; };
 		FB6C007E21E0EF140077A637 /* MarsRovers!.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "MarsRovers!.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FB6C008121E0EF140077A637 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FB6C008821E0EF290077A637 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -139,6 +145,7 @@
 			isa = PBXGroup;
 			children = (
 				FB1E469E21E256F0009315D9 /* URLSessionMocks.swift */,
+				FB64EFDD21F37DF9009C0EEF /* ModelMocks.swift */,
 			);
 			path = Mocks;
 			sourceTree = "<group>";
@@ -245,6 +252,8 @@
 			isa = PBXGroup;
 			children = (
 				FB6C00D521E18FA90077A637 /* DataSourceHelpers_Tests.swift */,
+				FB64EFD721F37461009C0EEF /* NasaRoverPhotoAPI_Tests.swift */,
+				FB64EFD921F37919009C0EEF /* FakeRoverPhotoAPI_Tests.swift */,
 			);
 			path = DataSources;
 			sourceTree = "<group>";
@@ -420,10 +429,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				FB1E46A421E29A6D009315D9 /* RoverManifest_Tests.swift in Sources */,
+				FB64EFDE21F37DF9009C0EEF /* ModelMocks.swift in Sources */,
 				FB6C00D621E18FA90077A637 /* DataSourceHelpers_Tests.swift in Sources */,
 				FB6C00B621E0F5F60077A637 /* Photos_Tests.swift in Sources */,
 				FB1E469F21E256F0009315D9 /* URLSessionMocks.swift in Sources */,
 				FB1E469821E2514F009315D9 /* HTTPClientTests.swift in Sources */,
+				FB64EFD821F37461009C0EEF /* NasaRoverPhotoAPI_Tests.swift in Sources */,
+				FB64EFDA21F37919009C0EEF /* FakeRoverPhotoAPI_Tests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

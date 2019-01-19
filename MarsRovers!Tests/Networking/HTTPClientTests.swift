@@ -13,8 +13,10 @@ class HTTPClientTests: XCTestCase {
 
     func testGet() {
         
+        let expectedData = "{\"key1\":\"value1\"}".data(using: .utf8)
+        
         let mockSession = MockURLSession(
-                data: "{\"key1\":\"value1\"}".data(using: .utf8),
+                data: expectedData,
                 response: HTTPURLResponse(
                     url: URL(string: "http://testing.com/test/1")!,
                     statusCode: 200,
@@ -34,7 +36,7 @@ class HTTPClientTests: XCTestCase {
         httpClient.get(request: request) { data in
             
             XCTAssertNotNil(data)
-            XCTAssertEqual(data, "{\"key1\":\"value1\"}".data(using: .utf8))
+            XCTAssertEqual(data, expectedData)
             expectation.fulfill()
             
         }

@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct RoverManifest: Codable {
+struct RoverManifest: Codable & Equatable {
     let photoManifest: PhotoManifest
     
     enum CodingKeys: String, CodingKey {
@@ -24,7 +24,7 @@ struct RoverManifest: Codable {
     }
 }
 
-struct PhotoManifest: Codable {
+struct PhotoManifest: Codable & Equatable {
     let name, landingDate, launchDate, status: String
     let maxSol: Int
     let maxDate: String
@@ -43,7 +43,7 @@ struct PhotoManifest: Codable {
     }
 }
 
-struct PhotoInfo: Codable {
+struct PhotoInfo: Codable & Equatable {
     let sol, totalPhotos: Int
     let earthDate: String?
     let cameras: [Camera]
