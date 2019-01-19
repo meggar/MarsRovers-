@@ -15,6 +15,8 @@ class FullScreenImage_ViewController: UIViewController {
     let scrollView: UIScrollView = {
         let view = UIScrollView()
         view.translatesAutoresizingMaskIntoConstraints = false
+        view.minimumZoomScale = 0.0
+        view.maximumZoomScale = 100.0
         return view
     }()
     
@@ -48,14 +50,18 @@ class FullScreenImage_ViewController: UIViewController {
         view.addSubview(scrollView)
         view.addSubview(exitButton)
         
-        imageView.image = image
-        scrollView.addSubview(imageView)
-        scrollView.contentSize = imageView.bounds.size
-        
+        setupUI()
         setupConstraints()
     }
     
-    func setupConstraints() {
+    private func setupUI() {
+        imageView.image = image
+        scrollView.addSubview(imageView)
+        scrollView.contentSize = imageView.bounds.size
+        scrollView.delegate = self
+    }
+    
+    private func setupConstraints() {
         NSLayoutConstraint.activate([
             
             // imageView
@@ -76,5 +82,14 @@ class FullScreenImage_ViewController: UIViewController {
             exitButton.heightAnchor.constraint(equalToConstant: 50),
             exitButton.widthAnchor.constraint(equalTo: exitButton.heightAnchor),
         ])
+    }
+}
+
+
+// MARK: - UIScrollViewDelegate conformance
+extension FullScreenImage_ViewController: UIScrollViewDelegate {
+    
+    public func viewForZooming(in scrollView: UIScrollView) -> UIView? {
+        return imageView
     }
 }
