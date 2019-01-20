@@ -40,7 +40,6 @@ class FavoriteImages_ViewController: UICollectionViewController, UICollectionVie
             getFavoriteImagesFromCoreData(moc: moc)
             collectionView.reloadData()
         }
-        print(photos.count)
     }
     
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
@@ -122,9 +121,14 @@ extension FavoriteImages_ViewController {
 extension FavoriteImages_ViewController {
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        // TODO: show photo detail viewController
+        
+        if let selectedCell = collectionView.cellForItem(at: indexPath) as? FavoriteImages_CollectionViewCell {
+            let zoomedVIewController = FullScreenImage_ViewController()
+            zoomedVIewController.image = selectedCell.photoView.image
+            zoomedVIewController.modalTransitionStyle = UIModalTransitionStyle.crossDissolve
+            present(zoomedVIewController, animated: true)
+        }
     }
-    
 }
 
 
@@ -148,7 +152,6 @@ extension FavoriteImages_ViewController {
         
         return CGSize(width: side, height: side)
     }
-    
 }
 
 
