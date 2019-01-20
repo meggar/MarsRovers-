@@ -10,6 +10,7 @@ import UIKit
 
 private let reuseIdentifier = "RoverSelectorTableViewCell"
 private let fontNormal = UIFont(name: "AvenirNext-Medium", size: 20.0)
+private let fontSmall = UIFont(name: "AvenirNext-Light", size: 14.0)
 private let fontBold = UIFont(name: "AvenirNext-Bold", size: 20.0)
 private let white = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
 private let blue = #colorLiteral(red: 0.1019607857, green: 0.2784313858, blue: 0.400000006, alpha: 1)
@@ -68,6 +69,9 @@ class RoverSelector_ViewController: UIViewController {
         let view = UISlider()
         view.translatesAutoresizingMaskIntoConstraints = false
         view.addTarget(self, action: #selector(sliderValueChanged), for: .valueChanged)
+        view.thumbTintColor = white
+        view.minimumTrackTintColor = blue
+        view.maximumTrackTintColor = blue
         view.isEnabled = false
         return view
     }()
@@ -76,7 +80,8 @@ class RoverSelector_ViewController: UIViewController {
         let view = UILabel()
         view.translatesAutoresizingMaskIntoConstraints = false
         view.adjustsFontSizeToFitWidth = true
-        view.textColor = .white
+        view.textColor = white
+        view.font = fontSmall
         view.textAlignment = .right
         return view
     }()
@@ -85,7 +90,8 @@ class RoverSelector_ViewController: UIViewController {
         let view = UILabel()
         view.translatesAutoresizingMaskIntoConstraints = false
         view.adjustsFontSizeToFitWidth = true
-        view.textColor = .white
+        view.textColor = white
+        view.font = fontSmall
         view.textAlignment = .left
         return view
     }()
@@ -94,7 +100,8 @@ class RoverSelector_ViewController: UIViewController {
         let view = UILabel()
         view.translatesAutoresizingMaskIntoConstraints = false
         view.adjustsFontSizeToFitWidth = true
-        view.textColor = .white
+        view.textColor = white
+        view.font = fontSmall
         view.textAlignment = .center
         view.text = ""
         return view
@@ -105,6 +112,7 @@ class RoverSelector_ViewController: UIViewController {
         view.translatesAutoresizingMaskIntoConstraints = false
         view.backgroundColor = .clear
         view.setTitle("⇦", for: .normal)
+        view.tintColor = blue
         view.addTarget(self, action: #selector(decrementSliderValue), for: .touchUpInside)
         view.isEnabled = false
         return view
@@ -115,6 +123,7 @@ class RoverSelector_ViewController: UIViewController {
         view.translatesAutoresizingMaskIntoConstraints = false
         view.backgroundColor = .clear
         view.setTitle("⇨", for: .normal)
+        view.tintColor = blue
         view.addTarget(self, action: #selector(incrementSliderValue), for: .touchUpInside)
         view.isEnabled = false
         return view
@@ -124,13 +133,13 @@ class RoverSelector_ViewController: UIViewController {
         let view = UIButton(type: UIButton.ButtonType.roundedRect)
         view.translatesAutoresizingMaskIntoConstraints = false
         view.setTitle("Show Mars Images!", for: .normal)
-        view.setTitleColor(.white, for: .normal)
+        view.setTitleColor(white, for: .normal)
         view.setTitleColor(.black, for: UIControl.State.disabled)
+        view.backgroundColor = blue
+        view.tintColor = white
+        view.titleLabel?.textColor = white
         view.titleLabel?.adjustsFontSizeToFitWidth = true
         view.addTarget(self, action: #selector(showImages), for: .touchUpInside)
-        view.backgroundColor = blue
-        view.tintColor = .white
-        view.titleLabel?.textColor = .white
         view.layer.cornerRadius = 5.0
         view.isEnabled = false
         return view
@@ -271,7 +280,7 @@ class RoverSelector_ViewController: UIViewController {
             roverDescription.heightAnchor.constraint(equalTo: tableView.heightAnchor, multiplier: 0.6),
             
             // Slider
-            slider.topAnchor.constraint(equalTo: stackBottom.topAnchor, constant: 40),
+            slider.topAnchor.constraint(equalTo: stackBottom.topAnchor, constant: 50),
             slider.leadingAnchor.constraint(equalTo: stackBottom.leadingAnchor, constant: 40),
             slider.trailingAnchor.constraint(equalTo: stackBottom.trailingAnchor, constant: -40),
             
