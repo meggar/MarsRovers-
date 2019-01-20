@@ -21,6 +21,11 @@ class RoverSelector_ViewController: UIViewController {
     var roverType: RoverType = .curiosity
     var roverPhoto_DataSource: RoverPhoto_DataSource?
     
+    let activityIndicator: UIActivityIndicatorView = {
+        let view = UIActivityIndicatorView(style: .gray)
+        view.hidesWhenStopped = true
+        return view
+    }()
     
     let stack: UIStackView = {
         let view = UIStackView()
@@ -156,6 +161,7 @@ class RoverSelector_ViewController: UIViewController {
         
         toggleSliderAndButton(enabled: false)
         roverDescription.text = ""
+        activityIndicator.startAnimating()
         
         roverPhoto_DataSource?.getManifestFor(rover: roverType) { [weak self] manifest in
             
@@ -175,6 +181,7 @@ class RoverSelector_ViewController: UIViewController {
                     self?.toggleSliderAndButton(enabled: true)
                     
                     self?.roverDescription.text = manifest?.photoManifest.roverDescriptionText()
+                    self?.activityIndicator.stopAnimating()
                 }
             }
         }
@@ -248,6 +255,8 @@ class RoverSelector_ViewController: UIViewController {
             navigationItem.leftBarButtonItem?.setTitleTextAttributes([NSAttributedString.Key.font: font], for: .normal)
         }
         
+        navigationItem.rightBarButtonItem = UIBarButtonItem(customView: activityIndicator)
+        
         [slider,
          sliderLabelRight,
          sliderLabelLeft,
@@ -259,7 +268,8 @@ class RoverSelector_ViewController: UIViewController {
         [spacer1,
          spacer2].forEach{ stackBottom.addLayoutGuide($0) }
         
-        [tableView, roverDescription].forEach{ stackTop.addSubview($0) }
+        [tableView,
+         roverDescription].forEach{ stackTop.addSubview($0) }
         
         stack.addArrangedSubview(stackTop)
         stack.addArrangedSubview(stackBottom)
