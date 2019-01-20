@@ -8,10 +8,6 @@
 
 import UIKit
 
-private let fontNormal = UIFont(name: "AvenirNext-Medium", size: 20.0)
-private let fontBold = UIFont(name: "AvenirNext-Bold", size: 20.0)
-private let white = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
-private let blue = #colorLiteral(red: 0.1019607857, green: 0.2784313858, blue: 0.400000006, alpha: 1)
 
 class RoverPhotoDetail_ViewController: UIViewController {
 
@@ -33,7 +29,7 @@ class RoverPhotoDetail_ViewController: UIViewController {
     let stackBottom: UIView = {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
-        view.backgroundColor = blue
+        view.backgroundColor = .appBlue
         return view
     }()
     
@@ -46,8 +42,8 @@ class RoverPhotoDetail_ViewController: UIViewController {
     var earthDateLabel: UILabel = {
         let view = UILabel()
         view.translatesAutoresizingMaskIntoConstraints = false
-        view.font = fontBold
-        view.textColor = white
+        view.font = .appFontBold
+        view.textColor = .appWhite
         view.adjustsFontSizeToFitWidth = true
         return view
     }()
@@ -55,8 +51,8 @@ class RoverPhotoDetail_ViewController: UIViewController {
     var solDateLabel: UILabel = {
         let view = UILabel()
         view.translatesAutoresizingMaskIntoConstraints = false
-        view.font = fontBold
-        view.textColor = white
+        view.font = .appFontBold
+        view.textColor = .appWhite
         view.adjustsFontSizeToFitWidth = true
         return view
     }()
@@ -64,8 +60,8 @@ class RoverPhotoDetail_ViewController: UIViewController {
     var cameraLabel: UILabel = {
         let view = UILabel()
         view.translatesAutoresizingMaskIntoConstraints = false
-        view.font = fontBold
-        view.textColor = white
+        view.font = .appFontBold
+        view.textColor = .appWhite
         view.adjustsFontSizeToFitWidth = true
         return view
     }()
@@ -84,7 +80,7 @@ class RoverPhotoDetail_ViewController: UIViewController {
         super.viewDidLoad()
 
         view.addSubview(photoView)
-        view.backgroundColor = blue
+        view.backgroundColor = .appBlue
         
         setupUI()
         setupConstraints()

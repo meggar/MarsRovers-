@@ -164,7 +164,8 @@ class RoverPhoto_CollectionViewCell: UICollectionViewCell {
         let view = UILabel()
         view.translatesAutoresizingMaskIntoConstraints  = false
         view.backgroundColor = .black
-        view.textColor = .white
+        view.textColor = .appWhite
+        view.font = .appFontSmall
         view.adjustsFontSizeToFitWidth = true
         return view
     }()

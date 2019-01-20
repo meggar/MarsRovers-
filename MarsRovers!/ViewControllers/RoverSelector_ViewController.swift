@@ -8,12 +8,9 @@
 
 import UIKit
 
+
+
 private let reuseIdentifier = "RoverSelectorTableViewCell"
-private let fontNormal = UIFont(name: "AvenirNext-Medium", size: 20.0)
-private let fontSmall = UIFont(name: "AvenirNext-Light", size: 14.0)
-private let fontBold = UIFont(name: "AvenirNext-Bold", size: 20.0)
-private let white = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
-private let blue = #colorLiteral(red: 0.1019607857, green: 0.2784313858, blue: 0.400000006, alpha: 1)
 
 class RoverSelector_ViewController: UIViewController {
 
@@ -34,7 +31,7 @@ class RoverSelector_ViewController: UIViewController {
     let stackTop: UIView = {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
-        view.backgroundColor = blue
+        view.backgroundColor = .appBlue
         return view
     }()
     
@@ -59,8 +56,8 @@ class RoverSelector_ViewController: UIViewController {
         let view = UILabel()
         view.translatesAutoresizingMaskIntoConstraints = false
         view.numberOfLines = 0
-        view.font = fontNormal
-        view.textColor = white
+        view.font = .appFontNormal
+        view.textColor = .appWhite
         view.backgroundColor = .clear
         view.adjustsFontSizeToFitWidth = true
         return view
@@ -70,9 +67,9 @@ class RoverSelector_ViewController: UIViewController {
         let view = UISlider()
         view.translatesAutoresizingMaskIntoConstraints = false
         view.addTarget(self, action: #selector(sliderValueChanged), for: .valueChanged)
-        view.thumbTintColor = white
-        view.minimumTrackTintColor = blue
-        view.maximumTrackTintColor = blue
+        view.thumbTintColor = .appWhite
+        view.minimumTrackTintColor = .appBlue
+        view.maximumTrackTintColor = .appBlue
         view.isEnabled = false
         return view
     }()
@@ -81,8 +78,8 @@ class RoverSelector_ViewController: UIViewController {
         let view = UILabel()
         view.translatesAutoresizingMaskIntoConstraints = false
         view.adjustsFontSizeToFitWidth = true
-        view.textColor = white
-        view.font = fontSmall
+        view.textColor = .appWhite
+        view.font = .appFontSmall
         view.textAlignment = .right
         return view
     }()
@@ -91,8 +88,8 @@ class RoverSelector_ViewController: UIViewController {
         let view = UILabel()
         view.translatesAutoresizingMaskIntoConstraints = false
         view.adjustsFontSizeToFitWidth = true
-        view.textColor = white
-        view.font = fontSmall
+        view.textColor = .appWhite
+        view.font = .appFontSmall
         view.textAlignment = .left
         return view
     }()
@@ -101,8 +98,8 @@ class RoverSelector_ViewController: UIViewController {
         let view = UILabel()
         view.translatesAutoresizingMaskIntoConstraints = false
         view.adjustsFontSizeToFitWidth = true
-        view.textColor = white
-        view.font = fontSmall
+        view.textColor = .appWhite
+        view.font = .appFontSmall
         view.textAlignment = .center
         view.text = ""
         return view
@@ -113,7 +110,7 @@ class RoverSelector_ViewController: UIViewController {
         view.translatesAutoresizingMaskIntoConstraints = false
         view.backgroundColor = .clear
         view.setTitle("⇦", for: .normal)
-        view.tintColor = blue
+        view.tintColor = .appBlue
         view.addTarget(self, action: #selector(decrementSliderValue), for: .touchUpInside)
         view.isEnabled = false
         return view
@@ -124,7 +121,7 @@ class RoverSelector_ViewController: UIViewController {
         view.translatesAutoresizingMaskIntoConstraints = false
         view.backgroundColor = .clear
         view.setTitle("⇨", for: .normal)
-        view.tintColor = blue
+        view.tintColor = .appBlue
         view.addTarget(self, action: #selector(incrementSliderValue), for: .touchUpInside)
         view.isEnabled = false
         return view
@@ -134,12 +131,12 @@ class RoverSelector_ViewController: UIViewController {
         let view = UIButton(type: UIButton.ButtonType.roundedRect)
         view.translatesAutoresizingMaskIntoConstraints = false
         view.setTitle("Show Mars Images!", for: .normal)
-        view.setTitleColor(white, for: .normal)
-        view.setTitleColor(blue, for: UIControl.State.disabled)
-        view.titleLabel?.font = fontBold
-        view.backgroundColor = blue
-        view.tintColor = white
-        view.titleLabel?.textColor = white
+        view.setTitleColor(.appWhite, for: .normal)
+        view.setTitleColor(.appBlue, for: UIControl.State.disabled)
+        view.titleLabel?.font = .appFontBold
+        view.backgroundColor = .appBlue
+        view.tintColor = .appWhite
+        view.titleLabel?.textColor = .appWhite
         view.titleLabel?.adjustsFontSizeToFitWidth = true
         view.addTarget(self, action: #selector(showImages), for: .touchUpInside)
         view.layer.cornerRadius = 5.0
@@ -245,7 +242,7 @@ class RoverSelector_ViewController: UIViewController {
     private func setupUI() {
         
         // NavBar fonts
-        if let font = fontBold {
+        if let font: UIFont = .appFontBold {
             navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.font: font]
             navigationItem.rightBarButtonItem?.setTitleTextAttributes([NSAttributedString.Key.font: font], for: .normal)
             navigationItem.leftBarButtonItem?.setTitleTextAttributes([NSAttributedString.Key.font: font], for: .normal)
@@ -371,8 +368,8 @@ extension RoverSelector_ViewController: UITableViewDataSource{
         let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier, for: indexPath)
         
         cell.textLabel?.text = rovers.map{ $0.rawValue }[indexPath.row]
-        cell.textLabel?.font = fontSmall
-        cell.textLabel?.textColor = blue
+        cell.textLabel?.font = .appFontSmall
+        cell.textLabel?.textColor = .appBlue
         
         return cell
     }
