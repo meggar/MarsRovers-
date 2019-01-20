@@ -35,7 +35,9 @@ class NasaRoverPhotoAPI: RoverPhoto_DataSource {
             let route = NasaRoverPhotoAPI.photoEndpoints[rover],
             let url = DataSourceHelpers.urlWith(endPoint: route, andParams: ["sol": "\(sol)", "api_key": apiKey]) {
 
-            let request = URLRequest(url: url)
+            let request = URLRequest(url: url,
+                                     cachePolicy: .returnCacheDataElseLoad,
+                                     timeoutInterval: 10.0)
             
             httpClient.get(request: request) { data in
                 
@@ -55,7 +57,9 @@ class NasaRoverPhotoAPI: RoverPhoto_DataSource {
             let route = NasaRoverPhotoAPI.manifestEndpoints[rover],
             let url = DataSourceHelpers.urlWith(endPoint: route, andParams: ["api_key": apiKey]) {
             
-            let request = URLRequest(url: url)
+            let request = URLRequest(url: url,
+                                     cachePolicy: .returnCacheDataElseLoad,
+                                     timeoutInterval: 10.0)
             
             httpClient.get(request: request) { data in
                 
@@ -69,7 +73,9 @@ class NasaRoverPhotoAPI: RoverPhoto_DataSource {
 
     func getImageData(url: URL, completion: @escaping (Data?) -> ()) {
         
-        let request = URLRequest(url: url)
+        let request = URLRequest(url: url,
+                                 cachePolicy: .returnCacheDataElseLoad,
+                                 timeoutInterval: 10.0)
         
         httpClient.get(request: request) { data in
 
