@@ -21,8 +21,9 @@ class FavoriteImages_ViewController: UICollectionViewController, UICollectionVie
     
     
     // Core data helpers
-    func getFavoriteImagesFromCoreData(moc: NSManagedObjectContext) {
-        let fetchRequest:NSFetchRequest = FavoriteRoverImage.fetchRequest()
+    private func getFavoriteImagesFromCoreData(moc: NSManagedObjectContext) {
+
+        let fetchRequest: NSFetchRequest = FavoriteRoverImage.fetchRequest()
         
         if let objects = try? moc.fetch(fetchRequest) {
             photos = objects.compactMap{ $0 }
@@ -35,6 +36,14 @@ class FavoriteImages_ViewController: UICollectionViewController, UICollectionVie
         super.viewDidLoad()
         
         self.collectionView!.register(FavoriteImages_CollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
+        
+        if let moc = moc {
+            getFavoriteImagesFromCoreData(moc: moc)
+        }
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         
         if let moc = moc {
             getFavoriteImagesFromCoreData(moc: moc)
@@ -55,7 +64,6 @@ class FavoriteImages_ViewController: UICollectionViewController, UICollectionVie
     override init(collectionViewLayout layout: UICollectionViewLayout) {
         
         super.init(collectionViewLayout: layout)
-        
     }
     
     convenience init() {
@@ -121,12 +129,13 @@ extension FavoriteImages_ViewController {
 extension FavoriteImages_ViewController {
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        
+
         if let selectedCell = collectionView.cellForItem(at: indexPath) as? FavoriteImages_CollectionViewCell {
-            let zoomedVIewController = FullScreenImage_ViewController()
-            zoomedVIewController.image = selectedCell.photoView.image
-            zoomedVIewController.modalTransitionStyle = UIModalTransitionStyle.crossDissolve
-            present(zoomedVIewController, animated: true)
+            let detailViewController = RoverPhotoDetail_ViewController()
+            detailViewController.photo = photos[indexPath.row]
+            detailViewController.moc = moc
+            detailViewController.image = selectedCell.photoView.image
+            navigationController?.pushViewController(detailViewController, animated: true)
         }
     }
 }

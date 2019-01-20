@@ -10,11 +10,11 @@
 import Foundation
 
 
-struct Photos: Codable  & Equatable {
+struct Photos: Codable & Equatable {
     let photos: [Photo]
 }
 
-struct Photo: Codable  & Equatable{
+struct Photo: Codable & Equatable {
     let id, sol: Int
     let camera: PhotoCamera
     let imgSrc: String
@@ -42,7 +42,7 @@ struct PhotoCamera: Codable & Equatable {
     }
 }
 
-struct Rover: Codable  & Equatable {
+struct Rover: Codable & Equatable {
     let id: Int
     let name, landingDate, launchDate, status: String
     let maxSol: Int
@@ -73,4 +73,16 @@ struct CameraElement: Codable & Equatable {
         case name
         case fullName = "full_name"
     }
+}
+
+
+// MARK: - PhotoDetailProtocol conformance
+
+extension Photo: PhotoDetailProtocol {
+    var photoURLString: String? { return imgSrc }
+    var photoCameraName: String? { return camera.name }
+    var photoCameraFullName: String? { return camera.fullName }
+    var photoRover: String? { return rover.name }
+    var photoEarthDate: String? { return earthDate }
+    var photoSolDate: Int? { return sol }
 }

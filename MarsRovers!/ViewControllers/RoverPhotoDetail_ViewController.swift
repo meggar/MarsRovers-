@@ -14,7 +14,7 @@ class RoverPhotoDetail_ViewController: UIViewController {
 
     var moc: NSManagedObjectContext?
     
-    var photo: Photo?
+    var photo: PhotoDetailProtocol?
     var image: UIImage?
     
     var stack: UIStackView = {
@@ -101,11 +101,13 @@ class RoverPhotoDetail_ViewController: UIViewController {
         
         photoView.image = image
 
-        if let photo = photo {
+        if let earthDate = photo?.photoEarthDate,
+            let solDate = photo?.photoSolDate,
+            let cameraFullName = photo?.photoCameraFullName {
 
-            earthDateLabel.text = "Earth Date: \(photo.earthDate)"
-            solDateLabel.text = "Sol Date: \(photo.sol)"
-            cameraLabel.text = photo.camera.fullName
+            earthDateLabel.text = "Earth Date: \(earthDate)"
+            solDateLabel.text = "Sol Date: \(solDate)"
+            cameraLabel.text = cameraFullName
         }
 
         stackTop.addSubview(photoView)
@@ -190,46 +192,46 @@ class RoverPhotoDetail_ViewController: UIViewController {
     // MARK: - button handlers
     @objc func zoomPhoto() {
         
-        let zoomedVIewController = FullScreenImage_ViewController()
-        zoomedVIewController.image = photoView.image
-        zoomedVIewController.modalTransitionStyle = UIModalTransitionStyle.crossDissolve
-        present(zoomedVIewController, animated: true)
+        let zoomedViewController = FullScreenImage_ViewController()
+        zoomedViewController.image = photoView.image
+        zoomedViewController.modalTransitionStyle = UIModalTransitionStyle.crossDissolve
+        present(zoomedViewController, animated: true)
     }
     
     @objc func toggleLikeButton() {
         
         guard let moc = moc,
-            let photo = photo,
-            let iconEmoji = likeButton.titleLabel?.text
+               let photo = photo,
+               let iconEmoji = likeButton.titleLabel?.text,
+               let likeIcon = Icon(rawValue: iconEmoji)
             else { return }
         
-        if let likeIcon = Icon(rawValue: iconEmoji) {
+        
+        switch likeIcon {
             
-            switch likeIcon {
+        case .like:
+            deleteFromCoreData(photo: photo, moc: moc)
+            likeButton.setTitle(Icon.unlike.rawValue, for: .normal)
                 
-            case .like:
-                
-                deleteFromCoreData(photo: photo, moc: moc)
-                likeButton.setTitle(Icon.unlike.rawValue, for: .normal)
-                
-            case .unlike:
-                
-                insertIntoCoreData(photo: photo, moc: moc)
-                likeButton.setTitle(Icon.like.rawValue, for: .normal)
-            }
+        case .unlike:
+            insertIntoCoreData(photo: photo, moc: moc)
+            likeButton.setTitle(Icon.like.rawValue, for: .normal)
         }
     }
     
     
     // MARK: - Core Data helpers
-    func insertIntoCoreData(photo: Photo, moc: NSManagedObjectContext) {
+    func insertIntoCoreData(photo: PhotoDetailProtocol, moc: NSManagedObjectContext) {
+        
         do {
             let newObject = NSEntityDescription.insertNewObject(forEntityName: "FavoriteRoverImage", into: moc)
-            newObject.setValue(photo.imgSrc, forKey: "urlString")
-            newObject.setValue(photo.rover.name, forKey: "rover")
-            newObject.setValue(photo.earthDate, forKey: "earthDate")
-            newObject.setValue(photo.sol, forKey: "solDate")
-            newObject.setValue(photo.camera.name, forKey: "camera")
+            
+            newObject.setValue(photo.photoURLString, forKey: "urlString")
+            newObject.setValue(photo.photoRover, forKey: "rover")
+            newObject.setValue(photo.photoEarthDate, forKey: "earthDate")
+            newObject.setValue(photo.photoSolDate, forKey: "solDate")
+            newObject.setValue(photo.photoCameraName, forKey: "camera")
+            
             try moc.save()
             
         }catch{
@@ -237,9 +239,12 @@ class RoverPhotoDetail_ViewController: UIViewController {
         }
     }
     
-    func existsInCoreData(photo: Photo, moc: NSManagedObjectContext) -> Bool {
-        let fetchRequest:NSFetchRequest = FavoriteRoverImage.fetchRequest()
-        fetchRequest.predicate = NSPredicate(format: "urlString=='\(photo.imgSrc)'")
+    func existsInCoreData(photo: PhotoDetailProtocol, moc: NSManagedObjectContext) -> Bool {
+        
+        guard let imgUrl = photo.photoURLString else { return false }
+        
+        let fetchRequest: NSFetchRequest = FavoriteRoverImage.fetchRequest()
+        fetchRequest.predicate = NSPredicate(format: "urlString=='\(imgUrl)'")
         do {
             let count = try moc.count(for: fetchRequest)
             return count > 0
@@ -248,9 +253,12 @@ class RoverPhotoDetail_ViewController: UIViewController {
         }
     }
     
-    func deleteFromCoreData(photo: Photo, moc: NSManagedObjectContext) {
-        let fetchRequest:NSFetchRequest = FavoriteRoverImage.fetchRequest()
-        fetchRequest.predicate = NSPredicate(format: "urlString=='\(photo.imgSrc)'")
+    func deleteFromCoreData(photo: PhotoDetailProtocol, moc: NSManagedObjectContext) {
+        
+        guard let imgUrl = photo.photoURLString else { return }
+            
+        let fetchRequest: NSFetchRequest = FavoriteRoverImage.fetchRequest()
+        fetchRequest.predicate = NSPredicate(format: "urlString=='\(imgUrl)'")
         do {
             for object in try moc.fetch(fetchRequest) {
                 moc.delete(object)
