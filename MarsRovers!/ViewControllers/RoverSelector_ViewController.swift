@@ -135,7 +135,8 @@ class RoverSelector_ViewController: UIViewController {
         view.translatesAutoresizingMaskIntoConstraints = false
         view.setTitle("Show Mars Images!", for: .normal)
         view.setTitleColor(white, for: .normal)
-        view.setTitleColor(.black, for: UIControl.State.disabled)
+        view.setTitleColor(blue, for: UIControl.State.disabled)
+        view.titleLabel?.font = fontBold
         view.backgroundColor = blue
         view.tintColor = white
         view.titleLabel?.textColor = white
@@ -363,6 +364,8 @@ extension RoverSelector_ViewController: UITableViewDataSource{
         let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier, for: indexPath)
         
         cell.textLabel?.text = rovers.map{ $0.rawValue }[indexPath.row]
+        cell.textLabel?.font = fontSmall
+        cell.textLabel?.textColor = blue
         
         return cell
     }
