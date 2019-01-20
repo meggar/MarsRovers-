@@ -20,8 +20,9 @@
 		FB64EFDA21F37919009C0EEF /* FakeRoverPhotoAPI_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB64EFD921F37919009C0EEF /* FakeRoverPhotoAPI_Tests.swift */; };
 		FB64EFDE21F37DF9009C0EEF /* ModelMocks.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB64EFDD21F37DF9009C0EEF /* ModelMocks.swift */; };
 		FB64EFE021F3ACFD009C0EEF /* FullScreenImage_ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB64EFDF21F3ACFD009C0EEF /* FullScreenImage_ViewController.swift */; };
-		FB64EFE321F419B6009C0EEF /* StyleExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB64EFE221F419B6009C0EEF /* StyleExtensions.swift */; };
+		FB64EFE321F419B6009C0EEF /* AppStyles.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB64EFE221F419B6009C0EEF /* AppStyles.swift */; };
 		FB65CC0221F4B9D200C2E870 /* TestImage.png in Resources */ = {isa = PBXBuildFile; fileRef = FB65CC0121F4B9D100C2E870 /* TestImage.png */; };
+		FB65CC4221F4EBA000C2E870 /* FavoriteImageModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = FB65CC4021F4EBA000C2E870 /* FavoriteImageModel.xcdatamodeld */; };
 		FB6C008221E0EF140077A637 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB6C008121E0EF140077A637 /* AppDelegate.swift */; };
 		FB6C008921E0EF290077A637 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FB6C008821E0EF290077A637 /* Assets.xcassets */; };
 		FB6C008C21E0EF290077A637 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FB6C008A21E0EF290077A637 /* LaunchScreen.storyboard */; };
@@ -75,8 +76,9 @@
 		FB64EFD921F37919009C0EEF /* FakeRoverPhotoAPI_Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeRoverPhotoAPI_Tests.swift; sourceTree = "<group>"; };
 		FB64EFDD21F37DF9009C0EEF /* ModelMocks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelMocks.swift; sourceTree = "<group>"; };
 		FB64EFDF21F3ACFD009C0EEF /* FullScreenImage_ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullScreenImage_ViewController.swift; sourceTree = "<group>"; };
-		FB64EFE221F419B6009C0EEF /* StyleExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StyleExtensions.swift; sourceTree = "<group>"; };
+		FB64EFE221F419B6009C0EEF /* AppStyles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStyles.swift; sourceTree = "<group>"; };
 		FB65CC0121F4B9D100C2E870 /* TestImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = TestImage.png; sourceTree = "<group>"; };
+		FB65CC4121F4EBA000C2E870 /* FavoriteImageModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = FavoriteImageModel.xcdatamodel; sourceTree = "<group>"; };
 		FB6C007E21E0EF140077A637 /* MarsRovers!.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "MarsRovers!.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FB6C008121E0EF140077A637 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FB6C008821E0EF290077A637 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -159,7 +161,7 @@
 		FB64EFE121F4199E009C0EEF /* Styles */ = {
 			isa = PBXGroup;
 			children = (
-				FB64EFE221F419B6009C0EEF /* StyleExtensions.swift */,
+				FB64EFE221F419B6009C0EEF /* AppStyles.swift */,
 			);
 			path = Styles;
 			sourceTree = "<group>";
@@ -198,6 +200,7 @@
 				FB6C008A21E0EF290077A637 /* LaunchScreen.storyboard */,
 				FB6C008D21E0EF290077A637 /* Info.plist */,
 				FB6C00AF21E0F2410077A637 /* APIkeys.plist */,
+				FB65CC4021F4EBA000C2E870 /* FavoriteImageModel.xcdatamodeld */,
 			);
 			path = "MarsRovers!";
 			sourceTree = "<group>";
@@ -434,9 +437,10 @@
 				FB6C00D421E18D9E0077A637 /* DataSourceHelpers.swift in Sources */,
 				FB1E46A221E299DB009315D9 /* RoverManifest.swift in Sources */,
 				FB6C00B921E104210077A637 /* RoverPhotos_CollectionViewController.swift in Sources */,
-				FB64EFE321F419B6009C0EEF /* StyleExtensions.swift in Sources */,
+				FB64EFE321F419B6009C0EEF /* AppStyles.swift in Sources */,
 				FB6C008221E0EF140077A637 /* AppDelegate.swift in Sources */,
 				FB1E469621E24FF6009315D9 /* HTTPClient.swift in Sources */,
+				FB65CC4221F4EBA000C2E870 /* FavoriteImageModel.xcdatamodeld in Sources */,
 				FB6C00C521E113BE0077A637 /* RoverSelector_ViewController.swift in Sources */,
 				FB6C00C321E110DA0077A637 /* FakeRoverPhotoAPI.swift in Sources */,
 				FB6C00BF21E10EC90077A637 /* RoverPhoto_DataSource.swift in Sources */,
@@ -768,6 +772,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		FB65CC4021F4EBA000C2E870 /* FavoriteImageModel.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				FB65CC4121F4EBA000C2E870 /* FavoriteImageModel.xcdatamodel */,
+			);
+			currentVersion = FB65CC4121F4EBA000C2E870 /* FavoriteImageModel.xcdatamodel */;
+			path = FavoriteImageModel.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = FB6C007621E0EF130077A637 /* Project object */;
 }

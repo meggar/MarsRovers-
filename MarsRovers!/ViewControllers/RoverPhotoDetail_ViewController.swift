@@ -7,10 +7,13 @@
 //
 
 import UIKit
+import CoreData
 
 
 class RoverPhotoDetail_ViewController: UIViewController {
 
+    var moc: NSManagedObjectContext?
+    
     var photo: Photo?
     var image: UIImage?
     
@@ -66,6 +69,14 @@ class RoverPhotoDetail_ViewController: UIViewController {
         return view
     }()
     
+    var likeButton: UIButton = {
+        var view = UIButton()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.setTitle(Icon.unlike.rawValue, for: .normal)
+        view.addTarget(self, action: #selector(toggleLikeButton), for: .touchUpInside)
+        return view
+    }()
+    
     var stackView: UIStackView = {
         let view = UIStackView()
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -103,7 +114,8 @@ class RoverPhotoDetail_ViewController: UIViewController {
          solDateLabel,
          cameraLabel].forEach{ stackView.addArrangedSubview($0) }
         
-        stackBottom.addSubview(stackView)
+        [stackView,
+         likeButton].forEach{ stackBottom.addSubview($0) }
         
         [stackTop,
          stackBottom].forEach{ stack.addArrangedSubview($0) }
@@ -116,6 +128,17 @@ class RoverPhotoDetail_ViewController: UIViewController {
                                                             action: #selector(zoomPhoto))
         
         stack.axis = UIDevice.current.orientation.isLandscape ? .horizontal : .vertical
+        
+        if let imgURLString = photo?.imgSrc,
+            let moc = moc {
+            
+            if existsInCoreData(imgURLString: imgURLString, moc: moc) {
+                likeButton.setTitle(Icon.like.rawValue, for: .normal)
+            }else{
+                likeButton.setTitle(Icon.unlike.rawValue, for: .normal)
+            }
+        }
+
     }
     
     func setupConstraints() {
@@ -134,8 +157,13 @@ class RoverPhotoDetail_ViewController: UIViewController {
             
             // stackView
             stackView.leadingAnchor.constraint(equalTo: stackBottom.leadingAnchor, constant: 10),
-            stackView.trailingAnchor.constraint(equalTo: stackBottom.trailingAnchor, constant: -10),
+            stackView.trailingAnchor.constraint(equalTo: stackBottom.trailingAnchor, constant: -60),
             stackView.topAnchor.constraint(equalTo: stackBottom.topAnchor, constant: 10),
+            
+            // Like Button
+            likeButton.leadingAnchor.constraint(equalTo: stackView.trailingAnchor, constant: 10),
+            likeButton.trailingAnchor.constraint(equalTo: stackBottom.trailingAnchor, constant: -10),
+            likeButton.heightAnchor.constraint(equalToConstant: 50),
             
             // Main stackView
             stack.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
@@ -160,12 +188,73 @@ class RoverPhotoDetail_ViewController: UIViewController {
         stack.axis = UIDevice.current.orientation.isLandscape ? .horizontal : .vertical
     }
     
-    // MARK: - button handler
+    // MARK: - button handlers
     @objc func zoomPhoto() {
         
         let zoomedVIewController = FullScreenImage_ViewController()
         zoomedVIewController.image = photoView.image
         zoomedVIewController.modalTransitionStyle = UIModalTransitionStyle.crossDissolve
         present(zoomedVIewController, animated: true)
+    }
+    
+    @objc func toggleLikeButton() {
+        
+        guard let moc = moc,
+            let imgURLString = photo?.imgSrc,
+            let iconEmoji = likeButton.titleLabel?.text
+            else { return }
+        
+        if let likeIcon = Icon(rawValue: iconEmoji) {
+            
+            switch likeIcon {
+                
+            case .like:
+                
+                deleteFromCoreData(imgURLString: imgURLString, moc: moc)
+                likeButton.setTitle(Icon.unlike.rawValue, for: .normal)
+                
+            case .unlike:
+                
+                insertIntoCoreData(imgURLString: imgURLString, moc: moc)
+                likeButton.setTitle(Icon.like.rawValue, for: .normal)
+            }
+        }
+    }
+    
+    
+    // MARK: - Core Data helpers
+    func insertIntoCoreData(imgURLString: String, moc: NSManagedObjectContext) {
+        do {
+            let newObject = NSEntityDescription.insertNewObject(forEntityName: "FavoriteRoverImage", into: moc)
+            newObject.setValue(imgURLString, forKey: "urlString")
+            try moc.save()
+            
+        }catch{
+            print("error inserting into core data")
+        }
+    }
+    
+    func existsInCoreData(imgURLString: String, moc: NSManagedObjectContext) -> Bool {
+        let fetchRequest:NSFetchRequest = FavoriteRoverImage.fetchRequest()
+        fetchRequest.predicate = NSPredicate(format: "urlString=='\(imgURLString)'")
+        do {
+            let count = try moc.count(for: fetchRequest)
+            return count > 0
+        }catch{
+            return false
+        }
+    }
+    
+    func deleteFromCoreData(imgURLString: String, moc: NSManagedObjectContext) {
+        let fetchRequest:NSFetchRequest = FavoriteRoverImage.fetchRequest()
+        fetchRequest.predicate = NSPredicate(format: "urlString=='\(imgURLString)'")
+        do {
+            for object in try moc.fetch(fetchRequest) {
+                moc.delete(object)
+            }
+            try moc.save()
+        }catch{
+            print("error deleting from core data")
+        }
     }
 }

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreData
 
 private let reuseIdentifier = "RoverCollectionViewCell"
 
@@ -14,6 +15,8 @@ private let reuseIdentifier = "RoverCollectionViewCell"
 
 class RoverPhotos_CollectionViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
 
+    var moc: NSManagedObjectContext?
+    
     var photos: Photos?
     var roverType: RoverType = .curiosity
     var solDate = 1
@@ -122,6 +125,7 @@ extension RoverPhotos_CollectionViewController {
         
         let detailViewController = RoverPhotoDetail_ViewController()
         detailViewController.photo = photos?.photos[indexPath.row]
+        detailViewController.moc = moc
         if let cell = collectionView.cellForItem(at: indexPath) as? RoverPhoto_CollectionViewCell {
             detailViewController.image = cell.photoView.image
         }

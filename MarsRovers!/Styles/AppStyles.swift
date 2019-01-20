@@ -21,3 +21,10 @@ extension UIFont {
     static let appFontNormal = UIFont(name: "AvenirNext-Medium", size: 20.0)
     static let appFontBold = UIFont(name: "AvenirNext-Bold", size: 20.0)
 }
+
+// heart icons for "like" buttons
+
+enum Icon: String {
+    case like = "❤️"
+    case unlike = "🖤"
+}

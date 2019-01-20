@@ -7,13 +7,13 @@
 //
 
 import UIKit
-
-
+import CoreData
 
 private let reuseIdentifier = "RoverSelectorTableViewCell"
 
 class RoverSelector_ViewController: UIViewController {
 
+    var moc: NSManagedObjectContext?
     
     let rovers:[RoverType] = [.curiosity, .opportunity, .spirit]
     
@@ -230,6 +230,7 @@ class RoverSelector_ViewController: UIViewController {
         
         roverPhotos_CollectionViewController.roverPhoto_datasource = roverPhoto_DataSource
         roverPhotos_CollectionViewController.solDate = manifest?.photoManifest.photos[Int(slider.value)-1].sol ?? 1
+        roverPhotos_CollectionViewController.moc = moc
         
         navigationController?.pushViewController(roverPhotos_CollectionViewController, animated: true)
     }
