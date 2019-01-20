@@ -31,6 +31,10 @@ struct PhotoManifest: Codable & Equatable {
     let totalPhotos: Int
     let photos: [PhotoInfo]
     
+    func roverDescriptionText() -> String {
+        return "Launch Date: \(launchDate)\nLanding Date: \(landingDate)\nMission Status: \(status)."
+    }
+    
     enum CodingKeys: String, CodingKey {
         case name
         case landingDate = "landing_date"

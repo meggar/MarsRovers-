@@ -9,6 +9,10 @@
 import UIKit
 
 private let reuseIdentifier = "RoverSelectorTableViewCell"
+private let fontNormal = UIFont(name: "AvenirNext-Medium", size: 20.0)
+private let fontBold = UIFont(name: "AvenirNext-Bold", size: 20.0)
+private let white = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
+private let blue = #colorLiteral(red: 0.1019607857, green: 0.2784313858, blue: 0.400000006, alpha: 1)
 
 class RoverSelector_ViewController: UIViewController {
 
@@ -20,10 +24,43 @@ class RoverSelector_ViewController: UIViewController {
     var roverPhoto_DataSource: RoverPhoto_DataSource?
     
     
+    let stack: UIStackView = {
+        let view = UIStackView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+    
+    let stackTop: UIView = {
+        let view = UIView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.backgroundColor = blue
+        return view
+    }()
+    
+    let stackBottom: UIView = {
+        let view = UIView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+    
     lazy var tableView: UITableView = {
         let view = UITableView(frame: self.view.bounds, style: .grouped)
         view.translatesAutoresizingMaskIntoConstraints = false
         view.register(UITableViewCell.self, forCellReuseIdentifier: reuseIdentifier)
+        view.backgroundColor = .clear
+        view.delegate = self
+        view.dataSource = self
+        return view
+    }()
+    
+    lazy var roverDescription: UILabel = {
+        let view = UILabel()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.numberOfLines = 0
+        view.font = fontNormal
+        view.textColor = white
+        view.backgroundColor = .clear
+        view.adjustsFontSizeToFitWidth = true
         return view
     }()
     
@@ -91,7 +128,7 @@ class RoverSelector_ViewController: UIViewController {
         view.setTitleColor(.black, for: UIControl.State.disabled)
         view.titleLabel?.adjustsFontSizeToFitWidth = true
         view.addTarget(self, action: #selector(showImages), for: .touchUpInside)
-        view.backgroundColor = #colorLiteral(red: 0.1019607857, green: 0.2784313858, blue: 0.400000006, alpha: 1)
+        view.backgroundColor = blue
         view.tintColor = .white
         view.titleLabel?.textColor = .white
         view.layer.cornerRadius = 5.0
@@ -110,6 +147,7 @@ class RoverSelector_ViewController: UIViewController {
     func updateSlider() {
         
         toggleSliderAndButton(enabled: false)
+        roverDescription.text = ""
         
         roverPhoto_DataSource?.getManifestFor(rover: roverType) { [weak self] manifest in
             
@@ -128,6 +166,7 @@ class RoverSelector_ViewController: UIViewController {
                     self?.sliderValueChanged()
                     self?.toggleSliderAndButton(enabled: true)
                     
+                    self?.roverDescription.text = manifest?.photoManifest.roverDescriptionText()
                 }
             }
         }
@@ -181,58 +220,70 @@ class RoverSelector_ViewController: UIViewController {
     }
 
     
-    
     // MARK: - UIView
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         title = "Mars Rovers"
-        tableView.backgroundColor = #colorLiteral(red: 0.1019607857, green: 0.2784313858, blue: 0.400000006, alpha: 1)
         
-        tableView.delegate = self
-        tableView.dataSource = self
-        
-        [tableView,
-         slider,
+        setupUI()
+        setupConstraints()
+    }
+    
+    private func setupUI() {
+
+        [slider,
          sliderLabelRight,
          sliderLabelLeft,
          showImagesButton,
          sliderLabelCenter,
          sliderAdustLeft,
-         sliderAdjustRight].forEach{ view.addSubview($0) }
+         sliderAdjustRight].forEach{ stackBottom.addSubview($0) }
         
         [spacer1,
-         spacer2].forEach{ view.addLayoutGuide($0) }
+         spacer2].forEach{ stackBottom.addLayoutGuide($0) }
         
-        setupConstraints()
+        [tableView, roverDescription].forEach{ stackTop.addSubview($0) }
+        
+        stack.addArrangedSubview(stackTop)
+        stack.addArrangedSubview(stackBottom)
+        view.addSubview(stack)
+        
+        stack.axis = UIDevice.current.orientation.isLandscape ? .horizontal : .vertical
     }
-    
     
     private func setupConstraints() {
         
         NSLayoutConstraint.activate([
             
             // TableView
-            tableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
-            tableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerYAnchor),
-            tableView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
-            tableView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
+            tableView.topAnchor.constraint(equalTo: stackTop.topAnchor),
+            tableView.bottomAnchor.constraint(equalTo: roverDescription.topAnchor),
+            tableView.leadingAnchor.constraint(equalTo: stackTop.leadingAnchor),
+            tableView.trailingAnchor.constraint(equalTo: stackTop.trailingAnchor),
+            
+            // Rover Description
+            roverDescription.topAnchor.constraint(equalTo: tableView.bottomAnchor),
+            roverDescription.bottomAnchor.constraint(equalTo: stackTop.bottomAnchor, constant: -20),
+            roverDescription.leadingAnchor.constraint(equalTo: stackTop.leadingAnchor, constant: 20),
+            roverDescription.trailingAnchor.constraint(equalTo: stackTop.trailingAnchor, constant: -20),
+            roverDescription.heightAnchor.constraint(equalTo: tableView.heightAnchor, multiplier: 0.6),
             
             // Slider
-            slider.topAnchor.constraint(equalTo: tableView.bottomAnchor, constant: 40),
-            slider.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 40),
-            slider.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -40),
+            slider.topAnchor.constraint(equalTo: stackBottom.topAnchor, constant: 40),
+            slider.leadingAnchor.constraint(equalTo: stackBottom.leadingAnchor, constant: 40),
+            slider.trailingAnchor.constraint(equalTo: stackBottom.trailingAnchor, constant: -40),
             
             // Slider Labels
             sliderLabelRight.heightAnchor.constraint(equalToConstant: 30),
             sliderLabelRight.topAnchor.constraint(equalTo: slider.topAnchor),
             sliderLabelRight.leadingAnchor.constraint(equalTo: slider.trailingAnchor, constant: 5),
-            sliderLabelRight.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
+            sliderLabelRight.trailingAnchor.constraint(equalTo: stackBottom.trailingAnchor),
             
             sliderLabelLeft.heightAnchor.constraint(equalTo: sliderLabelRight.heightAnchor),
             sliderLabelLeft.topAnchor.constraint(equalTo: sliderLabelRight.topAnchor),
-            sliderLabelLeft.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
+            sliderLabelLeft.leadingAnchor.constraint(equalTo: stackBottom.leadingAnchor),
             sliderLabelLeft.trailingAnchor.constraint(equalTo: slider.leadingAnchor, constant: -5),
             
             sliderLabelCenter.widthAnchor.constraint(equalTo: slider.widthAnchor, multiplier: 0.6),
@@ -255,14 +306,34 @@ class RoverSelector_ViewController: UIViewController {
             spacer1.topAnchor.constraint(equalTo: slider.bottomAnchor),
             spacer1.bottomAnchor.constraint(equalTo: showImagesButton.topAnchor),
             spacer2.topAnchor.constraint(equalTo: showImagesButton.bottomAnchor),
-            spacer2.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
+            spacer2.bottomAnchor.constraint(equalTo: stackBottom.bottomAnchor),
             spacer2.heightAnchor.constraint(equalTo: spacer1.heightAnchor),
             
             showImagesButton.widthAnchor.constraint(equalTo: slider.widthAnchor, multiplier: 0.8),
             showImagesButton.heightAnchor.constraint(equalToConstant: 100),
             showImagesButton.centerXAnchor.constraint(equalTo: slider.centerXAnchor),
-
+            
+            // Main StackView
+            stack.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            stack.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
+            stack.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
+            stack.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
+            
+            // The 2 halves of the StackView (stackTop, stackBottom),
+            // top-bottom for vertical orientation, side by side for horizontal orientation.
+            stackTop.heightAnchor.constraint(equalTo: stackBottom.heightAnchor),
+            stackTop.widthAnchor.constraint(equalTo: stackBottom.widthAnchor),
+            stackTop.leadingAnchor.constraint(equalTo: stack.leadingAnchor),
+            stackBottom.trailingAnchor.constraint(equalTo: stack.trailingAnchor),
+            stackTop.topAnchor.constraint(equalTo: stack.topAnchor),
+            stackBottom.bottomAnchor.constraint(equalTo: stack.bottomAnchor),
         ])
+    }
+    
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        super.viewWillTransition(to: size, with: coordinator)
+        
+        stack.axis = UIDevice.current.orientation.isLandscape ? .horizontal : .vertical
     }
 }
 
