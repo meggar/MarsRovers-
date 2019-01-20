@@ -129,16 +129,15 @@ class RoverPhotoDetail_ViewController: UIViewController {
         
         stack.axis = UIDevice.current.orientation.isLandscape ? .horizontal : .vertical
         
-        if let imgURLString = photo?.imgSrc,
+        if let photo = photo,
             let moc = moc {
             
-            if existsInCoreData(imgURLString: imgURLString, moc: moc) {
+            if existsInCoreData(photo: photo, moc: moc) {
                 likeButton.setTitle(Icon.like.rawValue, for: .normal)
             }else{
                 likeButton.setTitle(Icon.unlike.rawValue, for: .normal)
             }
         }
-
     }
     
     func setupConstraints() {
@@ -200,7 +199,7 @@ class RoverPhotoDetail_ViewController: UIViewController {
     @objc func toggleLikeButton() {
         
         guard let moc = moc,
-            let imgURLString = photo?.imgSrc,
+            let photo = photo,
             let iconEmoji = likeButton.titleLabel?.text
             else { return }
         
@@ -210,12 +209,12 @@ class RoverPhotoDetail_ViewController: UIViewController {
                 
             case .like:
                 
-                deleteFromCoreData(imgURLString: imgURLString, moc: moc)
+                deleteFromCoreData(photo: photo, moc: moc)
                 likeButton.setTitle(Icon.unlike.rawValue, for: .normal)
                 
             case .unlike:
                 
-                insertIntoCoreData(imgURLString: imgURLString, moc: moc)
+                insertIntoCoreData(photo: photo, moc: moc)
                 likeButton.setTitle(Icon.like.rawValue, for: .normal)
             }
         }
@@ -223,10 +222,14 @@ class RoverPhotoDetail_ViewController: UIViewController {
     
     
     // MARK: - Core Data helpers
-    func insertIntoCoreData(imgURLString: String, moc: NSManagedObjectContext) {
+    func insertIntoCoreData(photo: Photo, moc: NSManagedObjectContext) {
         do {
             let newObject = NSEntityDescription.insertNewObject(forEntityName: "FavoriteRoverImage", into: moc)
-            newObject.setValue(imgURLString, forKey: "urlString")
+            newObject.setValue(photo.imgSrc, forKey: "urlString")
+            newObject.setValue(photo.rover.name, forKey: "rover")
+            newObject.setValue(photo.earthDate, forKey: "earthDate")
+            newObject.setValue(photo.sol, forKey: "solDate")
+            newObject.setValue(photo.camera.name, forKey: "camera")
             try moc.save()
             
         }catch{
@@ -234,9 +237,9 @@ class RoverPhotoDetail_ViewController: UIViewController {
         }
     }
     
-    func existsInCoreData(imgURLString: String, moc: NSManagedObjectContext) -> Bool {
+    func existsInCoreData(photo: Photo, moc: NSManagedObjectContext) -> Bool {
         let fetchRequest:NSFetchRequest = FavoriteRoverImage.fetchRequest()
-        fetchRequest.predicate = NSPredicate(format: "urlString=='\(imgURLString)'")
+        fetchRequest.predicate = NSPredicate(format: "urlString=='\(photo.imgSrc)'")
         do {
             let count = try moc.count(for: fetchRequest)
             return count > 0
@@ -245,9 +248,9 @@ class RoverPhotoDetail_ViewController: UIViewController {
         }
     }
     
-    func deleteFromCoreData(imgURLString: String, moc: NSManagedObjectContext) {
+    func deleteFromCoreData(photo: Photo, moc: NSManagedObjectContext) {
         let fetchRequest:NSFetchRequest = FavoriteRoverImage.fetchRequest()
-        fetchRequest.predicate = NSPredicate(format: "urlString=='\(imgURLString)'")
+        fetchRequest.predicate = NSPredicate(format: "urlString=='\(photo.imgSrc)'")
         do {
             for object in try moc.fetch(fetchRequest) {
                 moc.delete(object)

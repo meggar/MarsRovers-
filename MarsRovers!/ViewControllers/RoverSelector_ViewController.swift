@@ -277,6 +277,20 @@ class RoverSelector_ViewController: UIViewController {
         view.addSubview(stack)
         
         stack.axis = UIDevice.current.orientation.isLandscape ? .horizontal : .vertical
+        
+        let leftNavBarItem = UIBarButtonItem(title: Icon.unlike.rawValue,
+                                             style: .plain,
+                                             target: self,
+                                             action: #selector(showFavoriteImages))
+        
+        navigationItem.leftBarButtonItem = leftNavBarItem
+    }
+    
+    @objc func showFavoriteImages() {
+        let favoriteImages_ViewController = FavoriteImages_ViewController()
+        favoriteImages_ViewController.moc = moc
+        favoriteImages_ViewController.roverPhoto_datasource = roverPhoto_DataSource
+        navigationController?.pushViewController(favoriteImages_ViewController, animated: true)
     }
     
     private func setupConstraints() {
