@@ -18,6 +18,25 @@ class RoverPhotoDetail_ViewController: UIViewController {
     var photo: Photo?
     var image: UIImage?
     
+    var stack: UIStackView = {
+        let view = UIStackView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+    
+    let stackTop: UIView = {
+        let view = UIView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+    
+    let stackBottom: UIView = {
+        let view = UIView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.backgroundColor = blue
+        return view
+    }()
+    
     var photoView: UIImageView = {
         let view = UIImageView()
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -51,15 +70,6 @@ class RoverPhotoDetail_ViewController: UIViewController {
         return view
     }()
     
-    var textArea: UITextView = {
-        let view = UITextView()
-        view.translatesAutoresizingMaskIntoConstraints = false
-        view.font = fontNormal
-        view.textColor = white
-        view.backgroundColor = .clear
-        return view
-    }()
-    
     var stackView: UIStackView = {
         let view = UIStackView()
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -89,31 +99,37 @@ class RoverPhotoDetail_ViewController: UIViewController {
             earthDateLabel.text = "Earth Date: \(photo.earthDate)"
             solDateLabel.text = "Sol Date: \(photo.sol)"
             cameraLabel.text = photo.camera.fullName
-            textArea.text = photo.rover.description()
         }
 
+        stackTop.addSubview(photoView)
+        
         [earthDateLabel,
          solDateLabel,
          cameraLabel].forEach{ stackView.addArrangedSubview($0) }
         
-        [photoView,
-         stackView,
-         textArea].forEach{ view.addSubview($0) }
+        stackBottom.addSubview(stackView)
+        
+        [stackTop,
+         stackBottom].forEach{ stack.addArrangedSubview($0) }
+        
+        view.addSubview(stack)
         
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Zoom",
                                                             style: .done,
                                                             target: self,
                                                             action: #selector(zoomPhoto))
+        
+        stack.axis = UIDevice.current.orientation.isLandscape ? .horizontal : .vertical
     }
     
     func setupConstraints() {
         NSLayoutConstraint.activate([
             
             // photoView
-            photoView.heightAnchor.constraint(equalTo: view.safeAreaLayoutGuide.heightAnchor, multiplier: 0.35),
-            photoView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
-            photoView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
-            photoView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            photoView.leadingAnchor.constraint(equalTo: stackTop.leadingAnchor),
+            photoView.trailingAnchor.constraint(equalTo: stackTop.trailingAnchor),
+            photoView.topAnchor.constraint(equalTo: stackTop.topAnchor),
+            photoView.bottomAnchor.constraint(equalTo: stackTop.bottomAnchor),
             
             // labels
             earthDateLabel.heightAnchor.constraint(equalToConstant: 40),
@@ -121,16 +137,31 @@ class RoverPhotoDetail_ViewController: UIViewController {
             cameraLabel.heightAnchor.constraint(equalToConstant: 40),
             
             // stackView
-            stackView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 10),
-            stackView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -10),
-            stackView.topAnchor.constraint(equalTo: photoView.bottomAnchor, constant: 10),
-        
-            // textArea
-            textArea.topAnchor.constraint(equalTo: stackView.bottomAnchor, constant: 10),
-            textArea.leadingAnchor.constraint(equalTo: stackView.leadingAnchor),
-            textArea.trailingAnchor.constraint(equalTo: stackView.trailingAnchor),
-            textArea.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
+            stackView.leadingAnchor.constraint(equalTo: stackBottom.leadingAnchor, constant: 10),
+            stackView.trailingAnchor.constraint(equalTo: stackBottom.trailingAnchor, constant: -10),
+            stackView.topAnchor.constraint(equalTo: stackBottom.topAnchor, constant: 10),
+            
+            // Main stackView
+            stack.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
+            stack.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
+            stack.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            stack.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
+            
+            // The 2 halves of the StackView (stackTop, stackBottom),
+            // top-bottom for vertical orientation, side by side for horizontal orientation.
+            stackTop.heightAnchor.constraint(equalTo: stackBottom.heightAnchor),
+            stackTop.widthAnchor.constraint(equalTo: stackBottom.widthAnchor),
+            stackTop.leadingAnchor.constraint(equalTo: stack.leadingAnchor),
+            stackBottom.trailingAnchor.constraint(equalTo: stack.trailingAnchor),
+            stackTop.topAnchor.constraint(equalTo: stack.topAnchor),
+            stackBottom.bottomAnchor.constraint(equalTo: stack.bottomAnchor),
         ])
+    }
+    
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        super.viewWillTransition(to: size, with: coordinator)
+        
+        stack.axis = UIDevice.current.orientation.isLandscape ? .horizontal : .vertical
     }
     
     // MARK: - button handler
@@ -141,5 +172,4 @@ class RoverPhotoDetail_ViewController: UIViewController {
         zoomedVIewController.modalTransitionStyle = UIModalTransitionStyle.crossDissolve
         present(zoomedVIewController, animated: true)
     }
-
 }
