@@ -16,7 +16,12 @@ class HTTPClient {
         
         let task = session.dataTask(with: request) { data, response, error in
             
-            completion(data)
+            if error == nil,
+                let response = response as? HTTPURLResponse,
+                (200...299) ~= response.statusCode {
+                
+                completion(data)
+            }
             
         }
         

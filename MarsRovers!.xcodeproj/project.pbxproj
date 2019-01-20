@@ -21,6 +21,7 @@
 		FB64EFDE21F37DF9009C0EEF /* ModelMocks.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB64EFDD21F37DF9009C0EEF /* ModelMocks.swift */; };
 		FB64EFE021F3ACFD009C0EEF /* FullScreenImage_ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB64EFDF21F3ACFD009C0EEF /* FullScreenImage_ViewController.swift */; };
 		FB64EFE321F419B6009C0EEF /* StyleExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB64EFE221F419B6009C0EEF /* StyleExtensions.swift */; };
+		FB65CC0221F4B9D200C2E870 /* TestImage.png in Resources */ = {isa = PBXBuildFile; fileRef = FB65CC0121F4B9D100C2E870 /* TestImage.png */; };
 		FB6C008221E0EF140077A637 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB6C008121E0EF140077A637 /* AppDelegate.swift */; };
 		FB6C008921E0EF290077A637 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FB6C008821E0EF290077A637 /* Assets.xcassets */; };
 		FB6C008C21E0EF290077A637 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FB6C008A21E0EF290077A637 /* LaunchScreen.storyboard */; };
@@ -75,6 +76,7 @@
 		FB64EFDD21F37DF9009C0EEF /* ModelMocks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelMocks.swift; sourceTree = "<group>"; };
 		FB64EFDF21F3ACFD009C0EEF /* FullScreenImage_ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullScreenImage_ViewController.swift; sourceTree = "<group>"; };
 		FB64EFE221F419B6009C0EEF /* StyleExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StyleExtensions.swift; sourceTree = "<group>"; };
+		FB65CC0121F4B9D100C2E870 /* TestImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = TestImage.png; sourceTree = "<group>"; };
 		FB6C007E21E0EF140077A637 /* MarsRovers!.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "MarsRovers!.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FB6C008121E0EF140077A637 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FB6C008821E0EF290077A637 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -275,6 +277,7 @@
 		FB6C00D721E198020077A637 /* FakeDataFiles */ = {
 			isa = PBXGroup;
 			children = (
+				FB65CC0121F4B9D100C2E870 /* TestImage.png */,
 				FB6C00CC21E185080077A637 /* FakeJson_CuriosityPhotos.json */,
 				FB6C00CA21E184ED0077A637 /* FakeJson_SpiritPhotos.json */,
 				FB6C00CE21E185180077A637 /* FakeJson_OpportunityPhotos.json */,
@@ -396,6 +399,7 @@
 				FB6C00B021E0F2410077A637 /* APIkeys.plist in Resources */,
 				FB6C008921E0EF290077A637 /* Assets.xcassets in Resources */,
 				FB1E46AA21E29F3B009315D9 /* FakeJson_OpportunityManifest.json in Resources */,
+				FB65CC0221F4B9D200C2E870 /* TestImage.png in Resources */,
 				FB6C00CD21E185080077A637 /* FakeJson_CuriosityPhotos.json in Resources */,
 				FB6C00CB21E184ED0077A637 /* FakeJson_SpiritPhotos.json in Resources */,
 			);

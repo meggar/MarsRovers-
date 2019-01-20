@@ -54,4 +54,12 @@ class FakeRoverPhotoAPI: RoverPhoto_DataSource {
         
     }
 
+    func getImageData(url: URL, completion: @escaping (Data?) -> ()) {
+        
+        if let fakeImageURL = Bundle.main.url(forResource: "TestImage", withExtension: "png"),
+            let data = try? Data(contentsOf: fakeImageURL) {
+            
+            completion(data)
+        }
+    }
 }

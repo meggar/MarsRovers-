@@ -65,7 +65,16 @@ class NasaRoverPhotoAPI: RoverPhoto_DataSource {
                 
             }
         }
-        
     }
 
+    func getImageData(url: URL, completion: @escaping (Data?) -> ()) {
+        
+        let request = URLRequest(url: url)
+        
+        httpClient.get(request: request) { data in
+
+            completion(data)
+
+        }
+    }
 }

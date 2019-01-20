@@ -257,19 +257,19 @@ class RoverSelector_ViewController: UIViewController {
         
         navigationItem.rightBarButtonItem = UIBarButtonItem(customView: activityIndicator)
         
+        [tableView,
+        roverDescription].forEach{ stackTop.addSubview($0) }
+        
         [slider,
          sliderLabelRight,
          sliderLabelLeft,
-         showImagesButton,
          sliderLabelCenter,
          sliderAdustLeft,
-         sliderAdjustRight].forEach{ stackBottom.addSubview($0) }
+         sliderAdjustRight,
+         showImagesButton].forEach{ stackBottom.addSubview($0) }
         
         [spacer1,
          spacer2].forEach{ stackBottom.addLayoutGuide($0) }
-        
-        [tableView,
-         roverDescription].forEach{ stackTop.addSubview($0) }
         
         stack.addArrangedSubview(stackTop)
         stack.addArrangedSubview(stackBottom)

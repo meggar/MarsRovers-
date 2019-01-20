@@ -93,7 +93,13 @@ extension RoverPhotos_CollectionViewController {
         if let imgSrc = photos?.photos[indexPath.row].imgSrc,
             let imageUrl = URL(string: imgSrc) {
             
-            cell.setImageData(url: imageUrl)
+            roverPhoto_datasource?.getImageData(url: imageUrl) { data in
+                if let data = data {
+                    DispatchQueue.main.async {
+                        cell.photoView.image = UIImage(data: data)
+                    }
+                }
+            }
         }
         
         if let cameraName = photos?.photos[indexPath.row].camera.name,
@@ -192,16 +198,6 @@ class RoverPhoto_CollectionViewCell: UICollectionViewCell {
             photoView.trailingAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.trailingAnchor)
             
             ])
-    }
-    
-    func setImageData(url: URL) {
-        DispatchQueue.global(qos: .userInitiated).async {
-            if let data = try? Data(contentsOf: url) {
-                DispatchQueue.main.async { [weak self] in
-                    self?.photoView.image = UIImage(data: data)
-                }
-            }
-        }
     }
     
     override func prepareForReuse() {
