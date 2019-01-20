@@ -49,6 +49,7 @@ class RoverSelector_ViewController: UIViewController {
         view.translatesAutoresizingMaskIntoConstraints = false
         view.register(UITableViewCell.self, forCellReuseIdentifier: reuseIdentifier)
         view.backgroundColor = .clear
+        view.isScrollEnabled = false
         view.delegate = self
         view.dataSource = self
         return view
