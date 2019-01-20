@@ -243,7 +243,11 @@ class RoverSelector_ViewController: UIViewController {
     }
     
     private func setupUI() {
-
+        
+        if let font = fontBold {
+            navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.font: font]
+        }
+        
         [slider,
          sliderLabelRight,
          sliderLabelLeft,
