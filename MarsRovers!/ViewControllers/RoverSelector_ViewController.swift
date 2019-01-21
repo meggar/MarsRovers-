@@ -50,6 +50,7 @@ class RoverSelector_ViewController: UIViewController {
     lazy var tableView: UITableView = {
         let view = UITableView(frame: self.view.bounds, style: .grouped)
         view.translatesAutoresizingMaskIntoConstraints = false
+        view.accessibilityIdentifier = AccessibilityIdentifier.roverSelectorTable.rawValue
         view.register(UITableViewCell.self, forCellReuseIdentifier: reuseIdentifier)
         view.backgroundColor = .clear
         view.isScrollEnabled = false
@@ -72,6 +73,7 @@ class RoverSelector_ViewController: UIViewController {
     let slider: UISlider = {
         let view = UISlider()
         view.translatesAutoresizingMaskIntoConstraints = false
+        view.accessibilityIdentifier = AccessibilityIdentifier.roverSelectorSlider.rawValue
         view.addTarget(self, action: #selector(sliderValueChanged), for: .valueChanged)
         view.thumbTintColor = .appWhite
         view.minimumTrackTintColor = .appBlue
@@ -83,6 +85,7 @@ class RoverSelector_ViewController: UIViewController {
     let sliderLabelLeft: UILabel = {
         let view = UILabel()
         view.translatesAutoresizingMaskIntoConstraints = false
+        view.accessibilityIdentifier = AccessibilityIdentifier.roverSelectorMinSliderLabel.rawValue
         view.adjustsFontSizeToFitWidth = true
         view.textColor = .appWhite
         view.font = .appFontSmall
@@ -93,6 +96,7 @@ class RoverSelector_ViewController: UIViewController {
     let sliderLabelRight: UILabel = {
         let view = UILabel()
         view.translatesAutoresizingMaskIntoConstraints = false
+        view.accessibilityIdentifier = AccessibilityIdentifier.roverSelectorMaxSliderLabel.rawValue
         view.adjustsFontSizeToFitWidth = true
         view.textColor = .appWhite
         view.font = .appFontSmall
@@ -103,6 +107,7 @@ class RoverSelector_ViewController: UIViewController {
     let sliderLabelCenter: UILabel = {
         let view = UILabel()
         view.translatesAutoresizingMaskIntoConstraints = false
+        view.accessibilityIdentifier = AccessibilityIdentifier.roverSelectorSelectedDate.rawValue
         view.adjustsFontSizeToFitWidth = true
         view.textColor = .appWhite
         view.font = .appFontSmall
@@ -114,6 +119,7 @@ class RoverSelector_ViewController: UIViewController {
     let sliderAdustLeft: UIButton = {
         let view = UIButton(type: .roundedRect)
         view.translatesAutoresizingMaskIntoConstraints = false
+        view.accessibilityIdentifier = AccessibilityIdentifier.roverSelectorDecrementDate.rawValue
         view.backgroundColor = .clear
         view.setTitle("⇦", for: .normal)
         view.tintColor = .appBlue
@@ -125,6 +131,7 @@ class RoverSelector_ViewController: UIViewController {
     let sliderAdjustRight: UIButton = {
         let view = UIButton(type: .roundedRect)
         view.translatesAutoresizingMaskIntoConstraints = false
+        view.accessibilityIdentifier = AccessibilityIdentifier.roverSelectorIncrementDate.rawValue
         view.backgroundColor = .clear
         view.setTitle("⇨", for: .normal)
         view.tintColor = .appBlue
@@ -136,6 +143,7 @@ class RoverSelector_ViewController: UIViewController {
     let showImagesButton: UIButton = {
         let view = UIButton(type: UIButton.ButtonType.roundedRect)
         view.translatesAutoresizingMaskIntoConstraints = false
+        view.accessibilityIdentifier = AccessibilityIdentifier.RoverSelectorShowImagesButton.rawValue
         view.setTitle("Show Mars Images!", for: .normal)
         view.setTitleColor(.appWhite, for: .normal)
         view.setTitleColor(.appBlue, for: UIControl.State.disabled)
@@ -289,6 +297,7 @@ class RoverSelector_ViewController: UIViewController {
                                              action: #selector(showFavoriteImages))
         
         navigationItem.leftBarButtonItem = leftNavBarItem
+        navigationItem.leftBarButtonItem?.accessibilityIdentifier = AccessibilityIdentifier.RoverSelectorFavoritesButton.rawValue
     }
     
     @objc func showFavoriteImages() {

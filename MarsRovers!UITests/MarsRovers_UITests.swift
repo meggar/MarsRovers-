@@ -8,27 +8,180 @@
 
 import XCTest
 
-class MarsRovers_UITests: XCTestCase {
+class RoverSelector_UITests: XCTestCase {
 
     override func setUp() {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
-
-        // In UI tests it is usually best to stop immediately when a failure occurs.
         continueAfterFailure = false
-
-        // UI tests must launch the application that they test. Doing this in setup will make sure it happens for each test method.
         XCUIApplication().launch()
-
-        // In UI tests it’s important to set the initial state - such as interface orientation - required for your tests before they run. The setUp method is a good place to do this.
     }
 
-    override func tearDown() {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
-    }
+    
+    /*
+     Tap the first row in the table.
+     verify that there are min/max values in the labels to the left and right of the slider.
+     verify that the label above the slider inits to "Sol Date: \(x)", where x is the min slider value.
+     tap the increment button, the label above the slider should increment by one.
+     tap the decrement button, the label should revert to previous value.
+     tap the decrement button, the label should not change.
+     slide the slider all the way to the right.
+     tap the decrement button, the label above the slider should decrement by one.
+     tap the increment button, the label should revert to previous value.
+     tap the increment button, the label should not change.
+    */
+    func testSliderAdjustingButtons() {
+        
+        let app = XCUIApplication()
 
-    func testExample() {
-        // Use recording to get started writing UI tests.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-    }
+        let table = app.tables[AccessibilityIdentifier.roverSelectorTable.rawValue]
+        let selectedDate = app.staticTexts[AccessibilityIdentifier.roverSelectorSelectedDate.rawValue]
+        let increment = app.buttons[AccessibilityIdentifier.roverSelectorIncrementDate.rawValue]
+        let decrement = app.buttons[AccessibilityIdentifier.roverSelectorDecrementDate.rawValue]
+        let slider = app.sliders[AccessibilityIdentifier.roverSelectorSlider.rawValue]
+        let min = app.staticTexts[AccessibilityIdentifier.roverSelectorMinSliderLabel.rawValue]
+        let max = app.staticTexts[AccessibilityIdentifier.roverSelectorMaxSliderLabel.rawValue]
+        
+        [table,
+         selectedDate,
+         increment,
+         decrement,
+         slider,
+         min,
+         max].forEach{ element in XCTAssertTrue(element.exists) }
+        
+        // select the first row in the table
+        table.cells.element(boundBy: 0).tap()
+        
+        // wait until there is data in the labels
+        UITestHelpers.check(element: min, expectedText: "label != ''")
+        
+        guard let minValue = Int(min.label),
+               let maxValue = Int(max.label) else { XCTFail(); return }
+        
+        // verify labels
+        UITestHelpers.check(element: selectedDate, expectedText: "label == 'Sol Date: \( minValue )'")
+        UITestHelpers.check(element: min, expectedText: "label == '\( minValue )'")
+        
+        // increment once, verify labels
+        increment.tap()
+        UITestHelpers.check(element: selectedDate, expectedText: "label == 'Sol Date: \( minValue + 1 )'")
 
+        // decrement once, verify labels
+        decrement.tap()
+        UITestHelpers.check(element: selectedDate, expectedText: "label == 'Sol Date: \( minValue )'")
+        
+        // decrementing when slider is all the way left should have no effect.
+        decrement.tap()
+        UITestHelpers.check(element: selectedDate, expectedText: "label == 'Sol Date: \( minValue )'")
+        
+        
+        
+        // move the slider all the way to the right
+        slider.adjust(toNormalizedSliderPosition: 1.0)
+        
+        UITestHelpers.check(element: selectedDate, expectedText: "label == 'Sol Date: \( maxValue )'")
+        UITestHelpers.check(element: max, expectedText: "label == '\( maxValue )'")
+        
+        // decrement once, verify labels
+        decrement.tap()
+        UITestHelpers.check(element: selectedDate, expectedText: "label == 'Sol Date: \( maxValue - 1 )'")
+        
+        // increment once, verify labels
+        increment.tap()
+        UITestHelpers.check(element: selectedDate, expectedText: "label == 'Sol Date: \( maxValue )'")
+
+        // incrementing when slider is all the way right should have no effect.
+        increment.tap()
+        UITestHelpers.check(element: selectedDate, expectedText: "label == 'Sol Date: \( maxValue )'")
+    }
+    
+    
+    /*
+     tap the first row in the table.
+     tap the showImages button.
+     this should push a CollectionViewController onto the stack.
+     verify that the navBar now has a new title (a rover name)
+     tap the left nav button to go back to the rover selector screen.
+     verify that the navBar now has the original title (Mars Rovers)
+    */
+    func testShowImagesButton() {
+        
+        let app = XCUIApplication()
+        
+        let table = app.tables[AccessibilityIdentifier.roverSelectorTable.rawValue]
+        let min = app.staticTexts[AccessibilityIdentifier.roverSelectorMinSliderLabel.rawValue]
+        let showImages = app.buttons[AccessibilityIdentifier.RoverSelectorShowImagesButton.rawValue]
+        
+        [table,
+         min,
+         showImages,
+         table.cells.staticTexts["Curiosity"]].forEach{ element in XCTAssertTrue(element.exists) }
+
+        
+        // initial state: nav title should be Mars Rovers
+        XCTAssertTrue(app.navigationBars["Mars Rovers"].exists)
+        XCTAssertFalse(app.navigationBars["Curiosity"].exists)
+        
+        // tap the "Curiosity" cell in the table
+        table.cells.staticTexts["Curiosity"].tap()
+        
+        // wait until there is data in the labels
+        UITestHelpers.check(element: min, expectedText: "label != ''")
+        
+        // tap button to transition to Curiosity ViewController
+        showImages.tap()
+        
+        // nav title should be Curiosity
+        XCTAssertTrue(app.navigationBars["Curiosity"].exists)
+        XCTAssertFalse(app.navigationBars["Mars Rovers"].exists)
+        
+        let curiosityNavigationBar = app.navigationBars["Curiosity"]
+        
+        // tap back button (if exists) to return to Mars Rovers view
+        XCTAssertTrue(curiosityNavigationBar.buttons["Mars Rovers"].exists)
+        curiosityNavigationBar.buttons["Mars Rovers"].tap()
+        
+        // nav title should be Mars Rovers
+        XCTAssertTrue(app.navigationBars["Mars Rovers"].exists)
+        XCTAssertFalse(app.navigationBars["Curiosity"].exists)
+    }
+    
+    /*
+     tap the Favorites button, navBar-left.
+     this should push a CollectionViewController onto the stack.
+     verify that the navBar now has a new title (Favorite Images)
+     tap the left nav button to go back to the rover selector screen.
+     verify that the navBar now has the original title (Mars Rovers)
+     */
+    func testShowFavoritesButton() {
+        
+        let app = XCUIApplication()
+        
+        let table = app.tables[AccessibilityIdentifier.roverSelectorTable.rawValue]
+        let min = app.staticTexts[AccessibilityIdentifier.roverSelectorMinSliderLabel.rawValue]
+        let showFavorites = app.buttons[AccessibilityIdentifier.RoverSelectorFavoritesButton.rawValue]
+        
+        [table,
+         min,
+         showFavorites].forEach{ element in XCTAssertTrue(element.exists) }
+        
+        
+        // initial state: nav title should be Mars Rovers
+        XCTAssertTrue(app.navigationBars["Mars Rovers"].exists)
+        XCTAssertFalse(app.navigationBars["Favorite Images"].exists)
+        
+        // tap the Favorites button, navBar-left
+        showFavorites.tap()
+
+        
+        // nav title should be Favorite Images
+        XCTAssertTrue(app.navigationBars["Favorite Images"].exists)
+        XCTAssertFalse(app.navigationBars["Mars Rovers"].exists)
+        
+        // tap back button (if exists) to return to Mars Rovers view
+        app.navigationBars["Favorite Images"].buttons.element(boundBy: 0).tap()
+        
+        // nav title should be Mars Rovers
+        XCTAssertTrue(app.navigationBars["Mars Rovers"].exists)
+        XCTAssertFalse(app.navigationBars["Favorite Images"].exists)
+    }
 }
