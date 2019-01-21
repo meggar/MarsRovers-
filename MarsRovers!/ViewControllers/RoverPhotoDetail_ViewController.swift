@@ -66,6 +66,7 @@ class RoverPhotoDetail_ViewController: UIViewController {
         view.font = .appFontBold
         view.textColor = .appWhite
         view.adjustsFontSizeToFitWidth = true
+        view.numberOfLines = 0
         return view
     }()
     
@@ -101,13 +102,16 @@ class RoverPhotoDetail_ViewController: UIViewController {
         
         photoView.image = image
 
-        if let earthDate = photo?.photoEarthDate,
-            let solDate = photo?.photoSolDate,
-            let cameraFullName = photo?.photoCameraFullName {
-
+        if let earthDate = photo?.photoEarthDate {
             earthDateLabel.text = "Earth Date: \(earthDate)"
+        }
+        if let solDate = photo?.photoSolDate {
             solDateLabel.text = "Sol Date: \(solDate)"
-            cameraLabel.text = cameraFullName
+        }
+        if let cameraFullName = photo?.photoCameraFullName,
+            let rover = photo?.photoRover {
+            
+            cameraLabel.text = "\(rover), \(cameraFullName)"
         }
 
         stackTop.addSubview(photoView)
@@ -154,7 +158,7 @@ class RoverPhotoDetail_ViewController: UIViewController {
             // labels
             earthDateLabel.heightAnchor.constraint(equalToConstant: 40),
             solDateLabel.heightAnchor.constraint(equalToConstant: 40),
-            cameraLabel.heightAnchor.constraint(equalToConstant: 40),
+            cameraLabel.heightAnchor.constraint(equalToConstant: 80),
             
             // stackView
             stackView.leadingAnchor.constraint(equalTo: stackBottom.leadingAnchor, constant: 10),
@@ -231,6 +235,7 @@ class RoverPhotoDetail_ViewController: UIViewController {
             newObject.setValue(photo.photoEarthDate, forKey: "earthDate")
             newObject.setValue(photo.photoSolDate, forKey: "solDate")
             newObject.setValue(photo.photoCameraName, forKey: "camera")
+            newObject.setValue(photo.photoCameraFullName, forKey: "cameraFullname")
             
             try moc.save()
             

@@ -15,7 +15,7 @@ extension FavoriteRoverImage: PhotoDetailProtocol {
     
     var photoURLString: String? { return urlString }
     var photoCameraName: String? { return camera }
-    var photoCameraFullName: String? { return camera }
+    var photoCameraFullName: String? { return cameraFullname }
     var photoRover: String? { return rover }
     var photoEarthDate: String? { return earthDate }
     var photoSolDate: Int? { return Int(solDate) }
