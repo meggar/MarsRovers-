@@ -16,6 +16,7 @@
 		FB1E46A621E29F09009315D9 /* FakeJson_CuriosityManifest.json in Resources */ = {isa = PBXBuildFile; fileRef = FB1E46A521E29F09009315D9 /* FakeJson_CuriosityManifest.json */; };
 		FB1E46A821E29F1F009315D9 /* FakeJson_SpiritManifest.json in Resources */ = {isa = PBXBuildFile; fileRef = FB1E46A721E29F1F009315D9 /* FakeJson_SpiritManifest.json */; };
 		FB1E46AA21E29F3B009315D9 /* FakeJson_OpportunityManifest.json in Resources */ = {isa = PBXBuildFile; fileRef = FB1E46A921E29F3B009315D9 /* FakeJson_OpportunityManifest.json */; };
+		FB532AC021F607760028420D /* CoreDataModel_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB532ABF21F607760028420D /* CoreDataModel_Tests.swift */; };
 		FB64EFD821F37461009C0EEF /* NasaRoverPhotoAPI_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB64EFD721F37461009C0EEF /* NasaRoverPhotoAPI_Tests.swift */; };
 		FB64EFDA21F37919009C0EEF /* FakeRoverPhotoAPI_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB64EFD921F37919009C0EEF /* FakeRoverPhotoAPI_Tests.swift */; };
 		FB64EFDE21F37DF9009C0EEF /* ModelMocks.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB64EFDD21F37DF9009C0EEF /* ModelMocks.swift */; };
@@ -75,6 +76,7 @@
 		FB1E46A521E29F09009315D9 /* FakeJson_CuriosityManifest.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = FakeJson_CuriosityManifest.json; sourceTree = "<group>"; };
 		FB1E46A721E29F1F009315D9 /* FakeJson_SpiritManifest.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = FakeJson_SpiritManifest.json; sourceTree = "<group>"; };
 		FB1E46A921E29F3B009315D9 /* FakeJson_OpportunityManifest.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = FakeJson_OpportunityManifest.json; sourceTree = "<group>"; };
+		FB532ABF21F607760028420D /* CoreDataModel_Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataModel_Tests.swift; sourceTree = "<group>"; };
 		FB64EFD721F37461009C0EEF /* NasaRoverPhotoAPI_Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NasaRoverPhotoAPI_Tests.swift; sourceTree = "<group>"; };
 		FB64EFD921F37919009C0EEF /* FakeRoverPhotoAPI_Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeRoverPhotoAPI_Tests.swift; sourceTree = "<group>"; };
 		FB64EFDD21F37DF9009C0EEF /* ModelMocks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelMocks.swift; sourceTree = "<group>"; };
@@ -248,6 +250,7 @@
 			children = (
 				FB6C00B521E0F5F60077A637 /* Photos_Tests.swift */,
 				FB1E46A321E29A6D009315D9 /* RoverManifest_Tests.swift */,
+				FB532ABF21F607760028420D /* CoreDataModel_Tests.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -465,6 +468,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FB1E46A421E29A6D009315D9 /* RoverManifest_Tests.swift in Sources */,
+				FB532AC021F607760028420D /* CoreDataModel_Tests.swift in Sources */,
 				FB64EFDE21F37DF9009C0EEF /* ModelMocks.swift in Sources */,
 				FB6C00D621E18FA90077A637 /* DataSourceHelpers_Tests.swift in Sources */,
 				FB6C00B621E0F5F60077A637 /* Photos_Tests.swift in Sources */,

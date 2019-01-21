@@ -181,7 +181,7 @@ class RoverSelector_ViewController: UIViewController {
                     self?.slider.maximumValue = Float(photos.count)
                     self?.slider.minimumValue = Float(1.0)
                     self?.slider.setValue(lastSelectedDate, animated: false)
-                    self?.sliderValueChanged()
+                    self?.slider.sendActions(for: .valueChanged)
                     self?.toggleSliderAndButton(enabled: true)
                     
                     self?.roverDescription.text = manifest?.photoManifest.roverDescriptionText()
@@ -219,13 +219,13 @@ class RoverSelector_ViewController: UIViewController {
     @objc func incrementSliderValue() {
         let newValue = min(slider.value + 1.0, slider.maximumValue)
         slider.setValue(newValue, animated: true)
-        sliderValueChanged()
+        slider.sendActions(for: .valueChanged)
     }
     
     @objc func decrementSliderValue() {
         let newValue = max(slider.value - 1.0, slider.minimumValue)
         slider.setValue(newValue, animated: true)
-        sliderValueChanged()
+        slider.sendActions(for: .valueChanged)
     }
     
     // MARK: - Button actions
