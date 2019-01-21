@@ -31,7 +31,6 @@ class FakeRoverPhotoAPI: RoverPhoto_DataSource {
         }else{
             completion(nil)
         }
-        
     }
     
     func getManifestFor(rover: RoverType, completion: @escaping (RoverManifest?) -> ()) {
@@ -51,7 +50,6 @@ class FakeRoverPhotoAPI: RoverPhoto_DataSource {
         }else{
             completion(nil)
         }
-        
     }
 
     func getImageData(url: URL, completion: @escaping (Data?) -> ()) {

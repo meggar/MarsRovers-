@@ -20,6 +20,7 @@ class RoverSelector_ViewController: UIViewController {
     var manifest: RoverManifest?
     var roverType: RoverType = .curiosity
     var roverPhoto_DataSource: RoverPhoto_DataSource?
+    var lastSelectedSolDate:[RoverType: Float] = [.curiosity: 0.0, .opportunity: 0.0, .spirit: 0.0]
     
     let activityIndicator: UIActivityIndicatorView = {
         let view = UIActivityIndicatorView(style: .gray)
@@ -169,14 +170,17 @@ class RoverSelector_ViewController: UIViewController {
             
             DispatchQueue.main.async {
                 if let firstDate = manifest?.firstSolDate,
-                    let lastDate = manifest?.lastSolDate {
+                    let lastDate = manifest?.lastSolDate,
+                    let photos = manifest?.photoManifest.photos,
+                    let roverType = self?.roverType,
+                    let lastSelectedDate = self?.lastSelectedSolDate[roverType] {
                     
                     self?.sliderLabelLeft.text = "\(firstDate)"
                     self?.sliderLabelRight.text = "\(lastDate)"
                     
-                    self?.slider.maximumValue = Float(manifest?.photoManifest.photos.count ?? 0)
-                    self?.slider.minimumValue = Float(1)
-                
+                    self?.slider.maximumValue = Float(photos.count)
+                    self?.slider.minimumValue = Float(1.0)
+                    self?.slider.setValue(lastSelectedDate, animated: false)
                     self?.sliderValueChanged()
                     self?.toggleSliderAndButton(enabled: true)
                     
@@ -195,6 +199,7 @@ class RoverSelector_ViewController: UIViewController {
          else { return }
         
         sliderLabelCenter.text = "Sol Date: \(solDate)"
+        lastSelectedSolDate[roverType] = slider.value
     }
     
     private func toggleSliderAndButton(enabled: Bool) {
@@ -398,7 +403,6 @@ extension RoverSelector_ViewController: UITableViewDataSource{
         
         return cell
     }
-    
 }
 
 

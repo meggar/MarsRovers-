@@ -47,7 +47,6 @@ class NasaRoverPhotoAPI: RoverPhoto_DataSource {
                 
             }
         }
-        
     }
     
     

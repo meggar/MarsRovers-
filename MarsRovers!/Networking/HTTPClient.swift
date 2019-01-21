@@ -31,5 +31,4 @@ class HTTPClient {
     init(session: URLSessionProtocol = URLSession.shared) {
         self.session = session
     }
-    
 }

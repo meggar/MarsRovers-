@@ -37,7 +37,6 @@ class RoverPhotos_CollectionViewController: UICollectionViewController, UICollec
                 self?.collectionView.reloadData()
             }
         }
-        
     }
     
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
@@ -54,7 +53,6 @@ class RoverPhotos_CollectionViewController: UICollectionViewController, UICollec
     override init(collectionViewLayout layout: UICollectionViewLayout) {
         
         super.init(collectionViewLayout: layout)
-        
     }
     
     convenience init(withRover roverType: RoverType) {
@@ -72,7 +70,6 @@ class RoverPhotos_CollectionViewController: UICollectionViewController, UICollec
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented for RoverPhotos_CollectionViewController")
     }
-
 }
 
 // MARK: - UICollectionViewDataSource
@@ -131,7 +128,6 @@ extension RoverPhotos_CollectionViewController {
         }
         navigationController?.pushViewController(detailViewController, animated: true)
     }
-
 }
 
 
@@ -155,7 +151,6 @@ extension RoverPhotos_CollectionViewController {
         
         return CGSize(width: side, height: side)
     }
-    
 }
 
 

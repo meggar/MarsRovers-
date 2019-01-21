@@ -15,5 +15,4 @@ protocol RoverPhoto_DataSource {
     func getManifestFor(rover: RoverType, completion: @escaping (RoverManifest?) -> ())
     
     func getImageData(url: URL, completion: @escaping (Data?) -> ())
-    
 }

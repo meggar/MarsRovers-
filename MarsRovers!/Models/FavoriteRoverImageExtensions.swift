@@ -19,5 +19,4 @@ extension FavoriteRoverImage: PhotoDetailProtocol {
     var photoRover: String? { return rover }
     var photoEarthDate: String? { return earthDate }
     var photoSolDate: Int? { return Int(solDate) }
-    
 }
