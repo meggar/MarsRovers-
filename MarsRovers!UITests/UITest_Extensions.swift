@@ -8,15 +8,14 @@
 
 import XCTest
 
-struct UITestHelpers {
+extension XCTestCase {
     
-    static func check(element: XCUIElement, expectedText: String) {
-    
-        let predicate = NSPredicate(format: expectedText)
+    func verify(element: XCUIElement, hasText text: String) {
+        
+        let predicate = NSPredicate(format: text)
         let expectation = XCTNSPredicateExpectation(predicate: predicate, object: element)
         let result = XCTWaiter().wait(for: [expectation], timeout: 5)
-    
-        XCTAssertEqual(result, .completed, "\(element.identifier) != \(expectedText)")
+        
+        XCTAssertEqual(result, .completed, "\(element.identifier) != \(text)")
     }
 }
-

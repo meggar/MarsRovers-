@@ -52,46 +52,46 @@ class RoverSelector_UITests: XCTestCase {
         table.cells.element(boundBy: 0).tap()
         
         // wait until there is data in the labels
-        UITestHelpers.check(element: min, expectedText: "label != ''")
+        verify(element: min, hasText: "label != ''")
         
         guard let minValue = Int(min.label),
                let maxValue = Int(max.label) else { XCTFail(); return }
         
         // verify labels
-        UITestHelpers.check(element: selectedDate, expectedText: "label == 'Sol Date: \( minValue )'")
-        UITestHelpers.check(element: min, expectedText: "label == '\( minValue )'")
+        verify(element: selectedDate, hasText: "label == 'Sol Date: \( minValue )'")
+        verify(element: min, hasText: "label == '\( minValue )'")
         
         // increment once, verify labels
         increment.tap()
-        UITestHelpers.check(element: selectedDate, expectedText: "label == 'Sol Date: \( minValue + 1 )'")
+        verify(element: selectedDate, hasText: "label == 'Sol Date: \( minValue + 1 )'")
 
         // decrement once, verify labels
         decrement.tap()
-        UITestHelpers.check(element: selectedDate, expectedText: "label == 'Sol Date: \( minValue )'")
+        verify(element: selectedDate, hasText: "label == 'Sol Date: \( minValue )'")
         
         // decrementing when slider is all the way left should have no effect.
         decrement.tap()
-        UITestHelpers.check(element: selectedDate, expectedText: "label == 'Sol Date: \( minValue )'")
+        verify(element: selectedDate, hasText: "label == 'Sol Date: \( minValue )'")
         
         
         
         // move the slider all the way to the right
         slider.adjust(toNormalizedSliderPosition: 1.0)
         
-        UITestHelpers.check(element: selectedDate, expectedText: "label == 'Sol Date: \( maxValue )'")
-        UITestHelpers.check(element: max, expectedText: "label == '\( maxValue )'")
+        verify(element: selectedDate, hasText: "label == 'Sol Date: \( maxValue )'")
+        verify(element: max, hasText: "label == '\( maxValue )'")
         
         // decrement once, verify labels
         decrement.tap()
-        UITestHelpers.check(element: selectedDate, expectedText: "label == 'Sol Date: \( maxValue - 1 )'")
+        verify(element: selectedDate, hasText: "label == 'Sol Date: \( maxValue - 1 )'")
         
         // increment once, verify labels
         increment.tap()
-        UITestHelpers.check(element: selectedDate, expectedText: "label == 'Sol Date: \( maxValue )'")
+        verify(element: selectedDate, hasText: "label == 'Sol Date: \( maxValue )'")
 
         // incrementing when slider is all the way right should have no effect.
         increment.tap()
-        UITestHelpers.check(element: selectedDate, expectedText: "label == 'Sol Date: \( maxValue )'")
+        verify(element: selectedDate, hasText: "label == 'Sol Date: \( maxValue )'")
     }
     
     
@@ -125,7 +125,7 @@ class RoverSelector_UITests: XCTestCase {
         table.cells.staticTexts["Curiosity"].tap()
         
         // wait until there is data in the labels
-        UITestHelpers.check(element: min, expectedText: "label != ''")
+        verify(element: min, hasText: "label != ''")
         
         // tap button to transition to Curiosity ViewController
         showImages.tap()
