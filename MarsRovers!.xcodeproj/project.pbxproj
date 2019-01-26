@@ -27,7 +27,7 @@
 		FB64EFE321F419B6009C0EEF /* AppStyles.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB64EFE221F419B6009C0EEF /* AppStyles.swift */; };
 		FB65CC0221F4B9D200C2E870 /* TestImage.png in Resources */ = {isa = PBXBuildFile; fileRef = FB65CC0121F4B9D100C2E870 /* TestImage.png */; };
 		FB65CC4221F4EBA000C2E870 /* FavoriteImageModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = FB65CC4021F4EBA000C2E870 /* FavoriteImageModel.xcdatamodeld */; };
-		FB65CC4421F50A4000C2E870 /* FavoriteImages_ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB65CC4321F50A4000C2E870 /* FavoriteImages_ViewController.swift */; };
+		FB65CC4421F50A4000C2E870 /* FavoriteImages_CollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB65CC4321F50A4000C2E870 /* FavoriteImages_CollectionViewController.swift */; };
 		FB65CC4621F537E100C2E870 /* PhotoDetailProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB65CC4521F537E100C2E870 /* PhotoDetailProtocol.swift */; };
 		FB65CC4821F5385D00C2E870 /* FavoriteRoverImageExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB65CC4721F5385D00C2E870 /* FavoriteRoverImageExtensions.swift */; };
 		FB6C008221E0EF140077A637 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB6C008121E0EF140077A637 /* AppDelegate.swift */; };
@@ -89,7 +89,7 @@
 		FB64EFE221F419B6009C0EEF /* AppStyles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStyles.swift; sourceTree = "<group>"; };
 		FB65CC0121F4B9D100C2E870 /* TestImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = TestImage.png; sourceTree = "<group>"; };
 		FB65CC4121F4EBA000C2E870 /* FavoriteImageModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = FavoriteImageModel.xcdatamodel; sourceTree = "<group>"; };
-		FB65CC4321F50A4000C2E870 /* FavoriteImages_ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteImages_ViewController.swift; sourceTree = "<group>"; };
+		FB65CC4321F50A4000C2E870 /* FavoriteImages_CollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteImages_CollectionViewController.swift; sourceTree = "<group>"; };
 		FB65CC4521F537E100C2E870 /* PhotoDetailProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoDetailProtocol.swift; sourceTree = "<group>"; };
 		FB65CC4721F5385D00C2E870 /* FavoriteRoverImageExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteRoverImageExtensions.swift; sourceTree = "<group>"; };
 		FB6C007E21E0EF140077A637 /* MarsRovers!.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "MarsRovers!.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -277,7 +277,7 @@
 				FB6C00C421E113BE0077A637 /* RoverSelector_ViewController.swift */,
 				FB6C00C621E15C8D0077A637 /* RoverPhotoDetail_ViewController.swift */,
 				FB64EFDF21F3ACFD009C0EEF /* FullScreenImage_ViewController.swift */,
-				FB65CC4321F50A4000C2E870 /* FavoriteImages_ViewController.swift */,
+				FB65CC4321F50A4000C2E870 /* FavoriteImages_CollectionViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -456,7 +456,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FB65CC4421F50A4000C2E870 /* FavoriteImages_ViewController.swift in Sources */,
+				FB65CC4421F50A4000C2E870 /* FavoriteImages_CollectionViewController.swift in Sources */,
 				FB1E469B21E253C5009315D9 /* URLSessionExtenstions.swift in Sources */,
 				FB65CC4821F5385D00C2E870 /* FavoriteRoverImageExtensions.swift in Sources */,
 				FB6C00B321E0F5100077A637 /* Photos.swift in Sources */,

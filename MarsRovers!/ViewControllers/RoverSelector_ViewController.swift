@@ -269,6 +269,7 @@ class RoverSelector_ViewController: UIViewController {
             navigationItem.leftBarButtonItem?.setTitleTextAttributes([NSAttributedString.Key.font: font], for: .normal)
         }
         
+        navigationController?.navigationBar.tintColor = UIColor.appBlue
         navigationItem.rightBarButtonItem = UIBarButtonItem(customView: activityIndicator)
         
         [tableView,
@@ -301,7 +302,7 @@ class RoverSelector_ViewController: UIViewController {
     }
     
     @objc func showFavoriteImages() {
-        let favoriteImages_ViewController = FavoriteImages_ViewController()
+        let favoriteImages_ViewController = FavoriteImages_CollectionViewController()
         favoriteImages_ViewController.moc = moc
         favoriteImages_ViewController.roverPhoto_datasource = roverPhoto_DataSource
         navigationController?.pushViewController(favoriteImages_ViewController, animated: true)

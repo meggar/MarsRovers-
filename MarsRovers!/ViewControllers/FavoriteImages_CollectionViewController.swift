@@ -12,7 +12,7 @@ import CoreData
 private let reuseIdentifier = "FavoritesCollectionViewCell"
 
 
-class FavoriteImages_ViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
+class FavoriteImages_CollectionViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
 
     var moc: NSManagedObjectContext?
     
@@ -85,7 +85,7 @@ class FavoriteImages_ViewController: UICollectionViewController, UICollectionVie
 
 // MARK: - UICollectionViewDataSource
 
-extension FavoriteImages_ViewController {
+extension FavoriteImages_CollectionViewController {
     
     
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
@@ -126,7 +126,7 @@ extension FavoriteImages_ViewController {
 
 // MARK: - UICollectionViewDelegate
 
-extension FavoriteImages_ViewController {
+extension FavoriteImages_CollectionViewController {
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
 
@@ -145,7 +145,7 @@ extension FavoriteImages_ViewController {
 
 // MARK: - UICollectionViewDelegateFlowLayout
 
-extension FavoriteImages_ViewController {
+extension FavoriteImages_CollectionViewController {
     
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
@@ -173,6 +173,10 @@ class FavoriteImages_CollectionViewCell: UICollectionViewCell {
     let photoView: UIImageView = {
         let view = UIImageView()
         view.translatesAutoresizingMaskIntoConstraints = false
+        view.layer.cornerRadius = 10
+        view.layer.borderWidth = 1.0
+        view.layer.borderColor = UIColor.appBlue.cgColor
+        view.layer.masksToBounds = true
         return view
     }()
     
