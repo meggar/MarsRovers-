@@ -162,6 +162,10 @@ class RoverPhoto_CollectionViewCell: UICollectionViewCell {
     let photoView: UIImageView = {
         let view = UIImageView()
         view.translatesAutoresizingMaskIntoConstraints = false
+        view.layer.cornerRadius = 10
+        view.layer.borderWidth = 1.0
+        view.layer.borderColor = UIColor.appBlue.cgColor
+        view.layer.masksToBounds = true
         return view
     }()
     
