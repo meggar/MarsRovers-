@@ -42,7 +42,9 @@ class NasaRoverPhotoAPI: RoverPhoto_DataSource {
             httpClient.get(request: request) { data in
                 
                 if let data = data {
-                    completion(try? JSONDecoder().decode(Photos.self, from: data))
+                    let decoder = JSONDecoder()
+                    decoder.keyDecodingStrategy = .convertFromSnakeCase
+                    completion(try? decoder.decode(Photos.self, from: data))
                 }
                 
             }
@@ -63,7 +65,9 @@ class NasaRoverPhotoAPI: RoverPhoto_DataSource {
             httpClient.get(request: request) { data in
                 
                 if let data = data {
-                    completion(try? JSONDecoder().decode(RoverManifest.self, from: data))
+                    let decoder = JSONDecoder()
+                    decoder.keyDecodingStrategy = .convertFromSnakeCase
+                    completion(try? decoder.decode(RoverManifest.self, from: data))
                 }
                 
             }

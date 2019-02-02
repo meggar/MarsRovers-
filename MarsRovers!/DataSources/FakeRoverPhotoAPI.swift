@@ -25,8 +25,10 @@ class FakeRoverPhotoAPI: RoverPhoto_DataSource {
         if let path = Bundle.main.path(forResource: photos[rover], ofType: "json"),
             let text = try? String(contentsOfFile: path),
             let data = text.data(using: .utf8) {
-
-            completion( try? JSONDecoder().decode(Photos.self, from: data) )
+            
+            let decoder = JSONDecoder()
+            decoder.keyDecodingStrategy = .convertFromSnakeCase
+            completion( try? decoder.decode(Photos.self, from: data) )
             
         }else{
             completion(nil)
@@ -45,7 +47,9 @@ class FakeRoverPhotoAPI: RoverPhoto_DataSource {
             let text = try? String(contentsOfFile: path),
             let data = text.data(using: .utf8) {
             
-            completion( try? JSONDecoder().decode(RoverManifest.self, from: data) )
+            let decoder = JSONDecoder()
+            decoder.keyDecodingStrategy = .convertFromSnakeCase
+            completion( try? decoder.decode(RoverManifest.self, from: data) )
             
         }else{
             completion(nil)

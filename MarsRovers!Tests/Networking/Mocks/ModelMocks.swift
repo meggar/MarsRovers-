@@ -16,10 +16,13 @@ struct MockPhotos {
     
     init?() {
         
+        let decoder = JSONDecoder()
+        decoder.keyDecodingStrategy = .convertFromSnakeCase
+        
         if let path = Bundle.main.path(forResource: "FakeJson_CuriosityPhotos", ofType: "json"),
             let text = try? String(contentsOfFile: path),
             let data = text.data(using: .utf8),
-            let photos = try? JSONDecoder().decode(Photos.self, from: data) {
+            let photos = try? decoder.decode(Photos.self, from: data) {
             
             self.photos = photos
             
@@ -36,10 +39,13 @@ struct MockManifest {
     
     init? () {
         
+        let decoder = JSONDecoder()
+        decoder.keyDecodingStrategy = .convertFromSnakeCase
+        
         if let path = Bundle.main.path(forResource: "FakeJson_CuriosityManifest", ofType: "json"),
             let text = try? String(contentsOfFile: path),
             let data = text.data(using: .utf8),
-            let manifest = try? JSONDecoder().decode(RoverManifest.self, from: data) {
+            let manifest = try? decoder.decode(RoverManifest.self, from: data) {
             
             self.manifest = manifest
             

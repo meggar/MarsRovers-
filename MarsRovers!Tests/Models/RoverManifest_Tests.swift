@@ -40,10 +40,13 @@ class RoverManifest_Tests: XCTestCase {
         
         XCTAssertEqual(jsonStrings.count, 3)
         
+        let decoder = JSONDecoder()
+        decoder.keyDecodingStrategy = .convertFromSnakeCase
+        
         jsonStrings.forEach{ json in
 
             guard let data = json.data(using: .utf8),
-                let _ = try? JSONDecoder().decode(RoverManifest.self, from: data)
+                let _ = try? decoder.decode(RoverManifest.self, from: data)
             
                 else {
                     XCTFail();
