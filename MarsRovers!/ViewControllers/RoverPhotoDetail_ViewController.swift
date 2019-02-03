@@ -214,12 +214,41 @@ class RoverPhotoDetail_ViewController: UIViewController {
         switch likeIcon {
             
         case .like:
+            // order is important here:
+            deleteImageFromDisk(photo: photo)
             deleteFromCoreData(photo: photo, moc: moc)
             likeButton.setTitle(Icon.unlike.rawValue, for: .normal)
+            
+            // if this image is unfavorited, jump back to the collectionVIew of favorites.
+            navigationController?.popViewController(animated: true)
                 
         case .unlike:
             insertIntoCoreData(photo: photo, moc: moc)
+            if let image = image {
+                saveImageToDisk(image: image, photo: photo)
+            }
             likeButton.setTitle(Icon.like.rawValue, for: .normal)
+        }
+    }
+    
+    // MARK: - file system helpers
+    private func saveImageToDisk(image: UIImage, photo: PhotoDetailProtocol) {
+        
+        if let filename = photo.photoURLString {
+            
+            let imagePath = "\(NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0])/\(filename).png"
+        
+            try? image.pngData()?.write(to: URL(fileURLWithPath: imagePath))
+        }
+    }
+    
+    private func deleteImageFromDisk(photo: PhotoDetailProtocol) {
+
+        if let filename = photo.photoURLString {
+            
+            let imagePath = "\(NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0])/\(filename).png"
+        
+            try? FileManager.default.removeItem(at: URL(fileURLWithPath: imagePath))
         }
     }
     
@@ -230,6 +259,7 @@ class RoverPhotoDetail_ViewController: UIViewController {
         do {
             let newObject = NSEntityDescription.insertNewObject(forEntityName: "FavoriteRoverImage", into: moc)
             
+            newObject.setValue(photo.photoId, forKey: "imageId")
             newObject.setValue(photo.photoURLString, forKey: "urlString")
             newObject.setValue(photo.photoRover, forKey: "rover")
             newObject.setValue(photo.photoEarthDate, forKey: "earthDate")

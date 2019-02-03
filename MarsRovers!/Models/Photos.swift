@@ -50,6 +50,7 @@ struct CameraElement: Codable & Equatable {
 // MARK: - PhotoDetailProtocol conformance
 
 extension Photo: PhotoDetailProtocol {
+    var photoId: Int? { return id }
     var photoURLString: String? { return imgSrc }
     var photoCameraName: String? { return camera.name }
     var photoCameraFullName: String? { return camera.fullName }

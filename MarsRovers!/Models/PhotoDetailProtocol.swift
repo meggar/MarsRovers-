@@ -12,6 +12,7 @@ import Foundation
 
 protocol PhotoDetailProtocol {
     
+    var photoId: Int? { get }
     var photoURLString: String? { get }
     var photoCameraName: String? { get }
     var photoCameraFullName: String? { get }

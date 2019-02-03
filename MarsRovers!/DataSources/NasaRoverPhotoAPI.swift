@@ -74,7 +74,12 @@ class NasaRoverPhotoAPI: RoverPhoto_DataSource {
         }
     }
 
+    
     func getImageData(url: URL, completion: @escaping (Data?) -> ()) {
+        
+        if let dataOnDisk = imageDataFromDisk(filename: url.absoluteString) {
+            completion(dataOnDisk)
+        }
         
         let request = URLRequest(url: url,
                                  cachePolicy: .returnCacheDataElseLoad,
@@ -85,5 +90,19 @@ class NasaRoverPhotoAPI: RoverPhoto_DataSource {
             completion(data)
 
         }
+    }
+    
+    // MARK: - helpers
+    
+    private func imageDataFromDisk(filename: String) -> Data? {
+        
+        let imagePath: String = "\(NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0])/\(filename).png"
+        let imageUrl: URL = URL(fileURLWithPath: imagePath)
+        
+        if FileManager.default.fileExists(atPath: imagePath) {
+            return try? Data(contentsOf: imageUrl)
+        }
+        
+        return nil
     }
 }

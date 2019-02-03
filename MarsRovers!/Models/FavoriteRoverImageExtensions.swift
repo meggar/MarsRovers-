@@ -13,6 +13,7 @@ import Foundation
 
 extension FavoriteRoverImage: PhotoDetailProtocol {
     
+    var photoId: Int? { return Int(imageId) }
     var photoURLString: String? { return urlString }
     var photoCameraName: String? { return camera }
     var photoCameraFullName: String? { return cameraFullname }

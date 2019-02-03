@@ -36,10 +36,6 @@ class FavoriteImages_CollectionViewController: UICollectionViewController, UICol
         super.viewDidLoad()
         
         self.collectionView!.register(FavoriteImages_CollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
-        
-        if let moc = moc {
-            getFavoriteImagesFromCoreData(moc: moc)
-        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
