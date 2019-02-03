@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		FB05E1C42207A9750032C5F9 /* OfflineStorageHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB05E1C32207A9750032C5F9 /* OfflineStorageHelpers.swift */; };
 		FB1E469621E24FF6009315D9 /* HTTPClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB1E469521E24FF6009315D9 /* HTTPClient.swift */; };
 		FB1E469821E2514F009315D9 /* HTTPClientTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB1E469721E2514F009315D9 /* HTTPClientTests.swift */; };
 		FB1E469B21E253C5009315D9 /* URLSessionExtenstions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB1E469A21E253C5009315D9 /* URLSessionExtenstions.swift */; };
@@ -79,6 +80,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		FB05E1C32207A9750032C5F9 /* OfflineStorageHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OfflineStorageHelpers.swift; sourceTree = "<group>"; };
 		FB1E469521E24FF6009315D9 /* HTTPClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPClient.swift; sourceTree = "<group>"; };
 		FB1E469721E2514F009315D9 /* HTTPClientTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPClientTests.swift; sourceTree = "<group>"; };
 		FB1E469A21E253C5009315D9 /* URLSessionExtenstions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSessionExtenstions.swift; sourceTree = "<group>"; };
@@ -171,6 +173,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		FB05E1C22207A91B0032C5F9 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				FB05E1C32207A9750032C5F9 /* OfflineStorageHelpers.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		FB1E469921E253A8009315D9 /* Networking */ = {
 			isa = PBXGroup;
 			children = (
@@ -241,6 +251,7 @@
 		FB6C008021E0EF140077A637 /* MarsRovers! */ = {
 			isa = PBXGroup;
 			children = (
+				FB05E1C22207A91B0032C5F9 /* Extensions */,
 				FBDFE403220759D500B7D33C /* app_github_icon.png */,
 				FB532AC121F634770028420D /* Strings */,
 				FB64EFE121F4199E009C0EEF /* Styles */,
@@ -543,6 +554,7 @@
 				FB65CC4421F50A4000C2E870 /* FavoriteImages_CollectionViewController.swift in Sources */,
 				FB1E469B21E253C5009315D9 /* URLSessionExtenstions.swift in Sources */,
 				FB65CC4821F5385D00C2E870 /* FavoriteRoverImageExtensions.swift in Sources */,
+				FB05E1C42207A9750032C5F9 /* OfflineStorageHelpers.swift in Sources */,
 				FB6C00B321E0F5100077A637 /* Photos.swift in Sources */,
 				FB6C00C721E15C8D0077A637 /* RoverPhotoDetail_ViewController.swift in Sources */,
 				FB64EFE021F3ACFD009C0EEF /* FullScreenImage_ViewController.swift in Sources */,

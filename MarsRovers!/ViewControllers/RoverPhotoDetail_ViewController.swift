@@ -224,21 +224,19 @@ class RoverPhotoDetail_ViewController: UIViewController {
                 
         case .unlike:
             insertIntoCoreData(photo: photo, moc: moc)
-            if let image = image {
-                saveImageToDisk(image: image, photo: photo)
-            }
+            saveImageToDisk(image: photoView.image, photo: photo)
+            
             likeButton.setTitle(Icon.like.rawValue, for: .normal)
         }
     }
     
     // MARK: - file system helpers
-    private func saveImageToDisk(image: UIImage, photo: PhotoDetailProtocol) {
+    private func saveImageToDisk(image: UIImage?, photo: PhotoDetailProtocol) {
         
-        if let filename = photo.photoURLString {
+        if let filename = photo.photoURLString,
+            let image = image {
             
-            let imagePath = "\(NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0])/\(filename).png"
-        
-            try? image.pngData()?.write(to: URL(fileURLWithPath: imagePath))
+            FileManager.default.saveImageToDisk(image: image, filename: filename)
         }
     }
     
@@ -246,9 +244,7 @@ class RoverPhotoDetail_ViewController: UIViewController {
 
         if let filename = photo.photoURLString {
             
-            let imagePath = "\(NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0])/\(filename).png"
-        
-            try? FileManager.default.removeItem(at: URL(fileURLWithPath: imagePath))
+            FileManager.default.deleteImageFromDisk(filename: filename)
         }
     }
     
