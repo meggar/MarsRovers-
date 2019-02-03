@@ -1,3 +1,4 @@
+![App Icon](MarsRovers!/app_github_icon.png) 
 #  Mars Rovers!
 An iOS app that displays images from NASA Mars rovers.
 

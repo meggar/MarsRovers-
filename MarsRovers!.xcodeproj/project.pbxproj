@@ -136,6 +136,7 @@
 		FBDFE3CD220737CE00B7D33C /* Snapfile */ = {isa = PBXFileReference; lastKnownFileType = text; path = Snapfile; sourceTree = "<group>"; };
 		FBDFE3FD22073C5900B7D33C /* screenshots */ = {isa = PBXFileReference; lastKnownFileType = folder; path = screenshots; sourceTree = "<group>"; };
 		FBDFE4012207470500B7D33C /* APIkeys.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = APIkeys.plist; sourceTree = "<group>"; };
+		FBDFE403220759D500B7D33C /* app_github_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = app_github_icon.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -240,6 +241,7 @@
 		FB6C008021E0EF140077A637 /* MarsRovers! */ = {
 			isa = PBXGroup;
 			children = (
+				FBDFE403220759D500B7D33C /* app_github_icon.png */,
 				FB532AC121F634770028420D /* Strings */,
 				FB64EFE121F4199E009C0EEF /* Styles */,
 				FB1E469921E253A8009315D9 /* Networking */,
