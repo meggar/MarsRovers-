@@ -49,6 +49,9 @@
 		FB6C00D421E18D9E0077A637 /* DataSourceHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB6C00D321E18D9E0077A637 /* DataSourceHelpers.swift */; };
 		FB6C00D621E18FA90077A637 /* DataSourceHelpers_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB6C00D521E18FA90077A637 /* DataSourceHelpers_Tests.swift */; };
 		FB6C00D921E19CA80077A637 /* NasaRoverPhotoAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB6C00D821E19CA80077A637 /* NasaRoverPhotoAPI.swift */; };
+		FBDFE3AB2207274200B7D33C /* MarsRovers_FastlaneUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBDFE3AA2207274200B7D33C /* MarsRovers_FastlaneUITests.swift */; };
+		FBDFE3B32207275400B7D33C /* SnapshotHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBDFE3B22207275400B7D33C /* SnapshotHelper.swift */; };
+		FBDFE3FE22073C5900B7D33C /* screenshots in Resources */ = {isa = PBXBuildFile; fileRef = FBDFE3FD22073C5900B7D33C /* screenshots */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -60,6 +63,13 @@
 			remoteInfo = "MarsRovers!";
 		};
 		FB6C009E21E0EF2D0077A637 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = FB6C007621E0EF130077A637 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = FB6C007D21E0EF140077A637;
+			remoteInfo = "MarsRovers!";
+		};
+		FBDFE3AD2207274200B7D33C /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = FB6C007621E0EF130077A637 /* Project object */;
 			proxyType = 1;
@@ -117,6 +127,15 @@
 		FB6C00D321E18D9E0077A637 /* DataSourceHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataSourceHelpers.swift; sourceTree = "<group>"; };
 		FB6C00D521E18FA90077A637 /* DataSourceHelpers_Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataSourceHelpers_Tests.swift; sourceTree = "<group>"; };
 		FB6C00D821E19CA80077A637 /* NasaRoverPhotoAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NasaRoverPhotoAPI.swift; sourceTree = "<group>"; };
+		FBDFE3A82207274200B7D33C /* MarsRovers!FastlaneUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "MarsRovers!FastlaneUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		FBDFE3AA2207274200B7D33C /* MarsRovers_FastlaneUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarsRovers_FastlaneUITests.swift; sourceTree = "<group>"; };
+		FBDFE3AC2207274200B7D33C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FBDFE3B22207275400B7D33C /* SnapshotHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SnapshotHelper.swift; sourceTree = "<group>"; };
+		FBDFE3C9220737CE00B7D33C /* Appfile */ = {isa = PBXFileReference; lastKnownFileType = text; path = Appfile; sourceTree = "<group>"; };
+		FBDFE3CA220737CE00B7D33C /* Fastfile */ = {isa = PBXFileReference; lastKnownFileType = text; path = Fastfile; sourceTree = "<group>"; };
+		FBDFE3CB220737CE00B7D33C /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		FBDFE3CD220737CE00B7D33C /* Snapfile */ = {isa = PBXFileReference; lastKnownFileType = text; path = Snapfile; sourceTree = "<group>"; };
+		FBDFE3FD22073C5900B7D33C /* screenshots */ = {isa = PBXFileReference; lastKnownFileType = folder; path = screenshots; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -135,6 +154,13 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		FB6C009A21E0EF2D0077A637 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FBDFE3A52207274200B7D33C /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -191,9 +217,11 @@
 			isa = PBXGroup;
 			children = (
 				FB1E46A021E26E2D009315D9 /* README.md */,
+				FBDFE3C8220737CE00B7D33C /* fastlane */,
 				FB6C008021E0EF140077A637 /* MarsRovers! */,
 				FB6C009521E0EF2D0077A637 /* MarsRovers!Tests */,
 				FB6C00A021E0EF2D0077A637 /* MarsRovers!UITests */,
+				FBDFE3A92207274200B7D33C /* MarsRovers!FastlaneUITests */,
 				FB6C007F21E0EF140077A637 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -204,6 +232,7 @@
 				FB6C007E21E0EF140077A637 /* MarsRovers!.app */,
 				FB6C009221E0EF2D0077A637 /* MarsRovers!Tests.xctest */,
 				FB6C009D21E0EF2D0077A637 /* MarsRovers!UITests.xctest */,
+				FBDFE3A82207274200B7D33C /* MarsRovers!FastlaneUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -318,6 +347,28 @@
 			path = FakeDataFiles;
 			sourceTree = "<group>";
 		};
+		FBDFE3A92207274200B7D33C /* MarsRovers!FastlaneUITests */ = {
+			isa = PBXGroup;
+			children = (
+				FBDFE3B22207275400B7D33C /* SnapshotHelper.swift */,
+				FBDFE3AA2207274200B7D33C /* MarsRovers_FastlaneUITests.swift */,
+				FBDFE3AC2207274200B7D33C /* Info.plist */,
+			);
+			path = "MarsRovers!FastlaneUITests";
+			sourceTree = "<group>";
+		};
+		FBDFE3C8220737CE00B7D33C /* fastlane */ = {
+			isa = PBXGroup;
+			children = (
+				FBDFE3FD22073C5900B7D33C /* screenshots */,
+				FBDFE3C9220737CE00B7D33C /* Appfile */,
+				FBDFE3CA220737CE00B7D33C /* Fastfile */,
+				FBDFE3CB220737CE00B7D33C /* README.md */,
+				FBDFE3CD220737CE00B7D33C /* Snapfile */,
+			);
+			path = fastlane;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -374,6 +425,24 @@
 			productReference = FB6C009D21E0EF2D0077A637 /* MarsRovers!UITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
+		FBDFE3A72207274200B7D33C /* MarsRovers!FastlaneUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = FBDFE3AF2207274200B7D33C /* Build configuration list for PBXNativeTarget "MarsRovers!FastlaneUITests" */;
+			buildPhases = (
+				FBDFE3A42207274200B7D33C /* Sources */,
+				FBDFE3A52207274200B7D33C /* Frameworks */,
+				FBDFE3A62207274200B7D33C /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				FBDFE3AE2207274200B7D33C /* PBXTargetDependency */,
+			);
+			name = "MarsRovers!FastlaneUITests";
+			productName = "MarsRovers!FastlaneUITests";
+			productReference = FBDFE3A82207274200B7D33C /* MarsRovers!FastlaneUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -395,6 +464,10 @@
 						CreatedOnToolsVersion = 10.1;
 						TestTargetID = FB6C007D21E0EF140077A637;
 					};
+					FBDFE3A72207274200B7D33C = {
+						CreatedOnToolsVersion = 10.1;
+						TestTargetID = FB6C007D21E0EF140077A637;
+					};
 				};
 			};
 			buildConfigurationList = FB6C007921E0EF130077A637 /* Build configuration list for PBXProject "MarsRovers!" */;
@@ -413,6 +486,7 @@
 				FB6C007D21E0EF140077A637 /* MarsRovers! */,
 				FB6C009121E0EF2D0077A637 /* MarsRovers!Tests */,
 				FB6C009C21E0EF2D0077A637 /* MarsRovers!UITests */,
+				FBDFE3A72207274200B7D33C /* MarsRovers!FastlaneUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -446,6 +520,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FBDFE3A62207274200B7D33C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FBDFE3FE22073C5900B7D33C /* screenshots in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -505,6 +587,15 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		FBDFE3A42207274200B7D33C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FBDFE3AB2207274200B7D33C /* MarsRovers_FastlaneUITests.swift in Sources */,
+				FBDFE3B32207275400B7D33C /* SnapshotHelper.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -517,6 +608,11 @@
 			isa = PBXTargetDependency;
 			target = FB6C007D21E0EF140077A637 /* MarsRovers! */;
 			targetProxy = FB6C009E21E0EF2D0077A637 /* PBXContainerItemProxy */;
+		};
+		FBDFE3AE2207274200B7D33C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = FB6C007D21E0EF140077A637 /* MarsRovers! */;
+			targetProxy = FBDFE3AD2207274200B7D33C /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -766,6 +862,44 @@
 			};
 			name = Release;
 		};
+		FBDFE3B02207274200B7D33C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 2B29F5A4PU;
+				INFOPLIST_FILE = "MarsRovers!FastlaneUITests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.mikeeggar.MarsRovers-FastlaneUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = "MarsRovers!";
+			};
+			name = Debug;
+		};
+		FBDFE3B12207274200B7D33C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 2B29F5A4PU;
+				INFOPLIST_FILE = "MarsRovers!FastlaneUITests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.mikeeggar.MarsRovers-FastlaneUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = "MarsRovers!";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -801,6 +935,15 @@
 			buildConfigurations = (
 				FB6C00AD21E0EF2D0077A637 /* Debug */,
 				FB6C00AE21E0EF2D0077A637 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		FBDFE3AF2207274200B7D33C /* Build configuration list for PBXNativeTarget "MarsRovers!FastlaneUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FBDFE3B02207274200B7D33C /* Debug */,
+				FBDFE3B12207274200B7D33C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

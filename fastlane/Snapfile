@@ -1,0 +1,13 @@
+devices([
+    "iPhone Xʀ",
+])
+
+languages([
+   "en-US",
+])
+
+scheme("MarsRovers!FastlaneUITests")
+
+output_directory("./fastlane/screenshots")
+
+clear_previous_screenshots(true)
