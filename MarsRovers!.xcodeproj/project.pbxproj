@@ -34,7 +34,6 @@
 		FB6C008921E0EF290077A637 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FB6C008821E0EF290077A637 /* Assets.xcassets */; };
 		FB6C008C21E0EF290077A637 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FB6C008A21E0EF290077A637 /* LaunchScreen.storyboard */; };
 		FB6C00A221E0EF2D0077A637 /* MarsRovers_UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB6C00A121E0EF2D0077A637 /* MarsRovers_UITests.swift */; };
-		FB6C00B021E0F2410077A637 /* APIkeys.plist in Resources */ = {isa = PBXBuildFile; fileRef = FB6C00AF21E0F2410077A637 /* APIkeys.plist */; };
 		FB6C00B321E0F5100077A637 /* Photos.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB6C00B221E0F5100077A637 /* Photos.swift */; };
 		FB6C00B621E0F5F60077A637 /* Photos_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB6C00B521E0F5F60077A637 /* Photos_Tests.swift */; };
 		FB6C00B921E104210077A637 /* RoverPhotos_CollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB6C00B821E104210077A637 /* RoverPhotos_CollectionViewController.swift */; };
@@ -52,6 +51,7 @@
 		FBDFE3AB2207274200B7D33C /* MarsRovers_FastlaneUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBDFE3AA2207274200B7D33C /* MarsRovers_FastlaneUITests.swift */; };
 		FBDFE3B32207275400B7D33C /* SnapshotHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBDFE3B22207275400B7D33C /* SnapshotHelper.swift */; };
 		FBDFE3FE22073C5900B7D33C /* screenshots in Resources */ = {isa = PBXBuildFile; fileRef = FBDFE3FD22073C5900B7D33C /* screenshots */; };
+		FBDFE4022207470500B7D33C /* APIkeys.plist in Resources */ = {isa = PBXBuildFile; fileRef = FBDFE4012207470500B7D33C /* APIkeys.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -112,7 +112,6 @@
 		FB6C009D21E0EF2D0077A637 /* MarsRovers!UITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "MarsRovers!UITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FB6C00A121E0EF2D0077A637 /* MarsRovers_UITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarsRovers_UITests.swift; sourceTree = "<group>"; };
 		FB6C00A321E0EF2D0077A637 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		FB6C00AF21E0F2410077A637 /* APIkeys.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = APIkeys.plist; sourceTree = "<group>"; };
 		FB6C00B221E0F5100077A637 /* Photos.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Photos.swift; sourceTree = "<group>"; };
 		FB6C00B521E0F5F60077A637 /* Photos_Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Photos_Tests.swift; sourceTree = "<group>"; };
 		FB6C00B821E104210077A637 /* RoverPhotos_CollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoverPhotos_CollectionViewController.swift; sourceTree = "<group>"; };
@@ -136,6 +135,7 @@
 		FBDFE3CB220737CE00B7D33C /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		FBDFE3CD220737CE00B7D33C /* Snapfile */ = {isa = PBXFileReference; lastKnownFileType = text; path = Snapfile; sourceTree = "<group>"; };
 		FBDFE3FD22073C5900B7D33C /* screenshots */ = {isa = PBXFileReference; lastKnownFileType = folder; path = screenshots; sourceTree = "<group>"; };
+		FBDFE4012207470500B7D33C /* APIkeys.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = APIkeys.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -250,8 +250,8 @@
 				FB6C008821E0EF290077A637 /* Assets.xcassets */,
 				FB6C008A21E0EF290077A637 /* LaunchScreen.storyboard */,
 				FB6C008D21E0EF290077A637 /* Info.plist */,
-				FB6C00AF21E0F2410077A637 /* APIkeys.plist */,
 				FB65CC4021F4EBA000C2E870 /* FavoriteImageModel.xcdatamodeld */,
+				FBDFE4012207470500B7D33C /* APIkeys.plist */,
 			);
 			path = "MarsRovers!";
 			sourceTree = "<group>";
@@ -500,10 +500,10 @@
 				FB1E46A821E29F1F009315D9 /* FakeJson_SpiritManifest.json in Resources */,
 				FB1E46A621E29F09009315D9 /* FakeJson_CuriosityManifest.json in Resources */,
 				FB6C008C21E0EF290077A637 /* LaunchScreen.storyboard in Resources */,
-				FB6C00B021E0F2410077A637 /* APIkeys.plist in Resources */,
 				FB6C008921E0EF290077A637 /* Assets.xcassets in Resources */,
 				FB1E46AA21E29F3B009315D9 /* FakeJson_OpportunityManifest.json in Resources */,
 				FB65CC0221F4B9D200C2E870 /* TestImage.png in Resources */,
+				FBDFE4022207470500B7D33C /* APIkeys.plist in Resources */,
 				FB6C00CD21E185080077A637 /* FakeJson_CuriosityPhotos.json in Resources */,
 				FB6C00CB21E184ED0077A637 /* FakeJson_SpiritPhotos.json in Resources */,
 			);
