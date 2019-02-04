@@ -233,7 +233,7 @@ class RoverPhotoDetail_ViewController: UIViewController {
     // MARK: - file system helpers
     private func saveImageToDisk(image: UIImage?, photo: PhotoDetailProtocol) {
         
-        if let filename = photo.photoURLString,
+        if let filename = photo.filename,
             let image = image {
             
             FileManager.default.saveImageToDisk(image: image, filename: filename)
@@ -242,7 +242,7 @@ class RoverPhotoDetail_ViewController: UIViewController {
     
     private func deleteImageFromDisk(photo: PhotoDetailProtocol) {
 
-        if let filename = photo.photoURLString {
+        if let filename = photo.filename {
             
             FileManager.default.deleteImageFromDisk(filename: filename)
         }

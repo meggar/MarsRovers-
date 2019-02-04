@@ -97,17 +97,16 @@ extension FavoriteImages_CollectionViewController {
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! FavoriteImages_CollectionViewCell
         
-        if let imgSrc = photos[indexPath.row].urlString,
-            let imageUrl = URL(string: imgSrc) {
+        let photo = photos[indexPath.row]
             
-            roverPhoto_datasource?.getImageData(url: imageUrl) { data in
-                if let data = data {
-                    DispatchQueue.main.async {
-                        cell.photoView.image = UIImage(data: data)
-                    }
+        roverPhoto_datasource?.getImageData(photo: photo) { data in
+            if let data = data {
+                DispatchQueue.main.async {
+                    cell.photoView.image = UIImage(data: data)
                 }
             }
         }
+        
         
         if let cameraName = photos[indexPath.row].camera,
             let earthDate = photos[indexPath.row].earthDate {

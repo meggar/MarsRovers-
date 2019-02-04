@@ -20,3 +20,14 @@ protocol PhotoDetailProtocol {
     var photoEarthDate: String? { get }
     var photoSolDate: Int? { get }
 }
+
+// unique filename for saving this photo's image data if it's favorited.
+extension PhotoDetailProtocol {
+    var filename: String? {
+        guard let photoId = photoId,
+               let photoRover = photoRover
+            else{ return nil }
+        
+        return "\(photoRover)\(photoId)"
+    }
+}

@@ -90,10 +90,9 @@ extension RoverPhotos_CollectionViewController {
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! RoverPhoto_CollectionViewCell
 
-        if let imgSrc = photos?.photos[indexPath.row].imgSrc,
-            let imageUrl = URL(string: imgSrc) {
+        if let photo = photos?.photos[indexPath.row] {
             
-            roverPhoto_datasource?.getImageData(url: imageUrl) { data in
+            roverPhoto_datasource?.getImageData(photo: photo) { data in
                 if let data = data {
                     DispatchQueue.main.async {
                         cell.photoView.image = UIImage(data: data)

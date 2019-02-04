@@ -14,17 +14,25 @@ extension FileManager {
 
     func saveImageToDisk(image: UIImage, filename: String) {
         
-        let imagePath = "\(NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0])/\(filename).png"
+        let imagePath = "\(NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0])/\(filename)"
             
-        try? image.pngData()?.write(to: URL(fileURLWithPath: imagePath))
+        do {
+            try image.pngData()?.write(to: URL(fileURLWithPath: imagePath))
+        }catch{
+            print("could not write file: \(filename)")
+        }
     }
     
     
     func deleteImageFromDisk(filename: String) {
         
-        let imagePath = "\(NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0])/\(filename).png"
-            
-        try? FileManager.default.removeItem(at: URL(fileURLWithPath: imagePath))
+        let imagePath = "\(NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0])/\(filename)"
+        
+        do {
+            try FileManager.default.removeItem(at: URL(fileURLWithPath: imagePath))
+        }catch{
+            print("could not delete file: \(filename)")
+        }
     }
 }
 
