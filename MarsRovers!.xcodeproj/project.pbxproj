@@ -251,8 +251,8 @@
 		FB6C008021E0EF140077A637 /* MarsRovers! */ = {
 			isa = PBXGroup;
 			children = (
-				FB05E1C22207A91B0032C5F9 /* Extensions */,
 				FBDFE403220759D500B7D33C /* app_github_icon.png */,
+				FB05E1C22207A91B0032C5F9 /* Extensions */,
 				FB532AC121F634770028420D /* Strings */,
 				FB64EFE121F4199E009C0EEF /* Styles */,
 				FB1E469921E253A8009315D9 /* Networking */,

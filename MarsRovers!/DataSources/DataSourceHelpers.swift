@@ -10,25 +10,6 @@ import Foundation
 
 class DataSourceHelpers {
     
-    static func formattedDateString(daysAgo: Int, from startDate: Date = Date()) -> String? {
-        
-        let calendar = Calendar.current
-        let dateComponents = DateComponents(calendar: calendar,
-                                            year: 0,
-                                            month: 0,
-                                            day: -daysAgo)
-        
-        if let date = calendar.date(byAdding: dateComponents, to: startDate) {
-            
-            let dateFormatter = DateFormatter()
-            dateFormatter.dateFormat = "YYYY-MM-dd"
-            
-            return dateFormatter.string(from: date)
-            
-        }
-        
-        return nil   
-    }
     
     static func apiKeyFromPlist(filename: String = "APIkeys") -> String? {
         

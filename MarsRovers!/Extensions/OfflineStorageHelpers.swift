@@ -29,7 +29,7 @@ extension FileManager {
         let imagePath = "\(NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0])/\(filename)"
         
         do {
-            try FileManager.default.removeItem(at: URL(fileURLWithPath: imagePath))
+            try removeItem(at: URL(fileURLWithPath: imagePath))
         }catch{
             print("could not delete file: \(filename)")
         }
