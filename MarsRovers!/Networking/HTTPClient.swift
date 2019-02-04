@@ -21,6 +21,8 @@ class HTTPClient {
                 (200...299) ~= response.statusCode {
                 
                 completion(data)
+            }else{
+                completion(nil)
             }
             
         }

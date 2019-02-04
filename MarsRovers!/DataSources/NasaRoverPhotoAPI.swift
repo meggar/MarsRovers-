@@ -45,6 +45,8 @@ class NasaRoverPhotoAPI: RoverPhoto_DataSource {
                     let decoder = JSONDecoder()
                     decoder.keyDecodingStrategy = .convertFromSnakeCase
                     completion(try? decoder.decode(Photos.self, from: data))
+                }else{
+                    completion(nil)
                 }
                 
             }
@@ -68,6 +70,8 @@ class NasaRoverPhotoAPI: RoverPhoto_DataSource {
                     let decoder = JSONDecoder()
                     decoder.keyDecodingStrategy = .convertFromSnakeCase
                     completion(try? decoder.decode(RoverManifest.self, from: data))
+                }else{
+                    completion(nil)
                 }
                 
             }

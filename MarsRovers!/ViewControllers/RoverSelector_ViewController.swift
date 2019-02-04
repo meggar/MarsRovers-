@@ -177,6 +177,7 @@ class RoverSelector_ViewController: UIViewController {
             self?.manifest = manifest
             
             DispatchQueue.main.async {
+                
                 if let firstDate = manifest?.firstSolDate,
                     let lastDate = manifest?.lastSolDate,
                     let photos = manifest?.photoManifest.photos,
@@ -193,8 +194,19 @@ class RoverSelector_ViewController: UIViewController {
                     self?.toggleSliderAndButton(enabled: true)
                     
                     self?.roverDescription.text = manifest?.photoManifest.roverDescriptionText()
-                    self?.activityIndicator.stopAnimating()
+                    
+                }else{
+                    
+                    let alert = UIAlertController(title: "Offline",
+                                                  message: "Cannot connect to NASA right now.\nYou can still look at your Favorite images though!",
+                                                  preferredStyle: .alert)
+                    
+                    alert.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: "Default action"),
+                                                  style: .default))
+                    
+                    self?.present(alert, animated: true, completion: nil)
                 }
+                self?.activityIndicator.stopAnimating()
             }
         }
     }
