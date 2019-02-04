@@ -34,5 +34,18 @@ extension FileManager {
             print("could not delete file: \(filename)")
         }
     }
+    
+    
+    func imageDataFromDisk(filename: String) -> Data? {
+        
+        let imagePath = "\(NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0])/\(filename)"
+        let imageUrl = URL(fileURLWithPath: imagePath)
+        
+        if fileExists(atPath: imagePath) {
+            return try? Data(contentsOf: imageUrl)
+        }
+        
+        return nil
+    }
 }
 
