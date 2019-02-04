@@ -67,6 +67,10 @@ class FavoriteImages_CollectionViewController: UICollectionViewController, UICol
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .vertical
         layout.minimumInteritemSpacing = 10
+        layout.sectionInset = UIEdgeInsets(top: 10.0,
+                                           left: 0.0,
+                                           bottom: 10.0,
+                                           right: 0.0)
         
         self.init(collectionViewLayout: layout)
         
