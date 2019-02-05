@@ -30,7 +30,8 @@ class HTTPClient {
         task.resume()    
     }
  
-    init(session: URLSessionProtocol = URLSession.shared) {
+    init(session: URLSessionProtocol = URLSession.appSession) {
         self.session = session
     }
+    
 }

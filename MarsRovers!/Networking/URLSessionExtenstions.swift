@@ -34,3 +34,16 @@ extension URLSession: URLSessionProtocol {
         return (dataTask(with: request, completionHandler: completionHandler) as URLSessionDataTask) as URLSessionDataTaskProtocol
     }
 }
+
+// like URLSession.shared, but with a larger diskCapacity for cache.
+extension URLSession {
+    
+    static let appSession: URLSession = {
+        let config = URLSessionConfiguration.default
+        let cache = URLCache(memoryCapacity: 4 * 1024 * 1024,
+                             diskCapacity: 100 * 1024 * 1024,
+                             diskPath: nil)
+        config.urlCache = cache
+        return URLSession(configuration: config)
+    }()
+}
