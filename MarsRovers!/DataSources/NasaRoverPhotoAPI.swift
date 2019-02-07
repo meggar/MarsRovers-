@@ -61,17 +61,36 @@ class NasaRoverPhotoAPI: RoverPhoto_DataSource {
             let url = DataSourceHelpers.urlWith(endPoint: route, andParams: ["api_key": apiKey]) {
             
             let request = URLRequest(url: url,
-                                     cachePolicy: .returnCacheDataElseLoad,
+                                     cachePolicy: .reloadIgnoringLocalCacheData,
                                      timeoutInterval: 10.0)
             
-            httpClient.get(request: request) { data in
+            // first attempt to get manifest from backend api
+            
+            httpClient.get(request: request) { [weak self] data in
                 
                 if let data = data {
                     let decoder = JSONDecoder()
                     decoder.keyDecodingStrategy = .convertFromSnakeCase
                     completion(try? decoder.decode(RoverManifest.self, from: data))
                 }else{
-                    completion(nil)
+                    
+                    // if unsuccessful, see if cached manifest exists...
+                    
+                    let request = URLRequest(url: url,
+                                             cachePolicy: .returnCacheDataDontLoad,
+                                             timeoutInterval: 2.0)
+                    
+                    self?.httpClient.get(request: request) { data in
+                        
+                        if let data = data {
+                            let decoder = JSONDecoder()
+                            decoder.keyDecodingStrategy = .convertFromSnakeCase
+                            completion(try? decoder.decode(RoverManifest.self, from: data))
+                        }else{
+                            completion(nil)
+                        }
+                        
+                    }
                 }
                 
             }
