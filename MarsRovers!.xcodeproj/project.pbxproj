@@ -17,6 +17,7 @@
 		FB1E46A621E29F09009315D9 /* FakeJson_CuriosityManifest.json in Resources */ = {isa = PBXBuildFile; fileRef = FB1E46A521E29F09009315D9 /* FakeJson_CuriosityManifest.json */; };
 		FB1E46A821E29F1F009315D9 /* FakeJson_SpiritManifest.json in Resources */ = {isa = PBXBuildFile; fileRef = FB1E46A721E29F1F009315D9 /* FakeJson_SpiritManifest.json */; };
 		FB1E46AA21E29F3B009315D9 /* FakeJson_OpportunityManifest.json in Resources */ = {isa = PBXBuildFile; fileRef = FB1E46A921E29F3B009315D9 /* FakeJson_OpportunityManifest.json */; };
+		FB260E8D220BC85800C66B15 /* JSONDecoderExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB260E8C220BC85800C66B15 /* JSONDecoderExtensions.swift */; };
 		FB532AC021F607760028420D /* CoreDataModel_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB532ABF21F607760028420D /* CoreDataModel_Tests.swift */; };
 		FB532AC321F634A90028420D /* AccessibilityIdentifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB532AC221F634A90028420D /* AccessibilityIdentifier.swift */; };
 		FB532AC421F634AC0028420D /* AccessibilityIdentifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB532AC221F634A90028420D /* AccessibilityIdentifier.swift */; };
@@ -91,6 +92,7 @@
 		FB1E46A521E29F09009315D9 /* FakeJson_CuriosityManifest.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = FakeJson_CuriosityManifest.json; sourceTree = "<group>"; };
 		FB1E46A721E29F1F009315D9 /* FakeJson_SpiritManifest.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = FakeJson_SpiritManifest.json; sourceTree = "<group>"; };
 		FB1E46A921E29F3B009315D9 /* FakeJson_OpportunityManifest.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = FakeJson_OpportunityManifest.json; sourceTree = "<group>"; };
+		FB260E8C220BC85800C66B15 /* JSONDecoderExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONDecoderExtensions.swift; sourceTree = "<group>"; };
 		FB532ABF21F607760028420D /* CoreDataModel_Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataModel_Tests.swift; sourceTree = "<group>"; };
 		FB532AC221F634A90028420D /* AccessibilityIdentifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccessibilityIdentifier.swift; sourceTree = "<group>"; };
 		FB532AC521F66E3D0028420D /* UITest_Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITest_Extensions.swift; sourceTree = "<group>"; };
@@ -177,6 +179,7 @@
 			isa = PBXGroup;
 			children = (
 				FB05E1C32207A9750032C5F9 /* OfflineStorageHelpers.swift */,
+				FB260E8C220BC85800C66B15 /* JSONDecoderExtensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -561,6 +564,7 @@
 				FB6C00C121E10F240077A637 /* RoverType.swift in Sources */,
 				FB532AC321F634A90028420D /* AccessibilityIdentifier.swift in Sources */,
 				FB6C00D421E18D9E0077A637 /* DataSourceHelpers.swift in Sources */,
+				FB260E8D220BC85800C66B15 /* JSONDecoderExtensions.swift in Sources */,
 				FB1E46A221E299DB009315D9 /* RoverManifest.swift in Sources */,
 				FB6C00B921E104210077A637 /* RoverPhotos_CollectionViewController.swift in Sources */,
 				FB64EFE321F419B6009C0EEF /* AppStyles.swift in Sources */,

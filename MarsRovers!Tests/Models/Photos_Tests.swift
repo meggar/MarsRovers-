@@ -40,13 +40,10 @@ class Photos_Tests: XCTestCase {
         
         XCTAssertEqual(jsonStrings.count, 3)
         
-        let decoder = JSONDecoder()
-        decoder.keyDecodingStrategy = .convertFromSnakeCase
-        
         jsonStrings.forEach{ json in
             
             guard let data = json.data(using: .utf8),
-                let _ = try? decoder.decode(Photos.self, from: data)
+                let _ = try? JSONDecoder(withStrategy: .convertFromSnakeCase).decode(Photos.self, from: data)
                 
                 else {
                     XCTFail();

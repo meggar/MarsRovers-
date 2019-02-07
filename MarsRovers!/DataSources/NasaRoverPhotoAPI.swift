@@ -42,9 +42,7 @@ class NasaRoverPhotoAPI: RoverPhoto_DataSource {
             httpClient.get(request: request) { data in
                 
                 if let data = data {
-                    let decoder = JSONDecoder()
-                    decoder.keyDecodingStrategy = .convertFromSnakeCase
-                    completion(try? decoder.decode(Photos.self, from: data))
+                    completion(try? JSONDecoder(withStrategy: .convertFromSnakeCase).decode(Photos.self, from: data))
                 }else{
                     completion(nil)
                 }
@@ -55,7 +53,7 @@ class NasaRoverPhotoAPI: RoverPhoto_DataSource {
     
     
     func getManifestFor(rover: RoverType, completion: @escaping (RoverManifest?) -> ()) {
-        
+
         if let apiKey = DataSourceHelpers.apiKeyFromPlist(),
             let route = NasaRoverPhotoAPI.manifestEndpoints[rover],
             let url = DataSourceHelpers.urlWith(endPoint: route, andParams: ["api_key": apiKey]) {
@@ -69,9 +67,9 @@ class NasaRoverPhotoAPI: RoverPhoto_DataSource {
             httpClient.get(request: request) { [weak self] data in
                 
                 if let data = data {
-                    let decoder = JSONDecoder()
-                    decoder.keyDecodingStrategy = .convertFromSnakeCase
-                    completion(try? decoder.decode(RoverManifest.self, from: data))
+                    
+                    completion(try? JSONDecoder(withStrategy: .convertFromSnakeCase).decode(RoverManifest.self, from: data))
+                    
                 }else{
                     
                     // if unsuccessful, see if cached manifest exists...
@@ -83,9 +81,7 @@ class NasaRoverPhotoAPI: RoverPhoto_DataSource {
                     self?.httpClient.get(request: request) { data in
                         
                         if let data = data {
-                            let decoder = JSONDecoder()
-                            decoder.keyDecodingStrategy = .convertFromSnakeCase
-                            completion(try? decoder.decode(RoverManifest.self, from: data))
+                            completion(try? JSONDecoder(withStrategy: .convertFromSnakeCase).decode(RoverManifest.self, from: data))
                         }else{
                             completion(nil)
                         }
