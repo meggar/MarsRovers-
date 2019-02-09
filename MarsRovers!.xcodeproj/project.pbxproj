@@ -54,6 +54,7 @@
 		FBDFE3B32207275400B7D33C /* SnapshotHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBDFE3B22207275400B7D33C /* SnapshotHelper.swift */; };
 		FBDFE3FE22073C5900B7D33C /* screenshots in Resources */ = {isa = PBXBuildFile; fileRef = FBDFE3FD22073C5900B7D33C /* screenshots */; };
 		FBDFE4022207470500B7D33C /* APIkeys.plist in Resources */ = {isa = PBXBuildFile; fileRef = FBDFE4012207470500B7D33C /* APIkeys.plist */; };
+		FBFDE7E6220F3B4300799B5C /* SlideShowViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBFDE7E5220F3B4300799B5C /* SlideShowViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -141,6 +142,7 @@
 		FBDFE3FD22073C5900B7D33C /* screenshots */ = {isa = PBXFileReference; lastKnownFileType = folder; path = screenshots; sourceTree = "<group>"; };
 		FBDFE4012207470500B7D33C /* APIkeys.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = APIkeys.plist; sourceTree = "<group>"; };
 		FBDFE403220759D500B7D33C /* app_github_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = app_github_icon.png; sourceTree = "<group>"; };
+		FBFDE7E5220F3B4300799B5C /* SlideShowViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlideShowViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -255,6 +257,7 @@
 			isa = PBXGroup;
 			children = (
 				FBDFE403220759D500B7D33C /* app_github_icon.png */,
+				FB6C008A21E0EF290077A637 /* LaunchScreen.storyboard */,
 				FB05E1C22207A91B0032C5F9 /* Extensions */,
 				FB532AC121F634770028420D /* Strings */,
 				FB64EFE121F4199E009C0EEF /* Styles */,
@@ -264,7 +267,6 @@
 				FB6C00B121E0F4C70077A637 /* Models */,
 				FB6C008121E0EF140077A637 /* AppDelegate.swift */,
 				FB6C008821E0EF290077A637 /* Assets.xcassets */,
-				FB6C008A21E0EF290077A637 /* LaunchScreen.storyboard */,
 				FB6C008D21E0EF290077A637 /* Info.plist */,
 				FB65CC4021F4EBA000C2E870 /* FavoriteImageModel.xcdatamodeld */,
 				FBDFE4012207470500B7D33C /* APIkeys.plist */,
@@ -323,6 +325,7 @@
 				FB6C00C621E15C8D0077A637 /* RoverPhotoDetail_ViewController.swift */,
 				FB64EFDF21F3ACFD009C0EEF /* FullScreenImage_ViewController.swift */,
 				FB65CC4321F50A4000C2E870 /* FavoriteImages_CollectionViewController.swift */,
+				FBFDE7E5220F3B4300799B5C /* SlideShowViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -571,6 +574,7 @@
 				FB6C008221E0EF140077A637 /* AppDelegate.swift in Sources */,
 				FB65CC4621F537E100C2E870 /* PhotoDetailProtocol.swift in Sources */,
 				FB1E469621E24FF6009315D9 /* HTTPClient.swift in Sources */,
+				FBFDE7E6220F3B4300799B5C /* SlideShowViewController.swift in Sources */,
 				FB65CC4221F4EBA000C2E870 /* FavoriteImageModel.xcdatamodeld in Sources */,
 				FB6C00C521E113BE0077A637 /* RoverSelector_ViewController.swift in Sources */,
 				FB6C00C321E110DA0077A637 /* FakeRoverPhotoAPI.swift in Sources */,

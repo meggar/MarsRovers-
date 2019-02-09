@@ -17,10 +17,26 @@ class FavoriteImages_CollectionViewController: UICollectionViewController, UICol
     var moc: NSManagedObjectContext?
     
     var roverPhoto_datasource: RoverPhoto_DataSource?
-    var photos:[FavoriteRoverImage] = []
+    var photos:[FavoriteRoverImage] = [] {
+        didSet {
+            navigationItem.rightBarButtonItem = photos.isEmpty
+                                                ? nil
+                                                : UIBarButtonItem(title: "SlideShow",
+                                                                    style: .plain,
+                                                                    target: self,
+                                                                    action: #selector(startSlideShow))
+        }
+    }
     
+    // MARK: - navBar handlers
+    @objc func startSlideShow() {
+        let vc = SlideShowViewController()
+        vc.photos = photos
+        vc.roverPhoto_datasource = roverPhoto_datasource
+        present(vc, animated: true)
+    }
     
-    // Core data helpers
+    // MARK: - Core data helpers
     private func getFavoriteImagesFromCoreData(moc: NSManagedObjectContext) {
 
         let fetchRequest: NSFetchRequest = FavoriteRoverImage.fetchRequest()
