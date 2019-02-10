@@ -15,12 +15,11 @@ class SlideShowViewController: UIViewController {
     var photoIndex = 0
     var timer: Timer?
     
-    lazy var imageView: UIImageView = {
+    var imageView: UIImageView = {
         let view = UIImageView()
         view.translatesAutoresizingMaskIntoConstraints = false
-        view.isUserInteractionEnabled = true
+        view.isUserInteractionEnabled = false
         view.contentMode = .scaleAspectFit
-        view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(endSlideShow)))
         return view
     }()
     
@@ -34,6 +33,7 @@ class SlideShowViewController: UIViewController {
     }
     
     private func setupUI() {
+        view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(endSlideShow)))
         view.accessibilityIdentifier = AccessibilityIdentifier.FavoritesSlideShowView.rawValue
         view.backgroundColor = .black
         view.addSubview(imageView)
@@ -57,15 +57,28 @@ class SlideShowViewController: UIViewController {
         let photo = photos[photoIndex]
             
         roverPhoto_datasource?.getImageData(photo: photo) { [weak self] data in
-            if let data = data {
-                DispatchQueue.main.async {
+            guard let data = data else { return }
+            
+            DispatchQueue.main.async {
+                
+                let nextImage = UIImage(data: data)
+                if let imageView = self?.imageView {
                     
-                    let nextImage = UIImage(data: data)
-                    if let imageView = self?.imageView {
-                        UIView.transition(with: imageView,
+                    // reset imageView zoom level
+                    imageView.layer.contentsRect = CGRect(x: 0.0, y: 0.0, width: 1.0, height: 1.0)
+                    
+                    // fade into next image
+                    UIView.transition(with: imageView,
                                       duration: 1.0,
                                       options: .transitionCrossDissolve,
-                                      animations: { self?.imageView.image = nextImage })
+                                      animations: {
+                                        self?.imageView.image = nextImage
+                                      }) { _ in
+                                    
+                                            // slowly zoom in (zoom level is reset above when the next image is shown.)
+                                            UIView.animate(withDuration: 10.0) {
+                                            self?.imageView.layer.contentsRect = CGRect(x: 0.05, y: 0.05, width: 0.9, height: 0.9)
+                                        }
                     }
                 }
             }
