@@ -10,7 +10,7 @@ import XCTest
 
 extension XCTestCase {
     
-    func verify(element: XCUIElement, hasText text: String) {
+    func verify(element: XCUIElement, hasText text: String = "exists == 1") {
         
         let predicate = NSPredicate(format: text)
         let expectation = XCTNSPredicateExpectation(predicate: predicate, object: element)

@@ -13,6 +13,7 @@ import Foundation
 
 class FakeRoverPhotoAPI: RoverPhoto_DataSource {
 
+    // MARK: - RoverPhoto_DataSource
     
     func getPhotosFor(rover: RoverType, onSolDate sol: Int, completion: @escaping (Photos?) -> ()) {
 
@@ -60,4 +61,24 @@ class FakeRoverPhotoAPI: RoverPhoto_DataSource {
             completion(data)
         }
     }
+    
+    
+    // MARK: - Testing helpers
+    
+    func getSomeTestPhotos(count: Int) -> [Photo] {
+        
+        var photos:[Photo] = []
+
+        if let path = Bundle.main.path(forResource: "FakeJson_CuriosityPhotos", ofType: "json"),
+            let text = try? String(contentsOfFile: path),
+            let data = text.data(using: .utf8) {
+            
+            if let fakePhotos = try? JSONDecoder(withStrategy: .convertFromSnakeCase).decode(Photos.self, from: data).photos.prefix(count) {
+                photos.append(contentsOf: fakePhotos)
+            }
+        }
+        
+        return photos
+    }
+    
 }

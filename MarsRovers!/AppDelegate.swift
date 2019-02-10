@@ -22,7 +22,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         let roverSelector_ViewController = RoverSelector_ViewController()
         roverSelector_ViewController.moc = persistentContainer.viewContext
-        roverSelector_ViewController.roverPhoto_DataSource = NasaRoverPhotoAPI(httpClient: HTTPClient())
+        roverSelector_ViewController.roverPhoto_DataSource = ProcessInfo.processInfo.arguments.contains("fakeAPI")
+                                                             ? FakeRoverPhotoAPI()
+                                                             : NasaRoverPhotoAPI(httpClient: HTTPClient())
         
         window?.rootViewController = UINavigationController(rootViewController: roverSelector_ViewController)
         window?.makeKeyAndVisible()
@@ -35,14 +37,58 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     lazy var persistentContainer: NSPersistentContainer = {
 
-        let container = NSPersistentContainer(name: "FavoriteImageModel")
-        container.loadPersistentStores(completionHandler: { (storeDescription, error) in
-            if let error = error as NSError? {
-                fatalError("Unresolved error \(error), \(error.userInfo)")
+        if !ProcessInfo.processInfo.arguments.contains("fakeCoreData") {
+            
+            // create the normal core data stack
+            
+            let container = NSPersistentContainer(name: "FavoriteImageModel")
+            container.loadPersistentStores(){ (storeDescription, error) in
+                if let error = error as NSError? {
+                    fatalError("Unresolved error \(error), \(error.userInfo)")
+                }
             }
-        })
-        return container
+            return container
+         
+        } else {
+            
+            // create a blank canvas for XCUITests, only using in-memory storage.
+            
+            let container = NSPersistentContainer(name: "FavoriteImageModel")
+            let description = NSPersistentStoreDescription()
+            description.type = NSInMemoryStoreType
+            description.shouldAddStoreAsynchronously = false
+            
+            container.persistentStoreDescriptions = [description]
+            container.loadPersistentStores { (description, error) in
+                
+                precondition( description.type == NSInMemoryStoreType )
+                if let error = error {
+                    fatalError("could not create fake Core Data")
+                }
+            }
+            
+            // insert a few Favorited photos into the fake Core Data
+            
+            for photo in FakeRoverPhotoAPI().getSomeTestPhotos(count: 3) {
+            
+                let newObject = NSEntityDescription.insertNewObject(forEntityName: "FavoriteRoverImage", into: container.viewContext)
+            
+                newObject.setValue(photo.photoId, forKey: "imageId")
+                newObject.setValue(photo.photoURLString, forKey: "urlString")
+                newObject.setValue(photo.photoRover, forKey: "rover")
+                newObject.setValue(photo.photoEarthDate, forKey: "earthDate")
+                newObject.setValue(photo.photoSolDate, forKey: "solDate")
+                newObject.setValue(photo.photoCameraName, forKey: "camera")
+                newObject.setValue(photo.photoCameraFullName, forKey: "cameraFullname")
+            
+                // try! is OK here because the app has been launched from XCUITest
+                try! container.viewContext.save()
+            }
+            
+            return container
+        }
     }()
+
     
     // MARK: - Core Data Saving support
     

@@ -8,29 +8,38 @@
 
 import XCTest
 
-class RoverSelector_UITests: XCTestCase {
+class MarsRover_UITests: XCTestCase {
 
+    // The expected values in theses tests come from files in folder "DataSources/FakeDataFiles"
+    
     override func setUp() {
         continueAfterFailure = false
-        XCUIApplication().launch()
     }
 
+    private func testApplication() -> XCUIApplication {
+        let app = XCUIApplication()
+        app.launchArguments.append("fakeCoreData")
+        app.launchArguments.append("fakeAPI")
+        app.launch()
+        return app
+    }
+    
     
     /*
      Tap the first row in the table.
      verify that there are min/max values in the labels to the left and right of the slider.
      verify that the label above the slider inits to "Sol Date: \(x)", where x is the min slider value.
-     tap the increment button, the label above the slider should increment by one.
-     tap the decrement button, the label should revert to previous value.
+     tap the increment button, the label above the slider should increment to next sol date.
+     tap the decrement button, the label should revert to original value.
      tap the decrement button, the label should not change.
      slide the slider all the way to the right.
-     tap the decrement button, the label above the slider should decrement by one.
-     tap the increment button, the label should revert to previous value.
+     tap the decrement button, the label above the slider should decrement to previous sol date.
+     tap the increment button, the label should revert to original value.
      tap the increment button, the label should not change.
     */
     func testSliderAdjustingButtons() {
         
-        let app = XCUIApplication()
+        let app = testApplication()
 
         let table = app.tables[AccessibilityIdentifier.roverSelectorTable.rawValue]
         let selectedDate = app.staticTexts[AccessibilityIdentifier.roverSelectorSelectedDate.rawValue]
@@ -53,45 +62,57 @@ class RoverSelector_UITests: XCTestCase {
         
         // wait until there is data in the labels
         verify(element: min, hasText: "label != ''")
-        
-        guard let minValue = Int(min.label),
-               let maxValue = Int(max.label) else { XCTFail(); return }
+        verify(element: max, hasText: "label != ''")
         
         // verify labels
-        verify(element: selectedDate, hasText: "label == 'Sol Date: \( minValue )'")
-        verify(element: min, hasText: "label == '\( minValue )'")
+        verify(element: selectedDate, hasText: "label == 'Sol Date: 0'")
+        verify(element: min, hasText: "label == '0'")
+        verify(element: max, hasText: "label == '12'")
         
         // increment once, verify labels
         increment.tap()
-        verify(element: selectedDate, hasText: "label == 'Sol Date: \( minValue + 1 )'")
+        verify(element: selectedDate, hasText: "label == 'Sol Date: 1'")
+        verify(element: min, hasText: "label == '0'")
+        verify(element: max, hasText: "label == '12'")
 
         // decrement once, verify labels
         decrement.tap()
-        verify(element: selectedDate, hasText: "label == 'Sol Date: \( minValue )'")
+        verify(element: selectedDate, hasText: "label == 'Sol Date: 0'")
+        verify(element: min, hasText: "label == '0'")
+        verify(element: max, hasText: "label == '12'")
         
         // decrementing when slider is all the way left should have no effect.
         decrement.tap()
-        verify(element: selectedDate, hasText: "label == 'Sol Date: \( minValue )'")
+        verify(element: selectedDate, hasText: "label == 'Sol Date: 0'")
+        verify(element: min, hasText: "label == '0'")
+        verify(element: max, hasText: "label == '12'")
         
         
         
         // move the slider all the way to the right
         slider.adjust(toNormalizedSliderPosition: 1.0)
         
-        verify(element: selectedDate, hasText: "label == 'Sol Date: \( maxValue )'")
-        verify(element: max, hasText: "label == '\( maxValue )'")
+        verify(element: selectedDate, hasText: "label == 'Sol Date: 12'")
+        verify(element: min, hasText: "label == '0'")
+        verify(element: max, hasText: "label == '12'")
         
         // decrement once, verify labels
         decrement.tap()
-        verify(element: selectedDate, hasText: "label == 'Sol Date: \( maxValue - 1 )'")
+        verify(element: selectedDate, hasText: "label == 'Sol Date: 10'")
+        verify(element: min, hasText: "label == '0'")
+        verify(element: max, hasText: "label == '12'")
         
         // increment once, verify labels
         increment.tap()
-        verify(element: selectedDate, hasText: "label == 'Sol Date: \( maxValue )'")
+        verify(element: selectedDate, hasText: "label == 'Sol Date: 12'")
+        verify(element: min, hasText: "label == '0'")
+        verify(element: max, hasText: "label == '12'")
 
         // incrementing when slider is all the way right should have no effect.
         increment.tap()
-        verify(element: selectedDate, hasText: "label == 'Sol Date: \( maxValue )'")
+        verify(element: selectedDate, hasText: "label == 'Sol Date: 12'")
+        verify(element: min, hasText: "label == '0'")
+        verify(element: max, hasText: "label == '12'")
     }
     
     
@@ -105,7 +126,7 @@ class RoverSelector_UITests: XCTestCase {
     */
     func testShowImagesButton() {
         
-        let app = XCUIApplication()
+        let app = testApplication()
         
         let table = app.tables[AccessibilityIdentifier.roverSelectorTable.rawValue]
         let min = app.staticTexts[AccessibilityIdentifier.roverSelectorMinSliderLabel.rawValue]
@@ -154,15 +175,11 @@ class RoverSelector_UITests: XCTestCase {
      */
     func testShowFavoritesButton() {
         
-        let app = XCUIApplication()
+        let app = testApplication()
         
-        let table = app.tables[AccessibilityIdentifier.roverSelectorTable.rawValue]
-        let min = app.staticTexts[AccessibilityIdentifier.roverSelectorMinSliderLabel.rawValue]
         let showFavorites = app.buttons[AccessibilityIdentifier.RoverSelectorFavoritesButton.rawValue]
         
-        [table,
-         min,
-         showFavorites].forEach{ element in XCTAssertTrue(element.exists) }
+        [showFavorites].forEach{ element in XCTAssertTrue(element.exists) }
         
         
         // initial state: nav title should be Mars Rovers
@@ -183,5 +200,48 @@ class RoverSelector_UITests: XCTestCase {
         // nav title should be Mars Rovers
         XCTAssertTrue(app.navigationBars["Mars Rovers"].exists)
         XCTAssertFalse(app.navigationBars["Favorite Images"].exists)
+    }
+    
+    /*
+     tap the Favorites button, navBar-left.
+     this should push a CollectionViewController onto the stack.
+     verify that the navBar now has a right barItem "Slide Show"
+     tap the "Slide Show" nav button
+     verify that slideShowViewController is now on screen
+     tap the screen
+     verify that it returns to the "Favorite Images" collectionView
+     */
+    func testFavoritesSlideShow() {
+        
+        let app = testApplication()
+        
+        let showFavorites = app.buttons[AccessibilityIdentifier.RoverSelectorFavoritesButton.rawValue]
+        let slideShowImageView = app.otherElements[AccessibilityIdentifier.FavoritesSlideShowView.rawValue]
+        
+        [showFavorites].forEach{ element in XCTAssertTrue(element.exists) }
+        
+        
+        // initial state: nav title should be Mars Rovers
+        XCTAssertTrue(app.navigationBars["Mars Rovers"].exists)
+        XCTAssertFalse(app.navigationBars["Favorite Images"].exists)
+        
+        // tap the Favorites button, navBar-left
+        showFavorites.tap()
+        
+        // nav title should be Favorite Images
+        XCTAssertTrue(app.navigationBars["Favorite Images"].exists)
+        XCTAssertFalse(app.navigationBars["Mars Rovers"].exists)
+        
+        // nav bar should have a "Slide Show" right barItem
+        XCTAssertTrue(app.navigationBars["Favorite Images"].buttons["SlideShow"].exists)
+        app.navigationBars["Favorite Images"].buttons["SlideShow"].tap()
+        
+        // slideShow should now be on screen
+        verify(element: slideShowImageView)
+        XCTAssertFalse(app.navigationBars["Favorite Images"].exists)
+        
+        // tapping dismisses the slideShow
+        slideShowImageView.tap()
+        XCTAssertTrue(app.navigationBars["Favorite Images"].exists)
     }
 }

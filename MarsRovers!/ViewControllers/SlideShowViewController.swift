@@ -34,6 +34,7 @@ class SlideShowViewController: UIViewController {
     }
     
     private func setupUI() {
+        view.accessibilityIdentifier = AccessibilityIdentifier.FavoritesSlideShowView.rawValue
         view.backgroundColor = .black
         view.addSubview(imageView)
     }

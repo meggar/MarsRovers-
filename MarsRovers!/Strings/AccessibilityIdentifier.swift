@@ -18,5 +18,7 @@ enum AccessibilityIdentifier: String {
     case roverSelectorSlider = "roverSelectorSlider"
     case RoverSelectorShowImagesButton = "RoverSelectorShowImagesButton"
     case RoverSelectorFavoritesButton = "RoverSelectorFavoritesButton"
+    
+    case FavoritesSlideShowView = "FavoritesSlideShowView"
 }
 
