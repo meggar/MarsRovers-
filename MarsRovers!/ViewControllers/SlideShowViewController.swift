@@ -65,7 +65,7 @@ class SlideShowViewController: UIViewController {
                 if let imageView = self?.imageView {
                     
                     // reset imageView zoom level
-                    imageView.layer.contentsRect = CGRect(x: 0.0, y: 0.0, width: 1.0, height: 1.0)
+                    imageView.layer.contentsRect = CGRect(x: 0.05, y: 0.05, width: 0.9, height: 0.9)
                     
                     // fade into next image
                     UIView.transition(with: imageView,
@@ -75,9 +75,9 @@ class SlideShowViewController: UIViewController {
                                         self?.imageView.image = nextImage
                                       }) { _ in
                                     
-                                            // slowly zoom in (zoom level is reset above when the next image is shown.)
+                                            // slowly zoom out (zoom level is reset above when the next image is shown.)
                                             UIView.animate(withDuration: 10.0) {
-                                            self?.imageView.layer.contentsRect = CGRect(x: 0.05, y: 0.05, width: 0.9, height: 0.9)
+                                            self?.imageView.layer.contentsRect = CGRect(x: 0.0, y: 0.0, width: 1.0, height: 1.0)
                                         }
                     }
                 }
@@ -102,7 +102,7 @@ class SlideShowViewController: UIViewController {
     @objc func endSlideShow() {
         timer?.invalidate()
         
-        self.dismiss(animated: true)
+        self.dismiss(animated: false)
     }
 
 }
